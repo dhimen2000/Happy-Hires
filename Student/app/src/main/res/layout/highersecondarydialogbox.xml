@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Higher Secondary Details"
+        android:textSize="20dp"
+        android:textAlignment="center">
+    </TextView>
+
+    <EditText
+        android:id="@+id/HigherSecondary_School"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="School"
+        android:textSize="20dp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/HigherSecondary_Board"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Board"
+        android:textSize="20dp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/HigherSecondary_Percentage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Percentage"
+        android:textSize="20dp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/HigherSecondary_Year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Year Of Passing"
+        android:textSize="20dp">
+    </EditText>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:text="SAVE"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:id="@+id/HigherSecondary_btn_Save">
+        </Button>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:text="Clear"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:id="@+id/HigherSecondary_btn_Clear">
+        </Button>
+
+    </LinearLayout>
+
+</LinearLayout>

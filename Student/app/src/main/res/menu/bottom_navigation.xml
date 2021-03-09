@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_company_list"
+        android:title="Companies"/>
+
+    <item
+        android:id="@+id/bottom_view_jobs"
+        android:title="Jobs"/>
+
+    <item
+        android:id="@+id/bottom_apply_jobs"
+        android:title="Applications"/>
+
+</menu>
