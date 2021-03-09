@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hello" />
+<!--    <TextView-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:id="@+id/profile_company_name"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+<!--    <TextView-->
+<!--        android:layout_below="@+id/profile_company_name"-->
+<!--        android:id="@+id/profile_address"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+<!--    <TextView-->
+<!--        android:layout_below="@+id/profile_address"-->
+<!--        android:id="@+id/profile_email"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+<!--    <TextView-->
+<!--        android:layout_below="@+id/profile_email"-->
+<!--        android:id="@+id/profile_city"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+<!--    <TextView-->
+<!--        android:layout_below="@+id/profile_city"-->
+<!--        android:id="@+id/profile_number"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        />-->
+
+
+
+
+</RelativeLayout>

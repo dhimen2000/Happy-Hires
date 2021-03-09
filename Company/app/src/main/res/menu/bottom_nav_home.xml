@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/student_list"
+        android:title="Student list"/>
+    <item
+        android:id="@+id/available_job"
+        android:title="Companies list"/>
+    <item
+        android:id="@+id/apply_job"
+        android:title="Job Applications"/>
+
+
+</menu>
