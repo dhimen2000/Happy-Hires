@@ -25,6 +25,12 @@
         tools:layout="@layout/fragment_feedback" />
 
     <fragment
+        android:id="@+id/nav_aboutus"
+        android:name="com.example.student.ui.aboutus.AboutusFragment"
+        android:label="About Us"
+        tools:layout="@layout/fragment_aboutus" />
+
+    <fragment
         android:id="@+id/nav_logout"
         android:name="com.example.student.ui.logout.LogoutFragment"
         android:label="Logout"

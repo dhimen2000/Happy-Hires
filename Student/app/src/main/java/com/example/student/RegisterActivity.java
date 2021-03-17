@@ -5,14 +5,24 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +32,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -31,54 +46,61 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RegisterActivity extends AppCompatActivity {
+
     //Basic Details
+    //ImageView
+    @BindView(R.id.profile_image)
+    CircleImageView profilepic;
+    @BindView(R.id.profilePictureButton)
+    ImageView profilepicbtn;
+    //Edittext
     @BindView(R.id.Register_name)
     EditText name;
-    @BindView(R.id.Register_number)
-    EditText number;
     @BindView(R.id.Register_Dob)
     EditText dob;
-    @BindView(R.id.Register_Gender)
-    EditText gender;
-    @BindView(R.id.Register_email)
-    EditText email;
-    @BindView(R.id.Register_password)
-    EditText pass;
-    @BindView(R.id.Register_Confirm_password)
-    EditText confirm_pass;
+    //Radiogroup & Button
+    @BindView(R.id.Register_radiogroup)
+    RadioGroup radioGroup;
+    @BindView(R.id.radio_male)
+    RadioButton rbmale;
+    @BindView(R.id.radio_female)
+    RadioButton rbFemale;
+    //Edittext
+    @BindView(R.id.Register_number)
+    EditText number;
+    @BindView(R.id.Register_Address)
+    EditText address;
+    //Buttons
+    @BindView(R.id.Register_back)
+    Button btnback;
+    @BindView(R.id.Register_next)
+    Button btnnext;
 
-    //Register Button
-    @BindView(R.id.Register_submit)
-    Button btnregister;
-
-    @BindView(R.id.Secondary)
-    TextView secondary;
-    @BindView(R.id.HigherSecondary)
-    TextView highersecondary;
-    @BindView(R.id.Graduation)
-    TextView graduation;
+    //For Image
+    // Folder path for Firebase Storage.
+    String Image_Storage_Path = "All_Image_Uploads/";
+    // Image request code for onActivityResult().
+    int Image_Request_Code = 7;
+    // Creating URI.
+    Uri ImageFilepathUri;
+    Uri ImageDownloadUri;
+    ProgressDialog progressDialog ;
 
     //Basic Details
-    String Name, Number, Dob, Gender, Email, Pass, Confirm_Pass;
-
-    //Secondary Details
-    String S_School, S_Board, S_Percentage, S_Year;
-
-    //HigherSecondary Details
-    String H_School, H_Board, H_Percentage, H_Year;
-
-    //Graduation Details
-    String G_College, G_Course, G_Sem1, G_Year1, G_Sem2, G_Year2, G_Sem3, G_Year3, G_Sem4, G_Year4, G_Sem5, G_Year5, G_Sem6, G_Year6, G_Sem7, G_Year7, G_Sem8, G_Year8;
+    String Name, Dob, Gender, Number, Address;
+    //Branch, Email, Pass, Confirm_Pass;
 
     FirebaseAuth firebaseAuth;
-
+    StorageReference storageReference;
     DatabaseReference firebaseDatabase;
+    SharedPreferences.Editor edit;
+
+    SharedPreferences sharedPreferences;
 
     final Calendar myCalendar = Calendar.getInstance();
-
-    //private Unbinder unbinder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,11 +111,22 @@ public class RegisterActivity extends AppCompatActivity {
 
         firebaseAuth = firebaseAuth.getInstance();
 
+        storageReference = FirebaseStorage.getInstance().getReference();
         firebaseDatabase = FirebaseDatabase.getInstance().getReference();
+
+        sharedPreferences = getSharedPreferences("SharedPreference",MODE_PRIVATE);
+        edit = sharedPreferences.edit();
+        progressDialog = new ProgressDialog(RegisterActivity.this);
+
+        profilepicbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Selectimage();
+            }
+        });
 
         //For DOB
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
@@ -115,276 +148,215 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        secondary.setOnClickListener(new View.OnClickListener() {
-
-            EditText secondary_school,secondary_board,secondary_percentage,secondary_year;
-            Button save,clear;
-
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(RegisterActivity.this);
-                View view = getLayoutInflater().inflate(R.layout.secondarydialogbox,null);
-
-                secondary_school = view.findViewById(R.id.Secondary_School);
-                secondary_board = view.findViewById(R.id.Secondary_Board);
-                secondary_percentage = view.findViewById(R.id.Secondary_Percentage);
-                secondary_year = view.findViewById(R.id.Secondary_Year);
-                save = view.findViewById(R.id.Secondary_btn_Save);
-                clear = view.findViewById(R.id.Secondary_btn_Clear);
-                alert.setView(view);
-
-                final AlertDialog alertDialog = alert.create();
-                alertDialog.setCanceledOnTouchOutside(false);
-
-                save.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        S_School = secondary_school.getText().toString();
-                        Log.d("S_school",S_School);
-                        S_Board = secondary_board.getText().toString();
-                        Log.d("S_Board",S_Board);
-                        S_Percentage = secondary_percentage.getText().toString();
-                        Log.d("S_Percentage",S_Percentage);
-                        S_Year = secondary_year.getText().toString();
-                        Log.d("S_Year",S_Year);
-                        alertDialog.dismiss();
-                    }
-                });
-
-                clear.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertDialog.dismiss();
-                    }
-                });
-                alertDialog.show();
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.radio_male:
+                        Gender = rbmale.getText().toString();
+                        break;
+                    case R.id.radio_female:
+                        Gender = rbFemale.getText().toString();
+                        break;
+                }
             }
         });
 
-        highersecondary.setOnClickListener(new View.OnClickListener() {
-
-            EditText highersecondary_school, highersecondary_board, highersecondary_percentage, highersecondary_year;
-            Button save, clear;
-
-            @Override
-            public void onClick(View v) {
-
-                final AlertDialog.Builder alert = new AlertDialog.Builder(RegisterActivity.this);
-                View root = getLayoutInflater().inflate(R.layout.highersecondarydialogbox, null);
-
-                highersecondary_school = root.findViewById(R.id.HigherSecondary_School);
-                highersecondary_board = root.findViewById(R.id.HigherSecondary_Board);
-                highersecondary_percentage = root.findViewById(R.id.HigherSecondary_Percentage);
-                highersecondary_year = root.findViewById(R.id.HigherSecondary_Year);
-                save = root.findViewById(R.id.HigherSecondary_btn_Save);
-                clear = root.findViewById(R.id.HigherSecondary_btn_Clear);
-
-                alert.setView(root);
-
-                final AlertDialog alertDialog = alert.create();
-                alertDialog.setCanceledOnTouchOutside(false);
-
-                save.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        H_School = highersecondary_school.getText().toString();
-                        Log.d("H_school", H_School);
-                        H_Board = highersecondary_board.getText().toString();
-                        Log.d("H_Board", H_Board);
-                        H_Percentage = highersecondary_percentage.getText().toString();
-                        Log.d("H_Percentage", H_Percentage);
-                        H_Year = highersecondary_year.getText().toString();
-                        Log.d("H_Year", H_Year);
-                        alertDialog.dismiss();
-                    }
-                });
-
-                clear.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertDialog.dismiss();
-                    }
-                });
-                alertDialog.show();
-            }
-        });
-
-        graduation.setOnClickListener(new View.OnClickListener() {
-
-            EditText graduation_college, graduation_course;
-            EditText graduation_sem1, graduation_year1, graduation_sem2, graduation_year2, graduation_sem3, graduation_year3, graduation_sem4, graduation_year4;
-            EditText graduation_sem5, graduation_year5, graduation_sem6, graduation_year6, graduation_sem7, graduation_year7, graduation_sem8, graduation_year8;
-            Button save, clear;
-
-            @Override
-            public void onClick(View v) {
-                final AlertDialog.Builder alert = new AlertDialog.Builder(RegisterActivity.this);
-                View root = getLayoutInflater().inflate(R.layout.graduationdialogbox, null);
-
-                graduation_college = root.findViewById(R.id.Graduation_College);
-                graduation_course = root.findViewById(R.id.Graduation_Course);
-                graduation_sem1 = root.findViewById(R.id.Graduation_Sem1);
-                graduation_year1 = root.findViewById(R.id.Graduation_Year1);
-                graduation_sem2 = root.findViewById(R.id.Graduation_Sem2);
-                graduation_year2 = root.findViewById(R.id.Graduation_Year2);
-                graduation_sem3 = root.findViewById(R.id.Graduation_Sem3);
-                graduation_year3 = root.findViewById(R.id.Graduation_Year3);
-                graduation_sem4 = root.findViewById(R.id.Graduation_Sem4);
-                graduation_year4 = root.findViewById(R.id.Graduation_Year4);
-                graduation_sem5 = root.findViewById(R.id.Graduation_Sem5);
-                graduation_year5 = root.findViewById(R.id.Graduation_Year5);
-                graduation_sem6 = root.findViewById(R.id.Graduation_Sem6);
-                graduation_year6 = root.findViewById(R.id.Graduation_Year6);
-                graduation_sem7 = root.findViewById(R.id.Graduation_Sem7);
-                graduation_year7 = root.findViewById(R.id.Graduation_Year7);
-                graduation_sem8 = root.findViewById(R.id.Graduation_Sem8);
-                graduation_year8 = root.findViewById(R.id.Graduation_Year8);
-                save = root.findViewById(R.id.Graduation_btn_Save);
-                clear = root.findViewById(R.id.Graduation_btn_Clear);
-
-                alert.setView(root);
-
-                final AlertDialog alertDialog = alert.create();
-                alertDialog.setCanceledOnTouchOutside(false);
-
-                save.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        G_College = graduation_college.getText().toString();
-                        Log.d("G_College", G_College);
-                        G_Course = graduation_course.getText().toString();
-                        Log.d("G_Course", G_Course);
-                        G_Sem1 = graduation_sem1.getText().toString();
-                        Log.d("G_Sem1", G_Sem1);
-                        G_Year1 = graduation_year1.getText().toString();
-                        Log.d("G_Year1", G_Year1);
-                        G_Sem2 = graduation_sem2.getText().toString();
-                        Log.d("G_Sem2", G_Sem2);
-                        G_Year2 = graduation_year2.getText().toString();
-                        Log.d("G_Year2", G_Year2);
-                        G_Sem3 = graduation_sem3.getText().toString();
-                        Log.d("G_Sem3", G_Sem3);
-                        G_Year3 = graduation_year3.getText().toString();
-                        Log.d("G_Year3", G_Year3);
-                        G_Sem4 = graduation_sem4.getText().toString();
-                        Log.d("G_Sem4", G_Sem4);
-                        G_Year4 = graduation_year4.getText().toString();
-                        Log.d("G_Year4", G_Year4);
-                        G_Sem5 = graduation_sem5.getText().toString();
-                        Log.d("G_Sem5", G_Sem5);
-                        G_Year5 = graduation_year5.getText().toString();
-                        Log.d("G_Year5", G_Year5);
-                        G_Sem6 = graduation_sem6.getText().toString();
-                        Log.d("G_Sem6", G_Sem6);
-                        G_Year6 = graduation_year6.getText().toString();
-                        Log.d("G_Year6", G_Year6);
-                        G_Sem7 = graduation_sem7.getText().toString();
-                        Log.d("G_Sem7", G_Sem7);
-                        G_Year7 = graduation_year7.getText().toString();
-                        Log.d("G_Year7", G_Year7);
-                        G_Sem8 = graduation_sem8.getText().toString();
-                        Log.d("G_Sem8", G_Sem8);
-                        G_Year8 = graduation_year8.getText().toString();
-                        Log.d("G_Year8", G_Year8);
-                        alertDialog.dismiss();
-                    }
-                });
-
-                clear.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertDialog.dismiss();
-                    }
-                });
-
-                alertDialog.show();
-            }
-        });
-
-        btnregister.setOnClickListener(new View.OnClickListener() {
+        btnnext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Name = name.getText().toString();
-                Number = number.getText().toString();
                 Dob = dob.getText().toString();
-                Log.d("DOB", Dob);
-                Gender = gender.getText().toString();
-                Email = email.getText().toString();
-                Pass = pass.getText().toString();
-                Confirm_Pass = confirm_pass.getText().toString();
+                Number = number.getText().toString();
+                Address = address.getText().toString();
+                UploadImage();
 
-                firebaseAuth.createUserWithEmailAndPassword(Email, Pass).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                    @Override
-                    public void onSuccess(AuthResult authResult) {
-                        Toast.makeText(RegisterActivity.this, "Sucess", Toast.LENGTH_SHORT).show();
-                        RegisterModel registerModel = new RegisterModel(Name, Number, Email, Pass);
-                        firebaseDatabase.child("User").push().setValue(registerModel);
-                        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                        startActivity(intent);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(RegisterActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                Log.d("Name", Name);
+                Log.d("DOB", Dob);
+                Log.d("Gender", Gender);
+                Log.d("Number", Number);
+                Log.d("Address", Address);
             }
         });
+
+        btnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+            }
+        });
+
+
+//        btnregister.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Name = name.getText().toString();
+//                Number = number.getText().toString();
+//                Dob = dob.getText().toString();
+//                Log.d("DOB", Dob);
+//                Gender = gender.getText().toString();
+//                Email = email.getText().toString();
+//                Pass = pass.getText().toString();
+//                Confirm_Pass = confirm_pass.getText().toString();
+//
+//                firebaseAuth.createUserWithEmailAndPassword(Email, Pass).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+//                    @Override
+//                    public void onSuccess(AuthResult authResult) {
+//                        Toast.makeText(RegisterActivity.this, "Sucess", Toast.LENGTH_SHORT).show();
+//                        RegisterModel registerModel = new RegisterModel(Name, Number, Email, Pass);
+//                        firebaseDatabase.child("User").push().setValue(registerModel);
+//                        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+//                        startActivity(intent);
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Toast.makeText(RegisterActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//            }
+//        });
 
     }
 
     //FOR DOB
-    private void updateLabel() {
+    private void updateLabel()
+    {
         String myFormat = "dd/MM/yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-
         dob.setText(sdf.format(myCalendar.getTime()));
     }
 
-//    //Secondary School
-//    @BindView(R.id.Secondary_School) EditText secondary_school;
-//    @BindView(R.id.Secondary_Board) EditText secondary_board;
-//    @BindView(R.id.Secondary_Percentage) EditText secondary_percentage;
-//    @BindView(R.id.Secondary_Year) EditText secondary_year;
-//    @BindView(R.id.Secondary_btn_Save) Button secondary_save;
-//    @BindView(R.id.Secondary_btn_Clear) Button secondary_clear;
-//
-//    @OnClick(R.id.Secondary)
-//    public void Secondaryclick()
-//    {
-//
-//        AlertDialog.Builder alert = new AlertDialog.Builder(RegisterActivity.this);
-//        View root = getLayoutInflater().inflate(R.layout.secondarydialogbox,null);
-//        ButterKnife.bind(this,root);
-//        alert.setView(root);
-//
-//        final AlertDialog alertDialog = alert.create();
-//        alertDialog.setCanceledOnTouchOutside(false);
-//
-//        secondary_save.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                S_School = secondary_school.getText().toString();
-//                Log.d("school",S_School);
-//                S_Board = secondary_board.getText().toString();
-//                S_Percentage = secondary_percentage.getText().toString();
-//                S_Year = secondary_year.getText().toString();
-//                alertDialog.dismiss();
-//            }
-//        });
-//
-//        secondary_clear.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                alertDialog.dismiss();
-//            }
-//        });
-//        alertDialog.show();
-//
-//
-//    }
+    //For UploadImage
+    private void Selectimage()
+    {
+        // Creating intent.
+        Intent intent = new Intent();
+
+        // Setting intent type as image to select image from phone storage.
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Please Select Image"), Image_Request_Code);
+    }
+
+    //chooseimage
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        //chooseimage
+        if (requestCode == Image_Request_Code && resultCode == RESULT_OK && data != null && data.getData() != null)
+        {
+            ImageFilepathUri = data.getData();
+            try
+            {
+                // Getting selected image into Bitmap.
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), ImageFilepathUri);
+                // Setting up bitmap selected image into ImageView.
+                profilepic.setImageBitmap(bitmap);
+                // After selecting image print Toast.
+                Toast.makeText(this, "Image Selected", Toast.LENGTH_SHORT).show();
+                // After selecting image change choose button above text.
+                //ChooseImage.setText("Image Selected");
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private String GetFileExtension(Uri uri) {
+        ContentResolver contentResolver = getContentResolver();
+        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
+        // Returning the file Extension.
+        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri)) ;
+    }
+
+    public void UploadImage()
+    {
+        if ( ImageFilepathUri != null )
+        {
+
+            // Setting progressDialog Title.
+            progressDialog.setTitle("Image is Uploading...");
+
+            // Showing progressDialog.
+            progressDialog.show();
+
+            // Creating second StorageReference.
+            StorageReference storageReference1 = storageReference.child(Image_Storage_Path + System.currentTimeMillis() + "." + GetFileExtension(ImageFilepathUri));
+
+            // Adding addOnSuccessListener to second StorageReference.
+            storageReference1.putFile(ImageFilepathUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>()
+                    {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
+                        {
+                            storageReference1.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+
+
+                                    ImageDownloadUri = uri;
+
+                                    progressDialog.dismiss();
+
+                                    // Showing toast message after done uploading.
+                                    Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
+
+//                                    @SuppressWarnings("VisibleForTests")
+//                                    RegisterModel model = new RegisterModel(Name, Dob, Gender, Number, Address, ImageDownloadUri.toString());
+
+                                    // Adding image upload id s child element into databaseReference.
+//                                    firebaseDatabase.child("User").push().setValue(model);
+
+
+                                    edit.putString("Name", Name);
+                                    edit.putString("Dob", Dob);
+                                    edit.putString("Gender", Gender);
+                                    edit.putString("Number", Number);
+                                    edit.putString("Address", Address);
+                                    edit.putString("ImageUrl",ImageDownloadUri.toString());
+                                    Log.d("uri",ImageDownloadUri.toString());
+                                    edit.apply();
+
+                                    startActivity(new Intent(RegisterActivity.this,RegisterActivity2.class));
+                                }
+                            });
+                        }
+                    })
+                    // If something goes wrong .
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+
+                            // Hiding the progressDialog.
+                            progressDialog.dismiss();
+
+                            // Showing exception erro message.
+                            Toast.makeText(RegisterActivity.this, exception.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    // On progress change upload time.
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            //calculating progress percentage
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+
+                            //displaying percentage in progress dialog
+                            progressDialog.setTitle("Uploading Image " + ((int) progress) + "%...");
+                        }
+                    });
+        }
+        else {
+            Toast.makeText(RegisterActivity.this, "Please Select Image...", Toast.LENGTH_LONG).show();
+        }
+    }
 
 
 }

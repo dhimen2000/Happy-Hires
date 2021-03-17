@@ -1,68 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".RegisterActivity"
+    android:orientation="vertical">
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/selectimg"
+        app:civ_border_color="#FFFFFF"
+        app:civ_border_width="2dp" />
+
+    <ImageView
+        android:id="@+id/profilePictureButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="-30dp"
+        android:background="@drawable/ic_menu_camera">
+    </ImageView>
 
     <ScrollView
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Register_scrollView">
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/Register_TV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="40dp"
-            android:text="Register Page"
-            android:textAlignment="center"
-            android:textColor="@android:color/black">
-        </TextView>
-
-        <ImageView
-            android:id="@+id/Register_img"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp">
-        </ImageView>
+        android:id="@+id/Scrollview">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/Register_imgview_ll">
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/black"
-                android:text="Select Image"
-                android:textColor="#ffffff"
-                android:textSize="15dp"
-                android:layout_weight="1"
-                android:id="@+id/Register_Chooseimg">
-            </Button>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/black"
-                android:text="Upload Image"
-                android:textColor="#ffffff"
-                android:textSize="15dp"
-                android:layout_weight="1"
-                android:id="@+id/Register_uploadimg">
-            </Button>
-        </LinearLayout>
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
 
     <EditText
         android:id="@+id/Register_name"
@@ -72,17 +46,7 @@
         android:textAlignment="center"
         android:textSize="25dp"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/Register_imgview_ll">
-    </EditText>
-
-    <EditText
-        android:id="@+id/Register_number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Number"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:layout_below="@+id/Register_name">
+        android:layout_below="@+id/Register_TV">
     </EditText>
 
     <EditText
@@ -90,123 +54,99 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Date of Birth"
-        android:focusable="false"
         android:textAlignment="center"
         android:textSize="25dp"
+        android:focusable="false"
+        android:layout_below="@+id/Register_name">
+    </EditText>
+
+     <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Register_radiogroup"
+        android:orientation="horizontal"
+         android:gravity="center_horizontal"
+         android:layout_gravity="center_horizontal">
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radio_male"
+            android:text="Male"
+            android:textSize="25dp"
+            android:checked="false"
+            android:layout_weight="1">
+        </RadioButton>
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radio_female"
+            android:text="Female"
+            android:textSize="25dp"
+            android:checked="false"
+            android:layout_weight="1">
+        </RadioButton>
+
+     </RadioGroup>
+
+     <EditText
+          android:id="@+id/Register_number"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="Number"
+          android:textAlignment="center"
+          android:textSize="25dp"
+          android:inputType="number"
+          android:layout_below="@+id/Register_radiogroup">
+     </EditText>
+
+    <EditText
+        android:id="@+id/Register_Address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Address"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:inputType="textMultiLine"
+        android:lines="3"
+        android:maxLines="3"
         android:layout_below="@+id/Register_number">
     </EditText>
 
-    <EditText
-        android:id="@+id/Register_Gender"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Gender"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:layout_below="@+id/Register_Dob">
-    </EditText>
+    </LinearLayout>
+    </ScrollView>
 
-    <EditText
-        android:id="@+id/Register_email"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:layout_below="@+id/Register_Gender">
-    </EditText>
-
-    <EditText
-        android:id="@+id/Register_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:layout_below="@+id/Register_email">
-    </EditText>
-
-    <EditText
-        android:id="@+id/Register_Confirm_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Confirm Password"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:layout_below="@+id/Register_password">
-    </EditText>
-
-    <TextView
-        android:id="@+id/AcademicDetail"
-        android:text="Academic Details :-"
-        android:textSize="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/Register_Button"
+        android:layout_marginTop="50dp"
         android:layout_below="@+id/Register_Confirm_password">
-    </TextView>
-
-    <TextView
-        android:id="@+id/Secondary"
-        android:text="Secondary"
-        android:textSize="20dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/teal_700"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/AcademicDetail">
-    </TextView>
-
-    <TextView
-        android:id="@+id/HigherSecondary"
-        android:text="Higher Secondary"
-        android:textSize="20dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/teal_700"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Secondary">
-    </TextView>
-
-    <TextView
-        android:id="@+id/Graduation"
-        android:text="Graduation"
-        android:textSize="20dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/teal_700"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/HigherSecondary">
-    </TextView>
 
         <Button
-            android:id="@+id/Register_uploadpdf"
-            android:layout_width="250dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Upload Attachment"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="50dp"
-            android:layout_below="@+id/Graduation"
-            android:layout_gravity="center">
+            android:backgroundTint="@color/black"
+            android:text="Back"
+            android:textColor="#ffffff"
+            android:textSize="25dp"
+            android:layout_weight="1"
+            android:id="@+id/Register_back">
         </Button>
 
-    <Button
-        android:id="@+id/Register_submit"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="100dp"
-        android:layout_below="@+id/Register_uploadpdf"
-        android:layout_gravity="center">
-    </Button>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:text="Next"
+            android:textColor="#ffffff"
+            android:textSize="25dp"
+            android:layout_weight="1"
+            android:id="@+id/Register_next">
+        </Button>
 
     </LinearLayout>
 
-    </ScrollView>
+</LinearLayout>
 
-</RelativeLayout>

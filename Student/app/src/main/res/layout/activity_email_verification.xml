@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EmailVerification"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/Email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:textAlignment="center"
+        android:textSize="25dp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/Pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:inputType="textPassword"
+        android:layout_below="@+id/Email">
+    </EditText>
+
+    <EditText
+        android:id="@+id/Confirm_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:inputType="textPassword"
+        android:layout_below="@+id/Pass">
+    </EditText>
+
+    <Button
+        android:id="@+id/Email_Verification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:text="Verify"
+        android:textColor="#ffffff"
+        android:textSize="25dp"
+        android:layout_marginTop="50dp">
+    </Button>
+
+</LinearLayout>
