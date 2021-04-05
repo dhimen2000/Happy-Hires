@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="15dp">
 
@@ -10,50 +10,88 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Secondary Details"
-        android:textSize="20dp"
-        android:textAlignment="center">
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:layout_marginBottom="10dp">
     </TextView>
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Secondary_School"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="School"
-        android:textSize="20dp">
-    </EditText>
+        app:errorEnabled="true"
+        app:counterEnabled="true"
+        app:counterMaxLength="25"
+        app:boxBackgroundColor="@color/white">
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="School"
+            android:textSize="20dp">
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Secondary_Board"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Board"
-        android:textSize="20dp">
-    </EditText>
+        app:errorEnabled="true"
+        app:counterEnabled="true"
+        app:counterMaxLength="10"
+        android:layout_below="@+id/Secondary_School"
+        app:boxBackgroundColor="@color/white">
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Board"
+            android:textSize="20dp">
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Secondary_Percentage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Percentage"
-        android:textSize="20dp">
-    </EditText>
+        app:errorEnabled="true"
+        app:counterEnabled="true"
+        app:counterMaxLength="8"
+        android:layout_below="@+id/Secondary_Board"
+        app:boxBackgroundColor="@color/white">
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Percentage"
+            android:textSize="20dp">
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Secondary_Year"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Year Of Passing"
-        android:textSize="20dp">
-    </EditText>
+        app:errorEnabled="true"
+        app:counterEnabled="true"
+        app:counterMaxLength="4"
+        android:layout_below="@+id/Secondary_Percentage"
+        app:boxBackgroundColor="@color/white">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Year Of Passing"
+            android:textSize="20dp"
+            android:inputType="number">
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/Secondary_Year">
 
         <Button
             android:layout_width="match_parent"

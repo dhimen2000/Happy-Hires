@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".Activity.LoginActivity">
 
     <TextView
         android:id="@+id/Login_TV"
@@ -16,26 +16,42 @@
         android:textColor="@android:color/black">
     </TextView>
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Login_email"
-        android:layout_marginTop="100dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
-        android:textAlignment="center"
-        android:textSize="25dp"
+        app:errorEnabled="true"
+        android:layout_marginTop="100dp"
+        app:boxBackgroundColor="@color/white"
         android:layout_below="@+id/Login_TV">
-    </EditText>
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textSize="25dp">
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Login_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
-        android:textAlignment="center"
-        android:textSize="25dp"
+        app:errorEnabled="true"
+        app:boxBackgroundColor="@color/white"
+        app:passwordToggleEnabled="true"
         android:layout_below="@+id/Login_email">
-    </EditText>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textSize="25dp">
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/Login_submit"

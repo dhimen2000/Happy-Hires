@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.InterviewdataActivity"
+    android:orientation="vertical">
+
+
+    <EditText
+        android:id="@+id/Interview_company_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Comapny Name"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_marginTop="50dp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/Interview_company_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Company Email"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_below="@+id/Interview_company_name">
+    </EditText>
+
+    <EditText
+        android:id="@+id/Interview_job_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Job Title"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_below="@+id/Interview_company_email">
+    </EditText>
+
+    <EditText
+        android:id="@+id/Interview_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Interview Date"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_below="@+id/Interview_job_name">
+    </EditText>
+
+    <EditText
+        android:id="@+id/Interview_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Interview Time"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_below="@+id/Interview_date">
+    </EditText>
+
+    <EditText
+        android:id="@+id/Interview_place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Interview Address"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_below="@+id/Interview_time">
+    </EditText>
+
+    <EditText
+        android:id="@+id/Interview_formalmessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Interview Formal Message"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_below="@+id/Interview_place">
+    </EditText>
+
+</LinearLayout>

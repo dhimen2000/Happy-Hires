@@ -3,22 +3,69 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/adapterlinear"
     android:orientation="vertical">
 
-    <TextView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tvCompanyname"
-        android:text="Name:-"
-        android:textSize="30dp">
-    </TextView>
+        android:layout_margin="5dp"
+        android:id="@+id/application_cv">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvCompanyemail"
-        android:text="Email Id:-"
-        android:textSize="30dp">
-    </TextView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/Application_job_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="Job Title"
+                        android:textAlignment="textStart"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:gravity="start" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/Application_company_name"
+                        android:layout_width="200dp"
+                        android:layout_height="30dp"
+                        android:text="Company Name"
+                        android:textSize="15dp"
+                        android:textAlignment="textStart"
+                        android:gravity="start"
+                        android:layout_marginTop="5dp"/>
+
+                    <TextView
+                        android:id="@+id/Application_job_status"
+                        android:layout_width="210dp"
+                        android:layout_height="30dp"
+                        android:text="Status"
+                        android:textSize="15dp"
+                        android:textAlignment="textStart"
+                        android:gravity="start"
+                        android:layout_marginTop="5dp"/>
+                </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/Applicationjobstudentname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </androidx.cardview.widget.CardView>
 </LinearLayout>

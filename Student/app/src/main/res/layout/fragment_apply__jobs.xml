@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.bottom_navigation.Apply_JobsFragment">
+    tools:context=".Fragment.Apply_JobsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/recycler_apply_jobs">
+        android:layout_height="match_parent"
+        android:id="@+id/Application_job_recyclerview">
     </androidx.recyclerview.widget.RecyclerView>
 
 </FrameLayout>

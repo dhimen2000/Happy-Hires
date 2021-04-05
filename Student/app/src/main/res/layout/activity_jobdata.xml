@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.JobdataActivity"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/Jobdata_company_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Comapny Name"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_marginTop="50dp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/Jobdata_company_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Company Email"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_below="@+id/Jobdata_company_name">
+    </EditText>
+
+    <EditText
+        android:id="@+id/Jobdata_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Job Title"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_below="@+id/Jobdata_company_email">
+    </EditText>
+
+    <EditText
+        android:id="@+id/Jobdata_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Job Description"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_below="@+id/jobdata_name">
+    </EditText>
+
+    <EditText
+        android:id="@+id/Jobdata_percentagecriteria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Job Criteria (%)"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_below="@+id/Jobdata_description">
+    </EditText>
+
+    <EditText
+        android:id="@+id/Jobdata_salaryrange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Job Salary (Rs.)"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_below="@+id/Jobdata_percentagecriteria">
+    </EditText>
+
+    <EditText
+        android:id="@+id/Jobdata_lastdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Job LastDate"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_below="@+id/Jobdata_salaryrange">
+    </EditText>
+
+    <Button
+        android:id="@+id/Jobdata_attachment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:layout_marginTop="50dp"
+        android:text="Check Attachment"
+        android:textColor="#ffffff"
+        android:textSize="15dp">
+    </Button>
+
+    <Button
+        android:id="@+id/Jobdata_apply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:layout_marginTop="50dp"
+     android:visibility="visible"
+        android:text="Apply For This Role"
+        android:textColor="#ffffff"
+        android:textSize="15dp">
+    </Button>
+
+</LinearLayout>

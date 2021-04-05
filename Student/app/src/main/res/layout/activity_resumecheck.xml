@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResumecheckActivity">
+    tools:context=".Activity.ResumecheckActivity">
 
     <com.github.barteksc.pdfviewer.PDFView
         android:id="@+id/ResumeView"
