@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.StudentdataActivity"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Scrollview">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/Studentdata_profilepic"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/selectimg"
+                app:civ_border_color="#FFFFFF"
+                app:civ_border_width="2dp" />
+
+            <EditText
+                android:id="@+id/Studentdata_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:textAlignment="center"
+                android:textSize="25dp"
+                android:layout_marginTop="30dp"
+                android:layout_below="@+id/Studentdata_profilepic">
+            </EditText>
+
+            <EditText
+                android:id="@+id/Studentdata_Dob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Date of Birth"
+                android:textAlignment="center"
+                android:textSize="25dp"
+                android:focusable="false"
+                android:layout_below="@+id/Studentdata_name">
+            </EditText>
+
+            <EditText
+                android:id="@+id/Studentdata_Gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Gender"
+                android:textAlignment="center"
+                android:textSize="25dp"
+                android:layout_below="@+id/Studentdata_Dob">
+            </EditText>
+
+            <EditText
+                android:id="@+id/Studentdata_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Number"
+                android:textAlignment="center"
+                android:textSize="25dp"
+                android:inputType="number"
+                android:layout_below="@+id/Studentdata_Gender">
+            </EditText>
+
+            <EditText
+                android:id="@+id/Studentdata_Address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Address"
+                android:textAlignment="center"
+                android:textSize="25dp"
+                android:inputType="textMultiLine"
+                android:maxLines="3"
+                android:layout_below="@+id/Studentdata_number">
+            </EditText>
+
+            <EditText
+                android:id="@+id/Studentdata_Email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:textAlignment="center"
+                android:textSize="25dp"
+                android:layout_below="@+id/Studentdata_Address">
+            </EditText>
+
+            <TextView
+                android:text="Academic Details :-"
+                android:textSize="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Studentdata_Address">
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Secondary Details"
+                android:textSize="20dp"
+                android:textAlignment="center">
+            </TextView>
+
+            <EditText
+                android:id="@+id/Studentdata_Secondary_School"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="School"
+                android:textSize="20dp">
+            </EditText>
+
+            <EditText
+                android:id="@+id/Studentdata_Secondary_Board"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Board"
+                android:textSize="20dp">
+            </EditText>
+
+            <EditText
+                android:id="@+id/Studentdata_Secondary_Percentage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Percentage"
+                android:textSize="20dp">
+            </EditText>
+
+            <EditText
+                android:id="@+id/Studentdata_Secondary_Year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Year Of Passing"
+                android:textSize="20dp">
+            </EditText>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Higher Secondary Details"
+                android:layout_marginTop="30dp"
+                android:textSize="20dp"
+                android:textAlignment="center">
+            </TextView>
+
+            <EditText
+                android:id="@+id/Studentdata_HigherSecondary_School"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="School"
+                android:textSize="20dp">
+            </EditText>
+
+            <EditText
+                android:id="@+id/Studentdata_HigherSecondary_Board"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Board"
+                android:textSize="20dp">
+            </EditText>
+
+            <EditText
+                android:id="@+id/Studentdata_HigherSecondary_Percentage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Percentage"
+                android:textSize="20dp">
+            </EditText>
+
+            <EditText
+                android:id="@+id/Studentdata_HigherSecondary_Year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Year Of Passing"
+                android:textSize="20dp">
+            </EditText>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Graduation Details"
+                android:layout_marginTop="30dp"
+                android:textSize="20dp"
+                android:textAlignment="center">
+            </TextView>
+
+            <EditText
+                android:id="@+id/Studentdata_Graduation_College"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="College"
+                android:textSize="20dp">
+            </EditText>
+
+            <EditText
+                android:id="@+id/Studentdata_Graduation_Branch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Branch"
+                android:textSize="20dp">
+            </EditText>
+
+            <EditText
+                android:id="@+id/Studentdata_Graduation_Enrollmentno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Enrollment Number"
+                android:textSize="20dp">
+            </EditText>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/Studentdata_Graduation_Sem1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="Sem 1"
+                    android:layout_weight="1">
+                </EditText>
+
+                <EditText
+                    android:id="@+id/Studentdata_Graduation_Year1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="Year Of Passing"
+                    android:layout_weight="1">
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/Studentdata_Graduation_Sem2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="Sem 2"
+                    android:layout_weight="1">
+                </EditText>
+
+                <EditText
+                    android:id="@+id/Studentdata_Graduation_Year2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="Year Of Passing"
+                    android:layout_weight="1">
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/Studentdata_Graduation_Sem3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="Sem 3"
+                    android:layout_weight="1">
+                </EditText>
+
+                <EditText
+                    android:id="@+id/Studentdata_Graduation_Year3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="Year Of Passing"
+                    android:layout_weight="1">
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/Studentdata_Graduation_Sem4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="Sem 4"
+                    android:layout_weight="1">
+                </EditText>
+
+                <EditText
+                    android:id="@+id/Studentdata_Graduation_Year4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="Year Of Passing"
+                    android:layout_weight="1">
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/Studentdata_Graduation_Sem5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="Sem 5"
+                    android:layout_weight="1">
+                </EditText>
+
+                <EditText
+                    android:id="@+id/Studentdata_Graduation_Year5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="Year Of Passing"
+                    android:layout_weight="1">
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/Studentdata_Graduation_Sem6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="Sem 6"
+                    android:layout_weight="1">
+                </EditText>
+
+                <EditText
+                    android:id="@+id/Studentdata_Graduation_Year6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="Year Of Passing"
+                    android:layout_weight="1">
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/Studentdata_Graduation_Sem7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="Sem 7"
+                    android:layout_weight="1">
+                </EditText>
+
+                <EditText
+                    android:id="@+id/Studentdata_Graduation_Year7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="Year Of Passing"
+                    android:layout_weight="1">
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/Studentdata_Graduation_Sem8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="Sem 8"
+                    android:layout_weight="1">
+                </EditText>
+
+                <EditText
+                    android:id="@+id/Studentdata_Graduation_Year8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="Year Of Passing"
+                    android:layout_weight="1">
+                </EditText>
+
+            </LinearLayout>
+
+                <Button
+                    android:id="@+id/Studentdata_CheckResume"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/black"
+                    android:text="Check Resume"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"
+                    android:layout_marginTop="50dp">
+                </Button>
+
+                <Button
+                    android:id="@+id/Studentdata_Checkpdf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/black"
+                    android:text="Check Pdf"
+                    android:textColor="#ffffff"
+                    android:textSize="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="50dp">
+                </Button>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.CompanydataActivity"
+    android:orientation="vertical">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/Company_profilepic"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/selectimg"
+        app:civ_border_color="#FFFFFF"
+        app:civ_border_width="2dp" />
+
+    <EditText
+        android:id="@+id/Company_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/Company_profilepic">
+    </EditText>
+
+    <EditText
+        android:id="@+id/Company_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_below="@+id/Company_name">
+    </EditText>
+
+    <EditText
+        android:id="@+id/Company_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Number"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:inputType="number"
+        android:layout_below="@+id/Company_email">
+    </EditText>
+
+    <EditText
+        android:id="@+id/Company_website"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="WebSite"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:inputType="number"
+        android:layout_below="@+id/Company_number">
+    </EditText>
+
+    <EditText
+        android:id="@+id/Company_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Address"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:inputType="textMultiLine"
+        android:maxLines="3"
+        android:layout_below="@+id/Company_website">
+    </EditText>
+
+    <Button
+        android:id="@+id/Company_attachment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:layout_marginTop="50dp"
+        android:text="Check Attachment"
+        android:textColor="#ffffff"
+        android:textSize="15dp">
+    </Button>
+
+
+</LinearLayout>
