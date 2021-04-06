@@ -1,10 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_300">#364DCD</color>
+    <color name="purple_200">#A227B0</color>
+    <color name="purple_500">#3F51B5</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#222f3f</color>
+    <color name="colorPrimaryDark">#18222E</color>
+    <color name="colorAccent">#18222E</color>
+    <color name="labelcolor">#53a175</color>
+    <color name="textcolor">#156BBF</color>
+    <color name="White">#C627B0B0</color>
+    <color name="headtextcolor">#919191</color>
+    <color name="linecolor">#131313</color>
+    <color name="Edittextcolor">#3b3b3b</color>
+    <color name="homepagetextcolor">#2f4269</color>
+    <color name="formheadtextcolor">#929497</color>
+    <color name="formedittextcolor">#57585a</color>
+    <color name="bottomsheettextcolor">#3f3f41</color>
+    <color name="bootomsheetlinecolor">#bbbdbf</color>
+    <color name="redcolor">#ed1b23</color>
+    <color name="shadowColor">#10CCCCCC</color>
+    <color name="green_400">#8092F4</color>
+    <color name="green_500">#4CAF50</color>
+    <color name="dialogblue">#028fd6</color>
+    <color name="dialoggray">#ededed</color>
+    <color name="color_white">#ffffff</color>
+    <color name="color_black">#000000</color>
+    <color name="Dark_blue">#473FB5</color>
+    <color name="light_blue">#03B0F4</color>
+    <color name="yellow">#FFEB3B</color>
 </resources>

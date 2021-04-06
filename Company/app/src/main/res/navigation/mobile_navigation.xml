@@ -7,30 +7,40 @@
 
     <fragment
         android:id="@+id/nav_profile"
-        android:name="com.example.company.ui.Profile.ProfileFragment"
+        android:name="com.example.company.Fragment.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.company.ui.Home.HomeFragment"
+        android:name="com.example.company.Fragment.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_job"
-        android:name="com.example.company.ui.Jobs.JobFragment"
-        android:label="Jobs"
-        tools:layout="@layout/fragment_companies_list" />
+        android:name="com.example.company.Fragment.JobFragment"
+        android:label="Add Jobs"
+        tools:layout="@layout/add_jobs" />
     <fragment
         android:id="@+id/nav_feedback"
-        android:name="com.example.company.ui.Feedback.FeedbackFragment"
+        android:name="com.example.company.Fragment.FeedbackFragment"
         android:label="feedback"
-        tools:layout="@layout/fragment_feedback" />
+        tools:layout="@layout/fragment_feedback3" />
     <fragment
         android:id="@+id/nav_logout"
-        android:name="com.example.company.ui.Logout.LogoutFragment"
+        android:name="com.example.company.Fragment.LogoutFragment"
         android:label="Logout"
         tools:layout="@layout/fragment_logout" />
+    <fragment
+        android:id="@+id/nav_Share"
+        android:name="com.example.company.Fragment.ShareFragment"
+        android:label="Share"
+        tools:layout="@layout/fragment_share" />
+    <fragment
+        android:id="@+id/nav_about_us"
+        android:name="com.example.company.Fragment.About_usFragment"
+        android:label="About_us"
+        tools:layout="@layout/fragment_about_us" />
 
 </navigation>

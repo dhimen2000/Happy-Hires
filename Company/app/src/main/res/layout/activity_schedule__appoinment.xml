@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.Schedule_Appoinment"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Appoinment"
+        android:textSize="50dp"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/appcompanyname"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="company name"/>
+    <EditText
+        android:id="@+id/appcompanyemail"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="company Email"
+        />
+    <EditText
+        android:id="@+id/appstudentname"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="student name"/>
+    <EditText
+        android:id="@+id/appstudentemail"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="student email"/>
+    <EditText
+        android:id="@+id/appjobtitle"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="job title"/>
+    <EditText
+        android:id="@+id/appplace"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="place"/>
+
+
+        <EditText
+            android:id="@+id/appdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Select Date"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            />
+
+
+    <EditText
+        android:id="@+id/apptime"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="time"/>
+
+
+    <EditText
+        android:id="@+id/appmessage"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Formal Message"/>
+
+
+    <Button
+        android:id="@+id/scheduleappo"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Schedule Appoinment">
+
+    </Button>
+
+
+
+</LinearLayout>
