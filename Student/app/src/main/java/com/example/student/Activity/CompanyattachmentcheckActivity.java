@@ -1,11 +1,11 @@
 package com.example.student.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.student.R;
 import com.github.barteksc.pdfviewer.PDFView;
@@ -35,8 +35,6 @@ public class CompanyattachmentcheckActivity extends AppCompatActivity {
         setContentView(R.layout.activity_companyattachmentcheck);
         ButterKnife.bind(this);
         progressDialog = new ProgressDialog(CompanyattachmentcheckActivity.this);
-
-
         // Setting up message in Progress dialog.
         progressDialog.setMessage("Loading Data....");
         // Showing progress dialog.
@@ -46,9 +44,6 @@ public class CompanyattachmentcheckActivity extends AppCompatActivity {
         CompanyAttachmenturl = intent.getStringExtra("CompanyAttachment");
 
         new CompanyattachmentcheckActivity.RetrivePDFfromUrl().execute(CompanyAttachmenturl);
-
-        // Hiding the progress dialog.
-        progressDialog.dismiss();
 
     }
 
@@ -85,6 +80,9 @@ public class CompanyattachmentcheckActivity extends AppCompatActivity {
             // after the execution of our async
             // task we are loading our pdf in our pdf view.
             ComapnyAttachmentView.fromStream(inputStream).load();
+
+            // Hiding the progress dialog.
+            progressDialog.dismiss();
         }
     }
 }

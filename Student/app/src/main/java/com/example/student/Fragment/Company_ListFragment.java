@@ -2,19 +2,20 @@ package com.example.student.Fragment;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.example.student.R;
 import com.example.student.Adapter.Company_List_Adapter;
 import com.example.student.Model.Company_List_Model;
+import com.example.student.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,6 +34,9 @@ public class Company_ListFragment extends Fragment {
 
     @BindView(R.id.recycler_company_list)
     RecyclerView Company_List_recyclerview;
+
+    @BindView(R.id.companysearchView)
+    SearchView companysearch;
 
     // Creating Progress dialog
     ProgressDialog progressDialog;
@@ -81,6 +85,24 @@ public class Company_ListFragment extends Fragment {
                     adapter = new Company_List_Adapter(getActivity(),list);
                     Company_List_recyclerview.setAdapter(adapter);
 
+                    companysearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                        @Override
+                        public boolean onQueryTextSubmit(String query) {
+                            if(list.contains(query)){
+                                adapter.getFilter().filter(query);
+                                adapter.notifyDataSetChanged();
+                            }else{
+                                Toast.makeText(getActivity(), "No Match found",Toast.LENGTH_LONG).show();
+                            }
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onQueryTextChange(String newText) {
+                            adapter.getFilter().filter(newText);
+                            return false;
+                        }
+                    });
                     // Hiding the progress dialog.
                     progressDialog.dismiss();
                 }

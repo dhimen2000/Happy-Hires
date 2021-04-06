@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,19 +17,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.student.Activity.CompanydataActivity;
-import com.example.student.R;
 import com.example.student.Model.Company_List_Model;
+import com.example.student.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Company_List_Adapter extends RecyclerView.Adapter<Company_List_Adapter.ViewHolder> {
+public class Company_List_Adapter extends RecyclerView.Adapter<Company_List_Adapter.ViewHolder> implements Filterable {
 
     Context context;
     List<Company_List_Model> CompanyList;
+    List<Company_List_Model> CompanyListsearch;
 
     public Company_List_Adapter(Context context, List<Company_List_Model> companyList) {
         this.context = context;
-        this.CompanyList = companyList;
+        CompanyList = companyList;
+        CompanyListsearch = new ArrayList<>(companyList);
     }
 
     @NonNull
@@ -69,7 +74,41 @@ public class Company_List_Adapter extends RecyclerView.Adapter<Company_List_Adap
         return CompanyList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    @Override
+    public Filter getFilter() {
+        return examplefilter;
+    }
+
+    private Filter examplefilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+
+            List<Company_List_Model> filteredlist = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0) {
+                filteredlist.addAll(CompanyListsearch);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for (Company_List_Model item : CompanyListsearch) {
+                    if (item.getName().toLowerCase().contains(filterPattern)) {
+                        filteredlist.add(item);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredlist;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            CompanyList.clear();
+            CompanyList.addAll((ArrayList) results.values);
+            notifyDataSetChanged();
+        }
+    };
+
+        public class ViewHolder extends RecyclerView.ViewHolder {
 
         CardView CompanycardView;
         ImageView CompanyImg;

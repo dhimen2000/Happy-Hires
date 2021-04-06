@@ -138,8 +138,6 @@ public class ProfileFragment extends Fragment {
     @BindView(R.id.Profile_Edit)
     Button Editbtn;
 
-    String upload[] = {"Image", "Resume", "Pdf"};
-
     //For Image
     // Folder path for Firebase Storage.
     String Image_Storage_Path = "All_Image_Uploads/";

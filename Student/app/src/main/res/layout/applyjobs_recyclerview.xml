@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/adapterlinear"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -12,19 +11,25 @@
         android:layout_margin="5dp"
         android:id="@+id/application_cv">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:id="@+id/adapterlinear">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/Application_job_name"
-                        android:layout_width="match_parent"
+                        android:layout_width="300dp"
                         android:layout_height="35dp"
                         android:text="Job Title"
                         android:textAlignment="textStart"
@@ -35,13 +40,13 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/Application_company_name"
-                        android:layout_width="200dp"
+                        android:layout_width="180dp"
                         android:layout_height="30dp"
                         android:text="Company Name"
                         android:textSize="15dp"
@@ -51,7 +56,7 @@
 
                     <TextView
                         android:id="@+id/Application_job_status"
-                        android:layout_width="210dp"
+                        android:layout_width="120dp"
                         android:layout_height="30dp"
                         android:text="Status"
                         android:textSize="15dp"
@@ -59,11 +64,28 @@
                         android:gravity="start"
                         android:layout_marginTop="5dp"/>
                 </LinearLayout>
+            </LinearLayout>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/delete"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_delete"
+                app:civ_border_color="#FFFFFF"
+                app:civ_border_width="1dp" />
+
         </LinearLayout>
 
         <TextView
             android:visibility="gone"
             android:id="@+id/Applicationjobstudentname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:visibility="gone"
+            android:id="@+id/Applicationid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

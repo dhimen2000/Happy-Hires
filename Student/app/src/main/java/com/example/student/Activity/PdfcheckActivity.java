@@ -36,8 +36,6 @@ public class PdfcheckActivity extends AppCompatActivity {
         setContentView(R.layout.activity_p_d_f);
         ButterKnife.bind(this);
         progressDialog = new ProgressDialog(PdfcheckActivity.this);
-
-
         // Setting up message in Progress dialog.
         progressDialog.setMessage("Loading Data....");
         // Showing progress dialog.
@@ -46,10 +44,8 @@ public class PdfcheckActivity extends AppCompatActivity {
         Intent intent = getIntent();
         pdfurl = intent.getStringExtra("Pdf");
 
-        new RetrivePDFfromUrl().execute(pdfurl);
+        new PdfcheckActivity.RetrivePDFfromUrl().execute(pdfurl);
 
-        // Hiding the progress dialog.
-        progressDialog.dismiss();
 
     }
 
@@ -86,6 +82,9 @@ public class PdfcheckActivity extends AppCompatActivity {
             // after the execution of our async
             // task we are loading our pdf in our pdf view.
             pdfView.fromStream(inputStream).load();
+
+            // Hiding the progress dialog.
+            progressDialog.dismiss();
         }
     }
 }

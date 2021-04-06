@@ -19,17 +19,17 @@
         <activity android:name=".Activity.ResumecheckActivity" />
         <activity android:name=".Activity.EmailVerification" />
         <activity android:name=".Activity.RegisterActivity2" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Activity.RegisterActivity" />
         <activity android:name=".Activity.PdfcheckActivity" />
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".Activity.MainActivity"

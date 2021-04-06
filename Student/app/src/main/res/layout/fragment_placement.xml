@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.Application_JobsFragment">
+    tools:context=".Fragment.PlacementFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/placement"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/Application_job_recyclerview">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:text="hello_placement_fragment" />
 
 </FrameLayout>

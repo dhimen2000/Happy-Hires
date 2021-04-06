@@ -11,15 +11,19 @@
         android:name="com.example.student.Fragment.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home" >
-
-
     </fragment>
 
     <fragment
         android:id="@+id/nav_profile"
         android:name="com.example.student.Fragment.ProfileFragment"
-        android:label="profile"
+        android:label="Profile"
         tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/nav_placement"
+        android:name="com.example.student.Fragment.PlacementFragment"
+        android:label="Placement"
+        tools:layout="@layout/fragment_placement" />
 
     <fragment
         android:id="@+id/nav_feedback"

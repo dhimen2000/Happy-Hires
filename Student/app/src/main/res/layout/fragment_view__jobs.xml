@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.View_JobsFragment">
+    tools:context=".Fragment.View_JobsFragment"
+    android:orientation="vertical">
+
+   <SearchView
+       android:id="@+id/jobsearchView"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:queryHint="Search Here"
+       android:iconifiedByDefault="false"
+       android:layout_alignParentTop="true"
+       android:layout_marginBottom="15dp"/>
 
    <androidx.recyclerview.widget.RecyclerView
        android:layout_width="match_parent"
@@ -11,4 +21,4 @@
        android:id="@+id/recyclerview_view_jobs">
    </androidx.recyclerview.widget.RecyclerView>
 
-</FrameLayout>
+</LinearLayout>

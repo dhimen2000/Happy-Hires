@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment {
                     selectedFragment = new View_JobsFragment();
                     break;
                 case R.id.bottom_apply_jobs:
-                    selectedFragment = new Apply_JobsFragment();
+                    selectedFragment = new Application_JobsFragment();
                     break;
             }
 

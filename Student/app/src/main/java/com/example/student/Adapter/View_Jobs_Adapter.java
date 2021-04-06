@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,19 +14,23 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.student.Activity.JobdataActivity;
-import com.example.student.R;
 import com.example.student.Model.View_Jobs_Model;
+import com.example.student.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class View_Jobs_Adapter extends RecyclerView.Adapter<View_Jobs_Adapter.ViewHolder> {
+public class View_Jobs_Adapter extends RecyclerView.Adapter<View_Jobs_Adapter.ViewHolder> implements Filterable {
 
 
 
     List<View_Jobs_Model> JobList;
+    List<View_Jobs_Model> JobListsearch;
 
     public View_Jobs_Adapter(List<View_Jobs_Model> jobList) {
+
         this.JobList = jobList;
+        JobListsearch = new ArrayList<>(JobList);
     }
 
     @NonNull
@@ -65,6 +71,43 @@ public class View_Jobs_Adapter extends RecyclerView.Adapter<View_Jobs_Adapter.Vi
     public int getItemCount() {
         return JobList.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return examplefilter;
+    }
+
+    private Filter examplefilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+
+            List<View_Jobs_Model> filteredlist = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0) {
+                filteredlist.addAll(JobListsearch);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for (View_Jobs_Model item : JobListsearch) {
+                    if (item.getJobtitle().toLowerCase().contains(filterPattern)) {
+                        filteredlist.add(item);
+                    }
+                    else if (item.getCompanyname().toLowerCase().contains(filterPattern)) {
+                        filteredlist.add(item);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredlist;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            JobList.clear();
+            JobList.addAll((ArrayList) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 

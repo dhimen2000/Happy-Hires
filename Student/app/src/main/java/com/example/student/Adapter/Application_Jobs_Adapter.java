@@ -14,32 +14,66 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.student.Activity.InterviewdataActivity;
 import com.example.student.Model.Apply_Jobs_Model;
 import com.example.student.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
-public class Apply_Jobs_Adapter extends RecyclerView.Adapter<Apply_Jobs_Adapter.ViewHolder> {
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class Application_Jobs_Adapter extends RecyclerView.Adapter<Application_Jobs_Adapter.ViewHolder> {
+
+    DatabaseReference firebaseDatabase;
+    String applyid;
 
     List<Apply_Jobs_Model> ApplicationList;
 
-    public Apply_Jobs_Adapter(List<Apply_Jobs_Model> applicationList) {
+    public Application_Jobs_Adapter(List<Apply_Jobs_Model> applicationList) {
         this.ApplicationList = applicationList;
     }
 
     @NonNull
     @Override
-    public Apply_Jobs_Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Application_Jobs_Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View listItem= layoutInflater.inflate(R.layout.applyjobs_recyclerview, parent, false);
-        Apply_Jobs_Adapter.ViewHolder viewHolder = new ViewHolder(listItem);
+        Application_Jobs_Adapter.ViewHolder viewHolder = new ViewHolder(listItem);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Apply_Jobs_Adapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull Application_Jobs_Adapter.ViewHolder holder, int position) {
         Apply_Jobs_Model model = ApplicationList.get(position);
         holder.Applyjobname.setText(model.getJobTitle());
         holder.Applycompanyname.setText(model.getCompanyName());
         holder.Applyjobstatus.setText(model.getStatus());
+        holder.Applyid.setText(model.getApplyid());
+
+        applyid = holder.Applyid.getText().toString();
+
+        firebaseDatabase = FirebaseDatabase.getInstance().getReference();
+        holder.image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Query query1= firebaseDatabase.child("ApplicationForJob").orderByChild("applyid").equalTo(applyid);
+                query1.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
+                            appleSnapshot.getRef().removeValue();
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
 
         if(model.getStatus().equals("Accepted"))
         {
@@ -69,8 +103,8 @@ public class Apply_Jobs_Adapter extends RecyclerView.Adapter<Apply_Jobs_Adapter.
                     Toast.makeText(v.getContext(), "Your Request is On Hold..", Toast.LENGTH_LONG).show();
                 }
             });
-
         }
+
     }
 
     @Override
@@ -84,6 +118,8 @@ public class Apply_Jobs_Adapter extends RecyclerView.Adapter<Apply_Jobs_Adapter.
         TextView Applycompanyname;
         TextView Applyjobstatus;
         TextView Applyjobstudentname;
+        TextView Applyid;
+        CircleImageView image;
         LinearLayout linearLayout;
 
         public ViewHolder(@NonNull View itemView) {
@@ -92,6 +128,8 @@ public class Apply_Jobs_Adapter extends RecyclerView.Adapter<Apply_Jobs_Adapter.
             this.Applycompanyname = (TextView) itemView.findViewById(R.id.Application_company_name);
             this.Applyjobstatus = (TextView) itemView.findViewById(R.id.Application_job_status);
             this.Applyjobstudentname = (TextView) itemView.findViewById(R.id.Applicationjobstudentname);
+            this.Applyid = (TextView) itemView.findViewById(R.id.Applicationid);
+            this.image = (CircleImageView) itemView.findViewById(R.id.delete);
             this.linearLayout = itemView.findViewById(R.id.adapterlinear);
         }
     }

@@ -122,58 +122,58 @@ public class JobdataActivity extends AppCompatActivity {
         });
 
 
-        try {
-            Query query1 = firebaseDatabase.child("ApplicationForJob").orderByChild("jobid").equalTo(jobid);
-            query1.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if (snapshot.exists()) {
-                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            Apply_Jobs_Model model = dataSnapshot.getValue(Apply_Jobs_Model.class);
-                            Applied_job_status = model.getStatus();
-
-                            switch (Applied_job_status){
-                                case "On Hold":
-                                    JobApply.setText("You Already Applied For This Role...");
-                                    JobApply.setEnabled(false);
-                                    break;
-                                case "Accepted":
-                                    JobApply.setText("You are Selected For This Role...");
-                                    JobApply.setEnabled(false);
-                                    break;
-                                case "Rejected":
-                                    JobApply.setText("You are Rejected For This Role...");
-                                    JobApply.setEnabled(false);
-                                    break;
-                                default:
-                                    JobApply.setVisibility(View.VISIBLE);
-                                    break;
-                            }
+//        try {
+//            Query query1 = firebaseDatabase.child("ApplicationForJob").orderByChild("jobid").equalTo(jobid);
+//            query1.addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                    if (snapshot.exists()) {
+//                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//                            Apply_Jobs_Model model = dataSnapshot.getValue(Apply_Jobs_Model.class);
+//                            Applied_job_status = model.getStatus();
 //
-//                            if (Applied_job_status.equals("On Hold") ) {
-//                                JobApply.setText("You Already Applied For This Role...");
-//                                JobApply.setEnabled(false);
-//                            }else if (Applied_job_status.equals("Accepted") ) {
-//                                JobApply.setText("You are Selected For This Role...");
-//                                JobApply.setEnabled(false);
-//                            } else if (Applied_job_status.equals("Rejected") ) {
-//                                JobApply.setText("You are Rejected For This Role...");
-//                                JobApply.setEnabled(false);
-//                            }else {
-//                                JobApply.setVisibility(View.VISIBLE);
+//                            switch (Applied_job_status){
+//                                case "On Hold":
+//                                    JobApply.setText("You Already Applied For This Role...");
+//                                    JobApply.setEnabled(false);
+//                                    break;
+//                                case "Accepted":
+//                                    JobApply.setText("You are Selected For This Role...");
+//                                    JobApply.setEnabled(false);
+//                                    break;
+//                                case "Rejected":
+//                                    JobApply.setText("You are Rejected For This Role...");
+//                                    JobApply.setEnabled(false);
+//                                    break;
+//                                default:
+//                                    JobApply.setVisibility(View.VISIBLE);
+//                                    break;
 //                            }
-                        }
-                    }
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                }
-            });
-        }
-        catch (Exception e)
-        {
-
-        }
+////
+////                            if (Applied_job_status.equals("On Hold") ) {
+////                                JobApply.setText("You Already Applied For This Role...");
+////                                JobApply.setEnabled(false);
+////                            }else if (Applied_job_status.equals("Accepted") ) {
+////                                JobApply.setText("You are Selected For This Role...");
+////                                JobApply.setEnabled(false);
+////                            } else if (Applied_job_status.equals("Rejected") ) {
+////                                JobApply.setText("You are Rejected For This Role...");
+////                                JobApply.setEnabled(false);
+////                            }else {
+////                                JobApply.setVisibility(View.VISIBLE);
+////                            }
+//                        }
+//                    }
+//                }
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//                }
+//            });
+//        }
+//        catch (Exception e)
+//        {
+//
+//        }
 
         JobApply.setOnClickListener(new View.OnClickListener() {
             @Override

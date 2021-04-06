@@ -1,11 +1,11 @@
 package com.example.student.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.student.R;
 import com.github.barteksc.pdfviewer.PDFView;
@@ -36,8 +36,6 @@ public class JobattachmentcheckActivity extends AppCompatActivity {
         setContentView(R.layout.activity_jobattachmentcheck);
         ButterKnife.bind(this);
         progressDialog = new ProgressDialog(JobattachmentcheckActivity.this);
-
-
         // Setting up message in Progress dialog.
         progressDialog.setMessage("Loading Data....");
         // Showing progress dialog.
@@ -48,8 +46,6 @@ public class JobattachmentcheckActivity extends AppCompatActivity {
 
         new JobattachmentcheckActivity.RetrivePDFfromUrl().execute(JobAttachmenturl);
 
-        // Hiding the progress dialog.
-        progressDialog.dismiss();
     }
 
     // create an async task class for loading pdf file from URL.
@@ -85,6 +81,9 @@ public class JobattachmentcheckActivity extends AppCompatActivity {
             // after the execution of our async
             // task we are loading our pdf in our pdf view.
             JobAttachmentView.fromStream(inputStream).load();
+
+            // Hiding the progress dialog.
+            progressDialog.dismiss();
         }
     }
 }
