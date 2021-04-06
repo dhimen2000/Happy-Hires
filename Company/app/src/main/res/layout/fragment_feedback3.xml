@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragment.FeedbackFragment"
+    android:orientation="vertical">
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="50dp"
+        android:id="@+id/cardviewlogin"
+        android:layout_width="match_parent"
+        android:layout_height="290dp"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
+        app:cardCornerRadius="15dp"
+        android:layout_below="@+id/relativelogo"
+        app:cardBackgroundColor="@color/color_white">
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:numStars="5"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:shadowColor="@color/black"
+        android:scrollbars="vertical"
+        android:id="@+id/nav_feedback"
+        android:layout_marginTop="55dp"
+        android:lines="6"
+        android:gravity="center"
+        android:maxLength="50"
+        android:hint="Please Write Feedback"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"/>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/send_feedback"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Send Feedback"/>
+
+
+
+</LinearLayout>

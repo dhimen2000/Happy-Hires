@@ -2,6 +2,7 @@
 buildscript {
     repositories {
         google()
+        mavenCentral()
         jcenter()
     }
     dependencies {
@@ -10,12 +11,15 @@ buildscript {
         // in the individual module build.gradle files
 
         classpath 'com.google.gms:google-services:4.3.5'
+        //Butter-Knife
+        classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.3'
     }
 }
 
 allprojects {
     repositories {
         google()
+        mavenCentral()
         jcenter()
     }
 }

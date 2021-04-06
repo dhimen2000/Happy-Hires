@@ -4,18 +4,547 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-    <TextView
-        android:id="@+id/std_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/std_no"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/std_email"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp">
+    <LinearLayout
+        android:id="@+id/linearlayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/std_imageurl"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/company_profile_image" />
+
+<!--        <TextView-->
+<!--            android:id="@+id/circular_person"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:gravity="center"-->
+<!--            android:text="s"-->
+<!--            android:textSize="30dp"-->
+
+<!--            />-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/std_name"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:text="user name"
+                    android:textAlignment="textStart"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:gravity="start" />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/std_number"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:text="contact no"
+                    android:textAlignment="textStart"
+                    android:gravity="start"
+                    android:layout_marginTop="5dp"/>
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp">
+
+
+
+
+
+<!--                <EditText-->
+<!--                    android:id="@+id/std_name"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:hint="Name"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textSize="25dp"-->
+<!--                    android:layout_marginTop="30dp"-->
+<!--                    android:layout_below="@+id/Profile_profilepic">-->
+<!--                </EditText>-->
+
+                <EditText
+                    android:id="@+id/std_dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Date of Birth"
+                    android:textAlignment="center"
+                    android:textSize="25dp"
+                    android:focusable="false"
+                    android:layout_below="@+id/Profile_name">
+                </EditText>
+
+                <EditText
+                    android:id="@+id/std_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Gender"
+                    android:textAlignment="center"
+                    android:textSize="25dp"
+                    android:layout_below="@+id/Profile_Dob">
+                </EditText>
+
+<!--                <EditText-->
+<!--                    android:id="@+id/std_number"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:hint="Number"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textSize="25dp"-->
+<!--                    android:inputType="number"-->
+<!--                    android:layout_below="@+id/Profile_Gender">-->
+<!--                </EditText>-->
+
+                <EditText
+                    android:id="@+id/std_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Address"
+                    android:textAlignment="center"
+                    android:textSize="25dp"
+                    android:inputType="textMultiLine"
+                    android:maxLines="3"
+                    android:layout_below="@+id/Profile_number">
+                </EditText>
+
+                <EditText
+                    android:id="@+id/std_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:textAlignment="center"
+                    android:textSize="25dp"
+                    android:layout_below="@+id/Profile_Address">
+                </EditText>
+
+                <TextView
+                    android:text="Academic Details :-"
+                    android:textSize="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/Profile_Address">
+                </TextView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Secondary Details"
+                    android:textSize="20dp"
+                    android:textAlignment="center">
+                </TextView>
+
+                <EditText
+                    android:id="@+id/std_Secondary_School"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="School"
+                    android:textSize="20dp">
+                </EditText>
+
+                <EditText
+                    android:id="@+id/std_Secondary_Board"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Board"
+                    android:textSize="20dp">
+                </EditText>
+
+                <EditText
+                    android:id="@+id/std_Secondary_Percentage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Percentage"
+                    android:textSize="20dp">
+                </EditText>
+
+                <EditText
+                    android:id="@+id/std_Secondary_Year"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Year Of Passing"
+                    android:textSize="20dp">
+                </EditText>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Higher Secondary Details"
+                    android:layout_marginTop="30dp"
+                    android:textSize="20dp"
+                    android:textAlignment="center">
+                </TextView>
+
+                <EditText
+                    android:id="@+id/std_HigherSecondary_School"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="School"
+                    android:textSize="20dp">
+                </EditText>
+
+                <EditText
+                    android:id="@+id/std_HigherSecondary_Board"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Board"
+                    android:textSize="20dp">
+                </EditText>
+
+                <EditText
+                    android:id="@+id/std_HigherSecondary_Percentage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Percentage"
+                    android:textSize="20dp">
+                </EditText>
+
+                <EditText
+                    android:id="@+id/std_HigherSecondary_Year"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Year Of Passing"
+                    android:textSize="20dp">
+                </EditText>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Graduation Details"
+                    android:layout_marginTop="30dp"
+                    android:textSize="20dp"
+                    android:textAlignment="center">
+                </TextView>
+
+                <EditText
+                    android:id="@+id/std_Graduation_College"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="College"
+                    android:textSize="20dp">
+                </EditText>
+
+                <EditText
+                    android:id="@+id/std_Graduation_Branch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Branch"
+                    android:textSize="20dp">
+                </EditText>
+
+                <EditText
+                    android:id="@+id/std_Graduation_Enrollmentno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Enrollment Number"
+                    android:textSize="20dp">
+                </EditText>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/std_Graduation_Sem1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:hint="Sem 1"
+                        android:layout_weight="1">
+                    </EditText>
+
+                    <EditText
+                        android:id="@+id/std_Graduation_Year1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:hint="Year Of Passing"
+                        android:layout_weight="1">
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/std_Graduation_Sem2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:hint="Sem 2"
+                        android:layout_weight="1">
+                    </EditText>
+
+                    <EditText
+                        android:id="@+id/std_Graduation_Year2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:hint="Year Of Passing"
+                        android:layout_weight="1">
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/std_Graduation_Sem3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:hint="Sem 3"
+                        android:layout_weight="1">
+                    </EditText>
+
+                    <EditText
+                        android:id="@+id/std_Graduation_Year3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:hint="Year Of Passing"
+                        android:layout_weight="1">
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/std_Graduation_Sem4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:hint="Sem 4"
+                        android:layout_weight="1">
+                    </EditText>
+
+                    <EditText
+                        android:id="@+id/std_Graduation_Year4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:hint="Year Of Passing"
+                        android:layout_weight="1">
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/std_Graduation_Sem5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:hint="Sem 5"
+                        android:layout_weight="1">
+                    </EditText>
+
+                    <EditText
+                        android:id="@+id/std_Graduation_Year5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:hint="Year Of Passing"
+                        android:layout_weight="1">
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/std_Graduation_Sem6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:hint="Sem 6"
+                        android:layout_weight="1">
+                    </EditText>
+
+                    <EditText
+                        android:id="@+id/std_Graduation_Year6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:hint="Year Of Passing"
+                        android:layout_weight="1">
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/std_Graduation_Sem7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:hint="Sem 7"
+                        android:layout_weight="1">
+                    </EditText>
+
+                    <EditText
+                        android:id="@+id/std_Graduation_Year7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:hint="Year Of Passing"
+                        android:layout_weight="1">
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/std_Graduation_Sem8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:hint="Sem 8"
+                        android:layout_weight="1">
+                    </EditText>
+
+                    <EditText
+                        android:id="@+id/std_Graduation_Year8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:hint="Year Of Passing"
+                        android:layout_weight="1">
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp">
+
+                    <Button
+                        android:id="@+id/std_CheckResume"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/black"
+                        android:text="Check Resume"
+                        android:textColor="#ffffff"
+                        android:textSize="15dp"
+                        android:layout_weight="1">
+                    </Button>
+
+                    <Button
+                        android:id="@+id/std_uploadResume"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/black"
+                        android:text="Upload Resume"
+                        android:textColor="#ffffff"
+                        android:textSize="15dp"
+                        android:layout_weight="1">
+                    </Button>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp">
+
+                    <Button
+                        android:id="@+id/std_Checkpdf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/black"
+                        android:text="Check Pdf"
+                        android:textColor="#ffffff"
+                        android:textSize="10dp"
+                        android:layout_weight="1">
+                    </Button>
+
+                    <Button
+                        android:id="@+id/std_uploadpdf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/black"
+                        android:text="Upload Pdf"
+                        android:textColor="#ffffff"
+                        android:textSize="10dp"
+                        android:layout_weight="1">
+                    </Button>
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/black"
+                    android:text="Update Data"
+                    android:id="@+id/Profile_Edit"
+                    android:textColor="#ffffff"
+                    android:textSize="25dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp">
+                </Button>
+
+            </LinearLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>
 
 </LinearLayout>

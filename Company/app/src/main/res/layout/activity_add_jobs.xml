@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Jobs"
+        android:textSize="20dp"
+        android:textAlignment="center">
+    </TextView>
+
+    <EditText
+        android:id="@+id/companyemail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Company Email"
+        android:textSize="20dp">
+    </EditText>
+    <EditText
+        android:id="@+id/companyname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Company name"
+        android:textSize="20dp">
+    </EditText>
+    <EditText
+        android:id="@+id/jobtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Job Title"
+        android:textSize="20dp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/requirements"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Job Discription"
+        android:textSize="20dp">
+    </EditText>
+
+
+    <EditText
+        android:id="@+id/percentagecriteria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="percentagecriteria"
+        android:textSize="20dp">
+    </EditText>
+    <EditText
+        android:id="@+id/salaryrange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Salary Range"
+        android:textSize="20dp">
+    </EditText>
+
+    <EditText
+
+        android:id="@+id/joblastdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="joblastdate"
+        android:textSize="20dp">
+    </EditText>
+      <Button
+          android:layout_marginTop="10dp"
+        android:id="@+id/jobattachmenturl"
+        android:text="Attachement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp">
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:text="SAVE"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:id="@+id/save_job">
+        </Button>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:text="Clear"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:id="@+id/clear_job">
+        </Button>
+
+    </LinearLayout>
+
+</LinearLayout>
