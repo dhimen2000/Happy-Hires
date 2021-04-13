@@ -22,6 +22,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.example.student.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -88,13 +89,16 @@ public class RegisterActivity extends AppCompatActivity {
     //Basic Details
     String Name, Dob, Gender, Number, Address;
     //Branch, Email, Pass, Confirm_Pass;
+    String Email, Pass;
+
+    String Imageuri;
 
     FirebaseAuth firebaseAuth;
     StorageReference storageReference;
     DatabaseReference firebaseDatabase;
-    SharedPreferences.Editor edit;
 
     SharedPreferences sharedPreferences;
+    SharedPreferences.Editor edit;
 
     final Calendar myCalendar = Calendar.getInstance();
 
@@ -112,6 +116,51 @@ public class RegisterActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("SharedPreference", MODE_PRIVATE);
         edit = sharedPreferences.edit();
+
+        try {
+            sharedPreferences = getSharedPreferences("SharedPreference", MODE_PRIVATE);
+            Email = sharedPreferences.getString("Email", "");
+            Pass = sharedPreferences.getString("Password", "");
+            Name = sharedPreferences.getString("Name", "");
+            Dob = sharedPreferences.getString("Dob", "");
+            Gender = sharedPreferences.getString("Gender", "");
+            Number = sharedPreferences.getString("Number", "");
+            Address = sharedPreferences.getString("Address", "");
+            Imageuri = sharedPreferences.getString("ImageUrl", "");
+
+                try {
+                    if( Imageuri.equals("") ) {
+                        profilepic.setImageResource(R.drawable.selectimg);
+                    }
+                    else {
+                        Glide.with(getApplicationContext()).load(Imageuri).into(profilepic);
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+            if(Gender.equals("Male"))
+            {
+                rbmale.setChecked(true);
+            }
+            else //if(Gender == "Female")
+            {
+                rbFemale.setChecked(true);
+            }
+//            else {
+//
+//            }
+
+
+            name.getEditText().setText(Name);
+            dob.getEditText().setText(Dob);
+            number.getEditText().setText(Number);
+            address.getEditText().setText(Address);
+
+
+        }catch (Exception e)
+            {
+        }
 
         progressDialog = new ProgressDialog(RegisterActivity.this);
 
@@ -184,6 +233,7 @@ public class RegisterActivity extends AppCompatActivity {
                 edit.putString("Address", Address);
                 edit.putString("ImageUrl", ImageDownloadUri.toString());
                 edit.apply();
+
 
 //                Log.d("Name", Name);
 //                Log.d("DOB", Dob);
@@ -273,7 +323,8 @@ public class RegisterActivity extends AppCompatActivity {
                 //ChooseImage.setText("Image Selected");
                 UploadImage();
             } catch (IOException e) {
-                e.printStackTrace();
+                Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+             //   e.printStackTrace();
             }
         }
     }

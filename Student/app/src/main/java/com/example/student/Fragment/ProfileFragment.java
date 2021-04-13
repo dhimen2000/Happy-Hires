@@ -169,7 +169,7 @@ public class ProfileFragment extends Fragment {
     private DatabaseReference firebaseDatabase;
 
     Context context;
-    String Name, Dob, Gender, Number, Address, Email, E_mail, Pass, Key;
+    String Name, Dob, Gender, Number, Address, Email, E_mail, Pass, Key,Status;
     String Secondary_School, Secondary_Board, Secondary_Percentage, Secondary_Year;
     String HigherSecondary_School, HigherSecondary_Board, HigherSecondary_Percentage, HigherSecondary_Year;
     String Graduation_College, Graduation_Branch, Graduation_Enrollmentno;
@@ -195,6 +195,7 @@ public class ProfileFragment extends Fragment {
         progressDialog = new ProgressDialog(getActivity());
         sharedPreferences = this.getActivity().getSharedPreferences("SharedPreference", MODE_PRIVATE);
         E_mail = sharedPreferences.getString("Email_Login", "");
+
 
         firebaseAuth = firebaseAuth.getInstance();
 
@@ -256,6 +257,10 @@ public class ProfileFragment extends Fragment {
                         Graduation_Year6 = model.getG_Year6();
                         Graduation_Year7 = model.getG_Year7();
                         Graduation_Year8 = model.getG_Year8();
+
+                        Status = model.getStatus();
+
+
                     }
                     name.setText(Name);
                     dob.setText(Dob);
@@ -419,7 +424,7 @@ public class ProfileFragment extends Fragment {
                 RegisterModel registerModel = new RegisterModel(Edit_Email, Edit_Pass,Edit_Name, Edit_Dob, Edit_Gender, Edit_Number, Edit_Address, finalimageurl.toString(),  Edit_Secondary_School, Edit_Secondary_Board, Edit_Secondary_Percentage, Edit_Secondary_Year,
                         Edit_HigherSecondary_School, Edit_HigherSecondary_Board, Edit_HigherSecondary_Percentage, Edit_HigherSecondary_Year, Edit_Graduation_College, Edit_Graduation_Branch, Edit_Graduation_Enrollmentno, Edit_Graduation_Sem1, Edit_Graduation_Year1,
                         Edit_Graduation_Sem2, Edit_Graduation_Year2, Edit_Graduation_Sem3, Edit_Graduation_Year3, Edit_Graduation_Sem4, Edit_Graduation_Year4, Edit_Graduation_Sem5, Edit_Graduation_Year5, Edit_Graduation_Sem6, Edit_Graduation_Year6, Edit_Graduation_Sem7,
-                        Edit_Graduation_Year7, Edit_Graduation_Sem8, Edit_Graduation_Year8, Edit_Key, finalresumeurl.toString(), finalpdfurl.toString());
+                        Edit_Graduation_Year7, Edit_Graduation_Sem8, Edit_Graduation_Year8, Edit_Key, finalresumeurl.toString(), finalpdfurl.toString(),Status);
 
                 firebaseDatabase.child("Student").child(Edit_Key).setValue(registerModel);
 

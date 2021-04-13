@@ -84,7 +84,8 @@ public class RegisterActivity2 extends AppCompatActivity {
 
     //Data
     SharedPreferences sharedPreferences;
-    String Email, Pass, Name, Dob, Gender, Number, Address, ImageDownloadUri;
+    SharedPreferences.Editor edit;
+    String Email, Pass, Name, Dob, Gender, Number, Address, ImageDownloadUri, Status;
 
     FirebaseAuth firebaseAuth;
     StorageReference storageReference;
@@ -96,15 +97,30 @@ public class RegisterActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_register2);
         ButterKnife.bind(this);
 
+        Status = "Active";
+
         sharedPreferences = getSharedPreferences("SharedPreference", MODE_PRIVATE);
-        Email = sharedPreferences.getString("Email", "");
-        Pass = sharedPreferences.getString("Password", "");
-        Name = sharedPreferences.getString("Name", "");
-        Dob = sharedPreferences.getString("Dob", "");
-        Gender = sharedPreferences.getString("Gender", "");
-        Number = sharedPreferences.getString("Number", "");
-        Address = sharedPreferences.getString("Address", "");
-        ImageDownloadUri = sharedPreferences.getString("ImageUrl", "");
+        edit = sharedPreferences.edit();
+
+        try{
+            sharedPreferences = getSharedPreferences("SharedPreference", MODE_PRIVATE);
+            Email = sharedPreferences.getString("Email", "");
+            Pass = sharedPreferences.getString("Password", "");
+            Name = sharedPreferences.getString("Name", "");
+            Dob = sharedPreferences.getString("Dob", "");
+            Gender = sharedPreferences.getString("Gender", "");
+            Number = sharedPreferences.getString("Number", "");
+            Address = sharedPreferences.getString("Address", "");
+            ImageDownloadUri = sharedPreferences.getString("ImageUrl", "");
+
+            S_School = sharedPreferences.getString("S_School","");
+            secondary_school.getEditText().setText(S_School);
+
+        }catch (Exception e)
+        {
+
+        }
+
 
         firebaseAuth = firebaseAuth.getInstance();
 
@@ -143,13 +159,20 @@ public class RegisterActivity2 extends AppCompatActivity {
                         }
 
                         S_School = secondary_school.getEditText().getText().toString();
-                        Log.d("S_school", S_School);
                         S_Board = secondary_board.getEditText().getText().toString();
-                        Log.d("S_Board", S_Board);
                         S_Percentage = secondary_percentage.getEditText().getText().toString();
-                        Log.d("S_Percentage", S_Percentage);
                         S_Year = secondary_year.getEditText().getText().toString();
+
+                        edit.putString("S_School",S_School);
+                        edit.putString("S_Board",S_Board);
+                        edit.putString("S_Percentage",S_Percentage);
+                        edit.apply();
+
+                        Log.d("S_school", S_School);
+                        Log.d("S_Board", S_Board);
+                        Log.d("S_Percentage", S_Percentage);
                         Log.d("S_Year", S_Year);
+
                         alertDialog.dismiss();
                     }
 
@@ -353,7 +376,7 @@ public class RegisterActivity2 extends AppCompatActivity {
                 RegisterModel model = new RegisterModel(Email, Pass, Name, Dob, Gender, Number, Address, ImageDownloadUri.toString(), S_School, S_Board, S_Percentage,
                                                     S_Year, H_School, H_Board, H_Percentage, H_Year, G_College, G_Branch, G_EnrollmentNo, G_Sem1, G_Year1,
                                                     G_Sem2, G_Year2, G_Sem3, G_Year3, G_Sem4, G_Year4, G_Sem5, G_Year5, G_Sem6, G_Year6, G_Sem7,
-                                                    G_Year7, G_Sem8, G_Year8, key, ResumeDownloadUri.toString(), PdfDownloadUri.toString());
+                                                    G_Year7, G_Sem8, G_Year8, key, ResumeDownloadUri.toString(), PdfDownloadUri.toString(),Status);
 
                 firebaseDatabase.child("Student").child(key).setValue(model);
                 Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();

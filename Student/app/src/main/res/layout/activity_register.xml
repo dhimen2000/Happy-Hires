@@ -90,23 +90,21 @@
         android:layout_marginBottom="10dp">
 
         <RadioButton
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/radio_male"
             android:text="Male"
             android:textSize="25dp"
-            android:checked="false"
-            android:layout_weight="1">
+            android:layout_marginRight="50dp">
         </RadioButton>
 
         <RadioButton
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/radio_female"
             android:text="Female"
             android:textSize="25dp"
-            android:checked="false"
-            android:layout_weight="1">
+            android:layout_marginLeft="50dp">
         </RadioButton>
 
      </RadioGroup>

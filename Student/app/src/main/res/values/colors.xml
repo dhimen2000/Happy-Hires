@@ -8,5 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="Start">#C0E6BA</color>
+    <color name="End">#4CA771</color>
+
     <color name="linecolor">#c2c1c1</color>
+    <color name="introduction">#303030</color>
+    <color name="Login_Bg">#C2E7C9</color>
+    <color name="main">#2DBB54</color>
 </resources>

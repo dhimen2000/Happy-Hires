@@ -21,31 +21,41 @@ import javax.net.ssl.HttpsURLConnection;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CompanyattachmentcheckActivity extends AppCompatActivity {
+public class PlacementattachmentActivity extends AppCompatActivity {
 
-    String CompanyAttachmenturl;
+    String PlacementAttachmenturl;
 
-    @BindView(R.id.ComapnyAttachmentPdf)
-    PDFView ComapnyAttachmentView;
+    @BindView(R.id.PlacementAttachmentPdf)
+    PDFView PlacementAttachmentView;
 
     ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_companyattachmentcheck);
+        setContentView(R.layout.activity_placementattachment);
         ButterKnife.bind(this);
-        progressDialog = new ProgressDialog(CompanyattachmentcheckActivity.this);
+
+        progressDialog = new ProgressDialog(PlacementattachmentActivity.this);
         // Setting up message in Progress dialog.
         progressDialog.setMessage("Loading Data....");
         // Showing progress dialog.
         progressDialog.show();
 
         Intent intent = getIntent();
-        CompanyAttachmenturl = intent.getStringExtra("CompanyAttachment");
+        PlacementAttachmenturl = intent.getStringExtra("Placement_PDF");
 
-        new CompanyattachmentcheckActivity.RetrivePDFfromUrl().execute(CompanyAttachmenturl);
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//            }
+//        },4000);
 
+        new PlacementattachmentActivity.RetrivePDFfromUrl().execute(PlacementAttachmenturl);
     }
+
 
     // create an async task class for loading pdf file from URL.
     class RetrivePDFfromUrl extends AsyncTask<String, Void, InputStream> {
@@ -79,10 +89,11 @@ public class CompanyattachmentcheckActivity extends AppCompatActivity {
         protected void onPostExecute(InputStream inputStream) {
             // after the execution of our async
             // task we are loading our pdf in our pdf view.
-            ComapnyAttachmentView.fromStream(inputStream).load();
+            PlacementAttachmentView.fromStream(inputStream).load();
 
             // Hiding the progress dialog.
             progressDialog.dismiss();
         }
     }
+
 }

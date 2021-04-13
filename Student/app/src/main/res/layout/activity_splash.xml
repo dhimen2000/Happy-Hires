@@ -4,14 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.SplashActivity">
+    tools:context=".Activity.SplashActivity"
+    android:background="@color/white"
+    android:id="@+id/rlsplash">
 
-    <TextView
-        android:id="@+id/Splash_TV"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Splash Activity"
-        android:gravity="center">
-    </TextView>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:orientation="vertical"
+        android:background="@drawable/login_bg">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="180dp"
+            android:background="@drawable/logo"
+            android:foregroundGravity="center">
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="HAPPY HIRES"
+            android:textColor="@color/white"
+            android:textStyle="bold|italic"
+            android:textSize="40dp">
+        </TextView>
+
+    </LinearLayout>
+
+        <TextView
+            android:id="@+id/introduction"
+            android:fontFamily="Poppins"
+            android:layout_marginTop="40dp"
+            android:textColor="@color/introduction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Best For The Career"
+            android:textSize="28dp"
+            android:textStyle="bold"
+            android:textAlignment="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv2"
+            android:fontFamily="Poppins"
+            android:layout_marginTop="140dp"
+            android:textColor="@color/introduction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Version 1.0.0"
+            android:textSize="18dp"
+            android:textStyle="bold|italic"
+            android:textAlignment="center">
+        </TextView>
+    </LinearLayout>
 
 </RelativeLayout>

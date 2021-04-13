@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -39,7 +40,9 @@ public class LoginActivity extends AppCompatActivity {
     TextInputLayout pass_login;
 
     @BindView(R.id.Login_submit) Button btnlogin;
-    @BindView(R.id.Login_signup) Button btnsignup;
+
+    @BindView(R.id.Login_signup)
+    TextView btnsignup;
 
     String Email_login,Pass_login;
     private String Name;
@@ -86,7 +89,6 @@ public class LoginActivity extends AppCompatActivity {
                 firebaseAuth.signInWithEmailAndPassword(Email_login,Pass_login).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
-
                         Query query = firebaseDatabase.child("Student").orderByChild("email").equalTo(Email_login);
                         query.addValueEventListener(new ValueEventListener() {
                             @Override
@@ -103,12 +105,25 @@ public class LoginActivity extends AppCompatActivity {
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                     startActivity(intent);
                                 }
+                                else
+                                {
+                                    Toast.makeText(LoginActivity.this, "Data Not Find...", Toast.LENGTH_SHORT).show();
+                                }
                             }
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
-
+                                Toast.makeText(LoginActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
+
+//                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//
+//                        if (user.isEmailVerified())
+//                        {
+//
+//                        }else {
+//                            Toast.makeText(LoginActivity.this, "Please Verify Your Email...", Toast.LENGTH_SHORT).show();
+//                        }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
