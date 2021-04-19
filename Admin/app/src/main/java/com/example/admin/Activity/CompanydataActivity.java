@@ -10,6 +10,7 @@ import android.widget.EditText;
 
 import com.bumptech.glide.Glide;
 import com.example.admin.R;
+import com.google.android.material.textfield.TextInputLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,15 +21,15 @@ public class CompanydataActivity extends AppCompatActivity {
     @BindView(R.id.Company_profilepic)
     CircleImageView companyprofileimage;
     @BindView(R.id.Company_name)
-    EditText companyname;
+    TextInputLayout companyname;
     @BindView(R.id.Company_email)
-    EditText companyemail;
+    TextInputLayout companyemail;
     @BindView(R.id.Company_number)
-    EditText companynumber;
+    TextInputLayout companynumber;
     @BindView(R.id.Company_website)
-    EditText companywebsite;
+    TextInputLayout companywebsite;
     @BindView(R.id.Company_address)
-    EditText comapnyaddress;
+    TextInputLayout comapnyaddress;
     @BindView(R.id.Company_attachment)
     Button companyattachment;
 
@@ -50,11 +51,11 @@ public class CompanydataActivity extends AppCompatActivity {
         Comapnyaddress = intent.getStringExtra("Address");
         Companyattachment = intent.getStringExtra("Attachment");
 
-        companyname.setText(Companyname);
-        companyemail.setText(Companyemail);
-        companynumber.setText(Companynumber);
-        companywebsite.setText(Companywebsite);
-        comapnyaddress.setText(Comapnyaddress);
+        companyname.getEditText().setText(Companyname);
+        companyemail.getEditText().setText(Companyemail);
+        companynumber.getEditText().setText(Companynumber);
+        companywebsite.getEditText().setText(Companywebsite);
+        comapnyaddress.getEditText().setText(Comapnyaddress);
 
         companyattachment.setOnClickListener(new View.OnClickListener() {
             @Override

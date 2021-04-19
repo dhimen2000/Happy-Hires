@@ -3,13 +3,13 @@ package com.example.student.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.student.Model.Interview_Model;
 import com.example.student.R;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,19 +23,19 @@ import butterknife.ButterKnife;
 public class InterviewdataActivity extends AppCompatActivity {
 
     @BindView(R.id.Interview_company_name)
-    EditText InterviewCompanyName;
+    TextInputLayout InterviewCompanyName;
     @BindView(R.id.Interview_company_email)
-    EditText InterviewCompanyEmail;
+    TextInputLayout InterviewCompanyEmail;
     @BindView(R.id.Interview_job_name)
-    EditText InterviewJobName;
+    TextInputLayout InterviewJobName;
     @BindView(R.id.Interview_date)
-    EditText InterviewDate;
+    TextInputLayout InterviewDate;
     @BindView(R.id.Interview_time)
-    EditText InterviewTime;
+    TextInputLayout InterviewTime;
     @BindView(R.id.Interview_place)
-    EditText InterviewPlace;
+    TextInputLayout InterviewPlace;
     @BindView(R.id.Interview_formalmessage)
-    EditText InterviewMessage;
+    TextInputLayout InterviewMessage;
 
     String Job_Title;
 
@@ -76,13 +76,13 @@ public class InterviewdataActivity extends AppCompatActivity {
                         interviewMessage = model.getMessage();
                     }
 
-                    InterviewCompanyEmail.setText(interviewCompanyEmail);
-                    InterviewCompanyName.setText(interviewCompanyName);
-                    InterviewJobName.setText(interviewJobName);
-                    InterviewDate.setText(interviewDate);
-                    InterviewTime.setText(interviewTime);
-                    InterviewPlace.setText(interviewPlace);
-                    InterviewMessage.setText(interviewMessage);
+                    InterviewCompanyEmail.getEditText().setText(interviewCompanyEmail);
+                    InterviewCompanyName.getEditText().setText(interviewCompanyName);
+                    InterviewJobName.getEditText().setText(interviewJobName);
+                    InterviewDate.getEditText().setText(interviewDate);
+                    InterviewTime.getEditText().setText(interviewTime);
+                    InterviewPlace.getEditText().setText(interviewPlace);
+                    InterviewMessage.getEditText().setText(interviewMessage);
                 }
             }
             @Override

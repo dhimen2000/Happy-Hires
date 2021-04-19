@@ -44,6 +44,9 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.Login_signup)
     TextView btnsignup;
 
+    @BindView(R.id.Login_forget)
+    TextView forget;
+
     String Email_login,Pass_login;
     private String Name;
 
@@ -138,6 +141,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, EmailVerification.class);
+                startActivity(intent);
+            }
+        });
+
+        forget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, ForgetActivity.class);
                 startActivity(intent);
             }
         });

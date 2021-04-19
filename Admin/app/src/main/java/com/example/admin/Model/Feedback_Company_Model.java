@@ -8,6 +8,9 @@ public class Feedback_Company_Model {
     String feedback;
     String id;
 
+    public Feedback_Company_Model() {
+    }
+
     public Feedback_Company_Model(String company_name, String company_email, Float rating, String feedback, String id) {
         Company_name = company_name;
         Company_email = company_email;

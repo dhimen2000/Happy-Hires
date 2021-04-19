@@ -7,6 +7,7 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -48,6 +49,9 @@ public class EmailVerification extends AppCompatActivity {
     TextInputLayout pass;
     @BindView(R.id.Confirm_pass)
     TextInputLayout confirm_pass;
+
+    @BindView(R.id.Email_Verification_back)
+    ImageView backbtn;
 
 //    @BindView(R.id.Pass)
 //    EditText pass;
@@ -101,7 +105,7 @@ public class EmailVerification extends AppCompatActivity {
 
                                 if(task.isSuccessful())
                                 {
-                                    Toast.makeText(EmailVerification.this, "Please check Your Email for verification", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(EmailVerification.this, "Please check Your Email for verification & Complete Profile", Toast.LENGTH_SHORT).show();
                                     SharedPreferences.Editor edit = sharedPreferences.edit();
                                     edit.putString("Email", Email);
                                     edit.putString("Password", Pass);
@@ -122,6 +126,13 @@ public class EmailVerification extends AppCompatActivity {
 
             }
         });
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EmailVerification.this, LoginActivity.class));
+            }
+        });
+
     }
 
     private boolean validateEmail() {

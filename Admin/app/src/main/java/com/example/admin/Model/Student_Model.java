@@ -40,12 +40,13 @@ public class Student_Model {
     String Key;
     String ResumeUrl;
     String PdfUrl;
+    String Status;
 
     public Student_Model() {
 
     }
 
-    public Student_Model(String email, String pass, String name, String dob, String gender, String number, String address, String imageUrl, String s_School, String s_Board, String s_Percentage, String s_Year, String h_School, String h_Board, String h_Percentage, String h_Year, String g_College, String g_Branch, String g_Enrollmentno, String g_Sem1, String g_Year1, String g_Sem2, String g_Year2, String g_Sem3, String g_Year3, String g_Sem4, String g_Year4, String g_Sem5, String g_Year5, String g_Sem6, String g_Year6, String g_Sem7, String g_Year7, String g_Sem8, String g_Year8, String key, String resumeUrl, String pdfUrl) {
+    public Student_Model(String email, String pass, String name, String dob, String gender, String number, String address, String imageUrl, String s_School, String s_Board, String s_Percentage, String s_Year, String h_School, String h_Board, String h_Percentage, String h_Year, String g_College, String g_Branch, String g_Enrollmentno, String g_Sem1, String g_Year1, String g_Sem2, String g_Year2, String g_Sem3, String g_Year3, String g_Sem4, String g_Year4, String g_Sem5, String g_Year5, String g_Sem6, String g_Year6, String g_Sem7, String g_Year7, String g_Sem8, String g_Year8, String key, String resumeUrl, String pdfUrl, String status) {
         Email = email;
         Pass = pass;
         Name = name;
@@ -84,8 +85,8 @@ public class Student_Model {
         Key = key;
         ResumeUrl = resumeUrl;
         PdfUrl = pdfUrl;
+        Status = status;
     }
-
 
     public String getEmail() {
         return Email;
@@ -390,5 +391,14 @@ public class Student_Model {
     public void setPdfUrl(String pdfUrl) {
         PdfUrl = pdfUrl;
     }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
+    }
+
 
 }

@@ -5,11 +5,14 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -21,6 +24,8 @@ import com.example.admin.Activity.StudentdataActivity;
 import com.example.admin.Model.Company_Model;
 import com.example.admin.Model.Student_Model;
 import com.example.admin.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +35,8 @@ public class Student_Adapter extends RecyclerView.Adapter<Student_Adapter.ViewHo
     Context context;
     List<Student_Model> StudentList;
     List<Student_Model> StudentListsearch;
+
+    private DatabaseReference firebaseDatabase;
 
     public Student_Adapter(Context context, List<Student_Model> studentList) {
         this.context = context;
@@ -48,6 +55,7 @@ public class Student_Adapter extends RecyclerView.Adapter<Student_Adapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull Student_Adapter.ViewHolder holder, int position) {
+        firebaseDatabase = FirebaseDatabase.getInstance().getReference();
         Student_Model model = StudentList.get(position);
         Glide.with(context).load(model.getImageUrl()).into(holder.StudentImg);
         holder.Name.setText(model.getName());
@@ -85,8 +93,25 @@ public class Student_Adapter extends RecyclerView.Adapter<Student_Adapter.ViewHo
         holder.G_Year8.setText(model.getG_Year8());
         holder.ResumeUrl.setText(model.getResumeUrl());
         holder.PdfUrl.setText(model.getPdfUrl());
+        holder.Studentstatus.setText(model.getStatus());
+        holder.studentkey.setText(model.getKey());
 
-        holder.StudentcardView.setOnClickListener(new View.OnClickListener() {
+        String Status = model.getStatus();
+        if(Status.equals("Active"))
+        {
+            holder.studentbtn.setChecked(true);
+//            String Active;
+//            String Deactive;
+//
+//            Student_Model model1 = new Student_Model();
+
+
+        }
+        else {
+            holder.studentbtn.setChecked(false);
+        }
+
+        holder.StudentLinear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), StudentdataActivity.class);
@@ -94,6 +119,39 @@ public class Student_Adapter extends RecyclerView.Adapter<Student_Adapter.ViewHo
                 v.getContext().startActivity(intent);
             }
         });
+
+//        holder.studentbtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                String Status = model.getStatus();
+//                if(Status.equals("Active"))
+//                {
+//                    holder.studentbtn.setChecked(true);
+//                        String Active;
+//                        String Deactive;
+//
+//                    Student_Model model1 = new Student_Model();
+//
+//                    firebaseDatabase.child("Student").child().setValue(model1);
+//                    Toast.makeText(getContext(), "Data Updated", Toast.LENGTH_LONG).show();
+//
+////                    setButtonState(isChecked);
+//                }
+//                else {
+//                    holder.studentbtn.setChecked(false);
+//                }
+//            }
+//
+////            private void setButtonState(boolean isChecked) {
+////                if (isChecked) {
+////                    .setEnabled(true);
+////                    //Toast.makeText(, "Button enabled!", Toast.LENGTH_SHORT).show();
+////                } else {
+////                    button.setEnabled(false);
+////                    //Toast.makeText(MainActivity.this, "Button disabled!", Toast.LENGTH_SHORT).show();
+////                }
+////            }
+//        });
 
     }
 
@@ -145,7 +203,7 @@ public class Student_Adapter extends RecyclerView.Adapter<Student_Adapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        CardView StudentcardView;
+        LinearLayout StudentLinear;
         ImageView StudentImg;
         TextView Name;
         TextView Email;
@@ -186,11 +244,14 @@ public class Student_Adapter extends RecyclerView.Adapter<Student_Adapter.ViewHo
 
         TextView ResumeUrl;
         TextView PdfUrl;
+        TextView Studentstatus;
+        ToggleButton studentbtn;
 
+        TextView studentkey;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.StudentcardView = (CardView) itemView.findViewById(R.id.student_cv);
+            this.StudentLinear = (LinearLayout) itemView.findViewById(R.id.linear_studentdata);
             this.StudentImg = (ImageView) itemView.findViewById(R.id.student_image);
             this.Name = (TextView) itemView.findViewById(R.id.student_name);
             this.Email = (TextView) itemView.findViewById(R.id.student_email);
@@ -231,7 +292,9 @@ public class Student_Adapter extends RecyclerView.Adapter<Student_Adapter.ViewHo
 
             this.ResumeUrl =(TextView) itemView.findViewById(R.id.std_CheckResume);
             this.PdfUrl =(TextView) itemView.findViewById(R.id.std_Checkpdf);
-
+            this.Studentstatus =(TextView) itemView.findViewById(R.id.std_Status);
+            this.studentbtn =(ToggleButton) itemView.findViewById(R.id.Student_toggle);
+            this.studentkey = (TextView) itemView.findViewById(R.id.std_key);
         }
     }
 }

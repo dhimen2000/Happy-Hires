@@ -1,20 +1,28 @@
 package com.example.admin.Fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.admin.Activity.LoginActivity;
 import com.example.admin.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeFragment extends Fragment {
 
+    FirebaseAuth firebaseAuth;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -32,6 +40,32 @@ public class HomeFragment extends Fragment {
             @Override
             public void handleOnBackPressed() {
                 // Handle the back button event
+                firebaseAuth = FirebaseAuth.getInstance();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle(R.string.app_name);
+                builder.setIcon(R.mipmap.ic_launcher);
+                builder.setMessage("Do you want to exit?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                try {
+                                    firebaseAuth.signOut();
+                                    Toast.makeText(getActivity(), "Logout", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(getActivity(), LoginActivity.class));
+                                }catch (Exception e)
+                                {
+                                    Log.d("e",e.getMessage());
+                                }
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(getActivity(), callback);

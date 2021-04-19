@@ -9,7 +9,6 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -54,7 +53,6 @@ public class Company_List_Adapter extends RecyclerView.Adapter<Company_List_Adap
        holder.CompanycardView.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Toast.makeText(v.getContext(), "Click" + position, Toast.LENGTH_SHORT).show();
                Intent intent = new Intent(v.getContext(), CompanydataActivity.class);
                intent.putExtra("Image",model.getImgurl());
                intent.putExtra("Name",model.getName());

@@ -18,7 +18,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Scrollview">
+        android:id="@+id/Scrollview"
+        android:layout_marginBottom="100dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -77,42 +78,28 @@
                 </com.google.android.material.textfield.TextInputEditText>
             </com.google.android.material.textfield.TextInputLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/Graduation_Sem1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:errorEnabled="true"
-            android:layout_weight="1"
-            app:boxBackgroundColor="@color/white">
-
-            <com.google.android.material.textfield.TextInputEditText
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Sem 1">
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/Graduation_Year1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:errorEnabled="true"
-            android:layout_weight="1"
-            app:boxBackgroundColor="@color/white">
+                <EditText
+                    android:id="@+id/Graduation_Sem1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="Sem 1"
+                    android:layout_weight="1">
+                </EditText>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Year Of Passing">
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </LinearLayout>
+                <EditText
+                    android:id="@+id/Graduation_Year1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="Year Of Passing"
+                    android:layout_weight="1">
+                </EditText>
+            </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

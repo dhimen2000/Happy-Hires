@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.CompanyFeedbackFragment">
+    tools:context=".Fragment.CompanyFeedbackFragment"
+    android:orientation="vertical"
+    android:background="#ecf0f1">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hello_Company_frag" />
+        android:layout_height="wrap_content"
+        android:text="Company Feedbacks"
+        android:gravity="center_horizontal"
+        android:textSize="30dp"
+        android:textStyle="bold|italic"
+        android:fontFamily="Poppins"
+        android:textColor="@color/introduction"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+    </TextView>
 
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/companyfeedback_recyclerview">
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>

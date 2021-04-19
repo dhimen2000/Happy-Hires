@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.student.Model.Apply_Jobs_Model;
 import com.example.student.Model.RegisterModel;
 import com.example.student.R;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,19 +29,19 @@ import butterknife.ButterKnife;
 public class JobdataActivity extends AppCompatActivity {
 
     @BindView(R.id.Jobdata_company_email)
-    EditText JobCompanyEmail;
+    TextInputLayout JobCompanyEmail;
     @BindView(R.id.Jobdata_company_name)
-    EditText JobComapnyName;
+    TextInputLayout JobComapnyName;
     @BindView(R.id.Jobdata_name)
-    EditText JobTitle;
+    TextInputLayout JobTitle;
     @BindView(R.id.Jobdata_description)
-    EditText JobDescription;
+    TextInputLayout JobDescription;
     @BindView(R.id.Jobdata_percentagecriteria)
-    EditText JobPercentagecriteria;
+    TextInputLayout JobPercentagecriteria;
     @BindView(R.id.Jobdata_salaryrange)
-    EditText JobSalaryrange;
+    TextInputLayout JobSalaryrange;
     @BindView(R.id.Jobdata_lastdate)
-    EditText Joblastdate;
+    TextInputLayout Joblastdate;
 
     @BindView(R.id.Jobdata_attachment)
     Button JobAttachment;
@@ -85,13 +85,13 @@ public class JobdataActivity extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference();
         firebaseDatabase = FirebaseDatabase.getInstance().getReference();
 
-        JobCompanyEmail.setText(jobcompanyemail);
-        JobComapnyName.setText(jobcomapnyname);
-        JobTitle.setText(jobtitle);
-        JobDescription.setText(jobdescription);
-        JobPercentagecriteria.setText(jobpercentagecriteria);
-        JobSalaryrange.setText(jobsalaryrange);
-        Joblastdate.setText(joblastdate);
+        JobCompanyEmail.getEditText().setText(jobcompanyemail);
+        JobComapnyName.getEditText().setText(jobcomapnyname);
+        JobTitle.getEditText().setText(jobtitle);
+        JobDescription.getEditText().setText(jobdescription);
+        JobPercentagecriteria.getEditText().setText(jobpercentagecriteria);
+        JobSalaryrange.getEditText().setText(jobsalaryrange);
+        Joblastdate.getEditText().setText(joblastdate);
 
         JobAttachment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,7 +155,6 @@ public class JobdataActivity extends AppCompatActivity {
                                     }
                                 }
                             }
-
 ////
 ////                            if (Applied_job_status.equals("On Hold") ) {
 ////                                JobApply.setText("You Already Applied For This Role...");
@@ -179,15 +178,15 @@ public class JobdataActivity extends AppCompatActivity {
         }
         catch (Exception e)
         {
-
+            Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
         JobApply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                New_JobCompanyEmail = JobCompanyEmail.getText().toString();
-                New_JobTitle = JobTitle.getText().toString();
+                New_JobCompanyEmail = JobCompanyEmail.getEditText().getText().toString();
+                New_JobTitle = JobTitle.getEditText().getText().toString();
 
                 Apply_key = firebaseDatabase.push().getKey();
                 Apply_Jobs_Model applyJobsModels = new Apply_Jobs_Model(New_JobCompanyEmail,jobcomapnyname,New_Student_Email,New_Student_Name,New_Student_Number,New_JobTitle,Status,Apply_key,jobid);

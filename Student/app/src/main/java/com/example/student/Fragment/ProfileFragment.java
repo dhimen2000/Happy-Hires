@@ -571,7 +571,7 @@ public class ProfileFragment extends Fragment {
                 Toast.makeText(getActivity(), "No file chosen", Toast.LENGTH_SHORT).show();
                 }
         }
-        else {
+        else if (requestCode == Pdf_Request_Code && resultCode == getActivity().RESULT_OK && data != null && data.getData() != null) {
             EditPdfFilepathUri = data.getData();
             if (data.getData() != null) {
                 Toast.makeText(getActivity(), "File 2 Selected", Toast.LENGTH_SHORT).show();
@@ -579,6 +579,14 @@ public class ProfileFragment extends Fragment {
             }
             else {
                 Toast.makeText(getActivity(), "No file chosen", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else {
+            try {
+                Toast.makeText(getActivity(), "Please Select File", Toast.LENGTH_SHORT).show();
+            }catch(Exception e)
+            {
+                Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
     }

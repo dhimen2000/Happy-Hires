@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,97 +7,239 @@
     tools:context=".Activity.JobdataActivity"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/Jobdata_company_name"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#ecf0f1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/login_bg">
+    </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="-110dp"
+            android:layout_marginBottom="85dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Job Profile"
+            android:gravity="center_horizontal"
+            android:textSize="40dp"
+            android:textStyle="bold|italic"
+            android:fontFamily="Poppins"
+            android:textColor="@color/white">
+        </TextView>
+
+          <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Comapny Name"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:layout_marginTop="50dp">
-    </EditText>
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center"
+        app:cardCornerRadius="20dp"
+        app:contentPadding="2dp">
 
-    <EditText
-        android:id="@+id/Jobdata_company_email"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Company Email"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:layout_below="@+id/Jobdata_company_name">
-    </EditText>
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/Jobdata_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Job Title"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:layout_below="@+id/Jobdata_company_email">
-    </EditText>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Jobdata_company_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white">
 
-    <EditText
-        android:id="@+id/Jobdata_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Job Description"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:layout_below="@+id/jobdata_name">
-    </EditText>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Company Name"
+                android:textSize="20dp"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:layout_marginBottom="2dp"
+                android:drawableRight="@drawable/ic_profile"
+                android:drawablePadding="10dp">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/Jobdata_percentagecriteria"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Job Criteria (%)"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:layout_below="@+id/Jobdata_description">
-    </EditText>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Jobdata_company_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
+            android:layout_below="@+id/Jobdata_company_name">
 
-    <EditText
-        android:id="@+id/Jobdata_salaryrange"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Job Salary (Rs.)"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:layout_below="@+id/Jobdata_percentagecriteria">
-    </EditText>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Company Email"
+                android:textSize="20dp"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:layout_marginBottom="2dp"
+                android:drawableRight="@drawable/ic_mail"
+                android:drawablePadding="10dp">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/Jobdata_lastdate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Job LastDate"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:layout_below="@+id/Jobdata_salaryrange">
-    </EditText>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Jobdata_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
+            android:layout_below="@+id/Jobdata_company_email">
 
-    <Button
-        android:id="@+id/Jobdata_attachment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/black"
-        android:layout_marginTop="50dp"
-        android:text="Check Attachment"
-        android:textColor="#ffffff"
-        android:textSize="15dp">
-    </Button>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Job Title"
+                android:textSize="20dp"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:layout_marginBottom="2dp"
+                android:drawableRight="@drawable/ic_title"
+                android:drawablePadding="10dp">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/Jobdata_apply"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/black"
-        android:layout_marginTop="50dp"
-     android:visibility="visible"
-        android:text="Apply For This Role"
-        android:textColor="#ffffff"
-        android:textSize="15dp">
-    </Button>
 
-</LinearLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Jobdata_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
+            android:layout_below="@+id/jobdata_name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Job Description"
+                android:textSize="20dp"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:layout_marginBottom="2dp"
+                android:drawableRight="@drawable/ic_discription"
+                android:drawablePadding="10dp">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Jobdata_percentagecriteria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
+            android:layout_below="@+id/Jobdata_description">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Job Criteria (In %)"
+                android:textSize="20dp"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:layout_marginBottom="2dp"
+                android:drawableRight="@drawable/ic_assessment"
+                android:drawablePadding="10dp">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Jobdata_salaryrange"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
+            android:layout_below="@+id/Jobdata_percentagecriteria">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Job Salary"
+                android:textSize="20dp"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:layout_marginBottom="2dp"
+                android:drawableRight="@drawable/ic_paid"
+                android:drawablePadding="10dp">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Jobdata_lastdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
+            android:layout_below="@+id/Jobdata_salaryrange">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Job LastDate"
+                android:textSize="20dp"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:layout_marginBottom="5dp"
+                android:drawableRight="@drawable/ic_calendar"
+                android:drawablePadding="10dp">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/Jobdata_attachment"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:text="Check Attachment"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/login_btn"
+                    android:drawableRight="@drawable/ic_attach"
+                    android:drawablePadding="10dp"
+                    android:layout_below="@+id/Jobdata_lastdate">
+                </Button>
+
+                <Button
+                    android:id="@+id/Jobdata_apply"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:text="Apply For This Role"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="50dp"
+                    android:visibility="visible"
+                    android:background="@drawable/login_btn"
+                    android:drawableRight="@drawable/arrow_forward24"
+                    android:drawablePadding="10dp"
+                    android:layout_below="@+id/Jobdata_attachment">
+                </Button>
+
+    </LinearLayout>
+    </ScrollView>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.student.Activity.PlacementattachmentActivity;
 import com.example.student.Model.Placement_Model;
 import com.example.student.R;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
 
@@ -37,7 +37,7 @@ public class Placement_Adapter extends RecyclerView.Adapter<Placement_Adapter.Vi
     @Override
     public void onBindViewHolder(@NonNull Placement_Adapter.ViewHolder holder, int position) {
         Placement_Model model = PlacementList.get(position);
-        holder.placementYear.setText(model.getPlacementyear());
+        holder.placementYear.getEditText().setText(model.getPlacementyear());
 
         holder.ViewPlacement.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,8 +47,6 @@ public class Placement_Adapter extends RecyclerView.Adapter<Placement_Adapter.Vi
                 v.getContext().startActivity(intent);
             }
         });
-
-
     }
 
     @Override
@@ -58,13 +56,13 @@ public class Placement_Adapter extends RecyclerView.Adapter<Placement_Adapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        EditText placementYear;
+        TextInputLayout placementYear;
         TextView placementurl;
         Button ViewPlacement;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.placementYear = (EditText) itemView.findViewById(R.id.Placement_Year);
+            this.placementYear = (TextInputLayout) itemView.findViewById(R.id.Placement_Year);
             this.placementurl = (TextView) itemView.findViewById(R.id.placementurl);
             this.ViewPlacement = (Button) itemView.findViewById(R.id.Checkplacement);
         }

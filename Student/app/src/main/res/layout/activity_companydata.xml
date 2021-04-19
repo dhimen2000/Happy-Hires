@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,80 +7,194 @@
     tools:context=".Activity.CompanydataActivity"
     android:orientation="vertical">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/Company_profilepic"
-        android:layout_width="150dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#ecf0f1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/selectimg"
-        app:civ_border_color="#FFFFFF"
-        app:civ_border_width="2dp" />
+        android:background="@drawable/login_bg">
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/Company_name"
+        <TextView
+            android:layout_marginTop="-130dp"
+            android:layout_marginBottom="85dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Company Profile"
+            android:gravity="center_horizontal"
+            android:textSize="40dp"
+            android:textStyle="bold|italic"
+            android:fontFamily="Poppins"
+            android:textColor="@color/white">
+        </TextView>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/Company_profilepic"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="-70dp"
+            android:src="@drawable/image"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="2dp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center"
+        app:cardCornerRadius="20dp"
+        app:contentPadding="2dp"
         android:layout_below="@+id/Company_profilepic">
-    </EditText>
 
-    <EditText
-        android:id="@+id/Company_email"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:layout_below="@+id/Company_name">
-    </EditText>
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/Company_number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Number"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:inputType="number"
-        android:layout_below="@+id/Company_email">
-    </EditText>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Company_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
+            android:layout_below="@+id/Company_profilepic">
 
-    <EditText
-        android:id="@+id/Company_website"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="WebSite"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:inputType="number"
-        android:layout_below="@+id/Company_number">
-    </EditText>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:textSize="20dp"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:layout_marginBottom="2dp"
+                android:drawableRight="@drawable/ic_profile"
+                android:drawablePadding="10dp">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/Company_address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Address"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:inputType="textMultiLine"
-        android:maxLines="3"
-        android:layout_below="@+id/Company_website">
-    </EditText>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Company_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
+            android:layout_below="@+id/Company_name">
 
-    <Button
-        android:id="@+id/Company_attachment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/black"
-        android:layout_marginTop="50dp"
-        android:text="Check Attachment"
-        android:textColor="#ffffff"
-        android:textSize="15dp">
-    </Button>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:textSize="20dp"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:layout_marginBottom="2dp"
+                android:drawableRight="@drawable/ic_mail"
+                android:drawablePadding="10dp">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Company_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
+            android:layout_below="@+id/Company_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Number"
+                android:textSize="20dp"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:layout_marginBottom="2dp"
+                android:drawableRight="@drawable/ic_phone"
+                android:drawablePadding="10dp">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Company_website"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
+            android:layout_below="@+id/Company_number">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="WebSite"
+                android:textSize="20dp"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:layout_marginBottom="2dp"
+                android:drawableRight="@drawable/ic_web"
+                android:drawablePadding="10dp">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Company_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
+            android:inputType="textMultiLine"
+            android:maxLines="3"
+            android:layout_below="@+id/Company_website">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Address"
+                android:textSize="20dp"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:layout_marginBottom="5dp"
+                android:drawableRight="@drawable/ic_location"
+                android:drawablePadding="10dp">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+        <Button
+            android:id="@+id/Company_attachment"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="Check Attachment"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="80dp"
+            android:background="@drawable/login_btn"
+            android:drawableRight="@drawable/ic_attach"
+            android:drawablePadding="10dp"
+            android:layout_below="@+id/Company_address">
+        </Button>
+
+            </LinearLayout>
+        </ScrollView>
 
 </LinearLayout>
+</RelativeLayout>

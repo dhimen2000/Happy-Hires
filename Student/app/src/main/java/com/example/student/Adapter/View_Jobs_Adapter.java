@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -51,7 +50,6 @@ public class View_Jobs_Adapter extends RecyclerView.Adapter<View_Jobs_Adapter.Vi
        holder.jobcardView.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Toast.makeText(v.getContext(), "Click" + position, Toast.LENGTH_SHORT).show();
                Intent intent = new Intent(v.getContext(), JobdataActivity.class);
                intent.putExtra("Job_Company_Name",model.getCompanyname());
                intent.putExtra("Job_Company_Email",model.getCompanyemail());
