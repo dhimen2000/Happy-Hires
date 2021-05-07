@@ -1,19 +1,270 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragment.AboutusFragment"
     android:background="#ecf0f1">
 
-    <TextView
-        android:id="@+id/text_aboutus"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Aboutus">
-    </TextView>
+        android:layout_height="wrap_content">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/aboutuscardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"
+        app:cardCornerRadius="20dp"
+        app:contentPadding="2dp">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="About Us"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:textSize="25dp"
+                android:textStyle="bold|italic"
+                android:fontFamily="Poppins"
+                android:textColor="@color/introduction"
+                android:layout_marginBottom="5dp">
+            </TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:background="#00b489"
+                android:layout_height="1.2sp"
+                android:layout_marginBottom="10dp"/>
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_home1"
+                android:foregroundGravity="center">
+            </ImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Happy Hires"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:textSize="18dp"
+                android:textStyle="bold|italic"
+                android:fontFamily="Poppins"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/introduction">
+            </TextView>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/contactuscardview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="20dp"
+            app:contentPadding="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Contact Us"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"
+                    android:textSize="25dp"
+                    android:textStyle="bold|italic"
+                    android:fontFamily="Poppins"
+                    android:textColor="@color/introduction"
+                    android:layout_marginBottom="5dp">
+                </TextView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:background="#00b489"
+                    android:layout_height="1.2sp"
+                    android:layout_marginBottom="10dp"/>
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_phone1"
+                    android:foregroundGravity="center">
+                </ImageView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="+91 7046636704\n+91 8160437611"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"
+                    android:textSize="18dp"
+                    android:textStyle="bold|italic"
+                    android:fontFamily="Poppins"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/introduction">
+                </TextView>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/mailuscardview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="20dp"
+            app:contentPadding="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mail Us"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"
+                    android:textSize="25dp"
+                    android:textStyle="bold|italic"
+                    android:fontFamily="Poppins"
+                    android:textColor="@color/introduction"
+                    android:layout_marginBottom="5dp">
+                </TextView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:background="#00b489"
+                    android:layout_height="1.2sp"
+                    android:layout_marginBottom="10dp"/>
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_mail1"
+                    android:foregroundGravity="center">
+                </ImageView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="info@happyhires.com"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"
+                    android:textSize="18dp"
+                    android:textStyle="bold|italic"
+                    android:fontFamily="Poppins"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/introduction">
+                </TextView>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/sharecardview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="20dp"
+            app:contentPadding="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Share"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"
+                    android:textSize="25dp"
+                    android:textStyle="bold|italic"
+                    android:fontFamily="Poppins"
+                    android:textColor="@color/introduction"
+                    android:layout_marginBottom="5dp">
+                </TextView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:background="#00b489"
+                    android:layout_height="1.2sp"
+                    android:layout_marginBottom="10dp"/>
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_share"
+                    android:foregroundGravity="center">
+                </ImageView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="https://github.com/dhimen2000/Happy-Hires.git"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"
+                    android:textSize="18dp"
+                    android:textStyle="bold|italic"
+                    android:fontFamily="Poppins"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/introduction">
+                </TextView>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="© 2020 - 2021 Happy Hires\nAll Rights Reserved."
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:textStyle="bold|italic"
+            android:fontFamily="Poppins"
+            android:textColor="@color/introduction"
+            android:layout_marginBottom="40dp">
+        </TextView>
+
+    </LinearLayout>
+    </ScrollView>
+    </RelativeLayout>

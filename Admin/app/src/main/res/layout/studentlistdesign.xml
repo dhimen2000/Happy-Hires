@@ -76,8 +76,8 @@
             android:layout_gravity="center"
             android:checked="true"
             android:text=""
-            android:textOff="Deactive"
-            android:textOn="Active">
+            android:textOff="OFF"
+            android:textOn="ON">
         </ToggleButton>
 
 
