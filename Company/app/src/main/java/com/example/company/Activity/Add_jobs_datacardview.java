@@ -3,6 +3,7 @@ package com.example.company.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class Add_jobs_datacardview extends AppCompatActivity {
     SharedPreferences sharedPreferences;
@@ -43,6 +49,8 @@ public class Add_jobs_datacardview extends AppCompatActivity {
 String editcompanyemail,editcompanyname,editjobtitle,editjobdiscription,editpercentage,editsalaryrange,editlastdate;
 TextView Editcompanyemail,Editcompanyname,Editjobtitle,Editjobdiscription,Editpercentage,Editsalaryrange,Editlastdate;
 Button Jobattachmenturl;
+    private Calendar calendar;
+    final Calendar myCalendar = Calendar.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,13 +71,43 @@ Button Jobattachmenturl;
         Jobattachmenturl=findViewById(R.id.editjobattachment);
         Update=findViewById(R.id.updatejob);
         Delete=findViewById(R.id.deletejob);
+        calendar = Calendar.getInstance();
 
         Intent intent = getIntent();
         jobid =intent.getStringExtra("jid");
 
         firebaseDatabase = FirebaseDatabase.getInstance().getReference();
 
-    firebaseDatabase.child("JobsAvailable").orderByChild("jobid").equalTo(jobid).addValueEventListener(new ValueEventListener() {
+        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
+            }
+            private void updateLabel() {
+                String myFormat = "dd/MM/yyyy"; //In which you need put here
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+                Editlastdate.setText(sdf.format(myCalendar.getTime()));
+            }
+
+        };
+
+        Editlastdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Log.d("Helllo","Hello");
+                new DatePickerDialog(Add_jobs_datacardview.this, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+        firebaseDatabase.child("JobsAvailable").orderByChild("jobid").equalTo(jobid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {

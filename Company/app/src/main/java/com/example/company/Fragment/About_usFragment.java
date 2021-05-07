@@ -13,20 +13,22 @@ import android.widget.Toast;
 
 import com.example.company.R;
 import com.example.company.Model.Feedback_Model;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
 public class About_usFragment extends Fragment {
-
+    private AdView mAdView;
+    private AdView mBannerAd;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_about_us, container, false);
+        // MobileAds.initialize(this,);
 
-        return  root;
+return  root;
     }
-
-
 }

@@ -63,8 +63,10 @@ Job_Applications_Adapter jobApplicationsAdapter;
         Log.d("email",company_email);
 
 
-  Query query= databaseReference.child("ApplicationForJob").orderByChild("companyEmail").equalTo(company_email);
-               query.addListenerForSingleValueEvent(new ValueEventListener() {
+
+        Query query= databaseReference.child("ApplicationForJob").orderByChild("companyEmail").equalTo(company_email );
+              query.addListenerForSingleValueEvent(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -72,7 +74,8 @@ Job_Applications_Adapter jobApplicationsAdapter;
                 {
                     for (DataSnapshot npsnapshot : snapshot.getChildren()){
                         Job_Applications_Model ld=npsnapshot.getValue(Job_Applications_Model.class);
-                        ListData.add(ld);
+                        if(ld.getStatus().equals("On Hold"))
+                            ListData.add(ld);
                     }
 
                     jobApplicationsAdapter = new Job_Applications_Adapter(ListData);
@@ -88,32 +91,6 @@ Job_Applications_Adapter jobApplicationsAdapter;
             }
         });
 
-        Query query1= databaseReference.child("ApplicationForJob").orderByChild("status").equalTo("On Hold");
-        query1.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                if(snapshot.exists())
-                {
-                    for (DataSnapshot npsnapshot : snapshot.getChildren()){
-                        Job_Applications_Model ld=npsnapshot.getValue(Job_Applications_Model.class);
-                        ListData.add(ld);
-
-
-                    }
-
-                    jobApplicationsAdapter = new Job_Applications_Adapter(ListData);
-                    recyclerView.setAdapter(jobApplicationsAdapter);
-                }
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
         return root;
     }

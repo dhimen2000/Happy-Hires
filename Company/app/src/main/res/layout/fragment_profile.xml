@@ -1,13 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
    android:orientation="vertical"
-    android:padding="20dp"
     tools:context=".Fragment.ProfileFragment">
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="15dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/login_bg">
+    </LinearLayout>
+    <TextView
+        android:layout_marginTop="-130dp"
+        android:layout_marginBottom="85dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Company Profile"
+        android:gravity="center_horizontal"
+        android:textSize="40dp"
+        android:textStyle="bold|italic"
+        android:fontFamily="Poppins"
+        android:textColor="@color/white">
+    </TextView>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
@@ -15,7 +39,6 @@
         android:layout_height="150dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:src="@drawable/company_profile_image"
         app:civ_border_color="#000000"
         app:civ_border_width="2dp" />
     <ImageView
@@ -27,78 +50,114 @@
         android:layout_marginTop="-50dp"
         android:background="@drawable/ic_menu_camera">
     </ImageView>
-
-
-    <EditText
-
-        android:id="@+id/edit_profile_company_email"
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:hint="Company Email"
-        android:textSize="20dp">
+        android:text="Company Email"
+        android:textSize="18sp"
+        android:drawableLeft="@drawable/ic_email"
+        android:drawablePadding="10dp"/>
+    <EditText
+        android:id="@+id/edit_profile_company_email"
+        android:inputType="textEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginLeft="25dp">
+
     </EditText>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Company Name"
+        android:textSize="18sp"
+        android:drawableLeft="@drawable/ic_profile"
+        android:drawablePadding="10dp"/>
     <EditText
         android:id="@+id/edit_profile_company_name"
+        android:inputType="text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Company name"
-        android:textSize="20dp">
+        android:layout_height="70dp"
+        android:layout_marginLeft="25dp">
     </EditText>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number"
+        android:textSize="18sp"
+        android:drawableLeft="@drawable/ic_phone"
+        android:drawablePadding="10dp"/>
     <EditText
         android:id="@+id/edit_profile_company_number"
+        android:inputType="number"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Number"
-        android:textSize="20dp">
+        android:layout_height="70dp"
+        android:layout_marginLeft="25dp">
     </EditText>
-
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:textSize="18sp"
+        android:drawableLeft="@drawable/ic_location"
+        android:drawablePadding="10dp"/>
     <EditText
         android:id="@+id/edit_profile_company_address"
+        android:inputType="text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Address"
-        android:textSize="20dp">
+        android:layout_height="70dp"
+        android:layout_marginLeft="25dp">
     </EditText>
-
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Website"
+        android:textSize="18sp"
+        android:drawableLeft="@drawable/ic_email"
+        android:drawablePadding="10dp"/>
     <EditText
         android:id="@+id/edit_profile_company_city"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Website"
-        android:textSize="20dp">
+        android:inputType="text"
+        android:layout_height="70dp"
+        android:layout_marginLeft="25dp">
     </EditText>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/viewattachmentcompany"
         android:text="View Attachment"
-        android:textSize="20dp"
-        android:layout_marginTop="10dp"/>
+        android:textSize="15dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:background="@drawable/login_btn"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editattachmnet"
         android:text="Edit Attachment"
-        android:textSize="20dp"
-        android:layout_marginTop="10dp"/>
+        android:textSize="15dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:background="@drawable/login_btn"/>
 
     <Button
+        android:background="@drawable/login_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/black"
         android:text="Update Profile"
-        android:textColor="#ffffff"
-        android:textSize="20dp"
+        android:textSize="15dp"
         android:layout_marginTop="10dp"
-        android:layout_weight="0"
-        android:id="@+id/edit_profile_company">
+        android:id="@+id/edit_profile_company"
+        android:textColor="@color/white"
+        android:layout_marginBottom="60dp"
+        android:drawableRight="@drawable/arrow_forward24">
     </Button>
-
 </LinearLayout>
+</ScrollView>
 
 

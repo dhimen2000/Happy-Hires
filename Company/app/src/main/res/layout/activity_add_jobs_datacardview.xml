@@ -1,27 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".Activity.Add_jobs_datacardview"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#ecf0f1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/login_bg">
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="-130dp"
+        android:layout_marginBottom="85dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Jobs"
+        android:gravity="center_horizontal"
+        android:textSize="40dp"
+        android:textStyle="bold|italic"
+        android:fontFamily="Poppins"
+        android:textColor="@color/white">
+    </TextView>
 
     <EditText
         android:text="Comapny email"
         android:textSize="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="50dp"
         android:id="@+id/editcompanyemail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_email"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="#929497"
+        android:inputType="text"/>
     <EditText
         android:text="Company name"
         android:textSize="15dp"
         android:layout_marginTop="10dp"
         android:id="@+id/editcompanyname"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_company"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="#929497"
+        android:inputType="text"/>
 
     <EditText
         android:text="Job Title"
@@ -29,7 +68,15 @@
         android:layout_marginTop="10dp"
         android:id="@+id/editjobtitle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_title"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="#929497"
+        android:inputType="text"/>
 
     <EditText
         android:text="Job Discription"
@@ -37,7 +84,15 @@
         android:layout_marginTop="10dp"
         android:id="@+id/editjobdiscription"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_notes"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="#929497"
+        android:inputType="text"/>
 
     <EditText
         android:text="Percentage Criteria"
@@ -45,7 +100,15 @@
         android:layout_marginTop="10dp"
         android:id="@+id/editpercentagecriteria"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_grades"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="#929497"
+        android:inputType="text"/>
 
     <EditText
         android:text="Salary Range"
@@ -53,32 +116,55 @@
         android:layout_marginTop="10dp"
         android:id="@+id/editsalaryrange"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_salary"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="#929497"
+        android:inputType="text"/>
+
+
     <EditText
-        android:text="Last Date"
-        android:textSize="15dp"
-        android:layout_marginTop="10dp"
         android:id="@+id/editlastdate"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:hint="Select Date"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:drawableLeft="@drawable/ic_date"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="#929497"
+        android:inputType="text"
+        />
 
     <Button
+        android:background="@drawable/login_btn"
         android:id="@+id/editjobattachment"
         android:textSize="10dp"
         android:layout_marginTop="10dp"
         android:text="view job attachment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
-
-    <Button
+        <Button
+        android:background="@drawable/login_btn"
         android:id="@+id/updatejob"
         android:textSize="10dp"
         android:layout_marginTop="10dp"
         android:text="Update data"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/arrow_forward24"/>
     <Button
+        android:background="@drawable/login_btn"
         android:id="@+id/deletejob"
         android:textSize="10dp"
         android:layout_marginTop="10dp"
@@ -86,6 +172,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    </LinearLayout>
 
-
-</LinearLayout>
+</ScrollView>

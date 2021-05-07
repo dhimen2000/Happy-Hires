@@ -11,8 +11,9 @@ public class Schedule_Appoinment_Model {
     String date;
     String key;
     String Message;
+    String status;
 
-    public Schedule_Appoinment_Model(String companyname, String companyemail, String jobtitle, String studentname, String studentemail, String place, String time, String date, String key, String message) {
+    public Schedule_Appoinment_Model(String companyname, String companyemail, String jobtitle, String studentname, String studentemail, String place, String time, String date, String key, String message, String status) {
         this.companyname = companyname;
         this.companyemail = companyemail;
         this.jobtitle = jobtitle;
@@ -23,10 +24,13 @@ public class Schedule_Appoinment_Model {
         this.date = date;
         this.key = key;
         Message = message;
+        this.status = status;
     }
+
     Schedule_Appoinment_Model(){
 
     }
+
     public String getCompanyname() {
         return companyname;
     }
@@ -107,8 +111,18 @@ public class Schedule_Appoinment_Model {
         Message = message;
     }
 
-
+    public String getStatus() {
+        return status;
     }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+
+
+
+}
 
 
 

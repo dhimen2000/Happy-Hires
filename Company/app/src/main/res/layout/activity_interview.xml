@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.Interview">
+
+
+ <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#ecf0f1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/login_bg">
+    </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="-130dp"
+            android:layout_marginBottom="85dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Set Interview"
+            android:gravity="center_horizontal"
+            android:textSize="40dp"
+            android:textStyle="bold|italic"
+            android:fontFamily="Poppins"
+            android:textColor="@color/white">
+        </TextView>
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Company Name"
+            android:textSize="18sp"
+            android:drawableLeft="@drawable/ic_company"
+            android:drawablePadding="10dp"/>
+        <TextView
+            android:id="@+id/intcompanyname"
+            android:hint=""
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="25dp"/>
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Company Email"
+            android:textSize="18sp"
+            android:drawableLeft="@drawable/ic_email"
+            android:drawablePadding="10dp"/>
+        <TextView
+            android:id="@+id/intcompanyemail"
+            android:hint=""
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="25dp"/>
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Student Name"
+            android:textSize="18sp"
+            android:drawableLeft="@drawable/ic_profile"
+            android:drawablePadding="10dp"/>
+        <TextView
+            android:id="@+id/intstudentname"
+            android:hint=""
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="25dp"/>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Student Email"
+            android:textSize="18sp"
+            android:drawableLeft="@drawable/ic_email"
+            android:drawablePadding="10dp"/>
+        <TextView
+            android:id="@+id/intstudentemail"
+            android:hint=""
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="25dp"/>
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Job title"
+            android:textSize="18sp"
+            android:drawableLeft="@drawable/ic_title"
+            android:drawablePadding="10dp"/>
+        <TextView
+            android:id="@+id/intjobtitle"
+            android:hint=""
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="25dp"/>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Place"
+            android:textSize="18sp"
+            android:drawableLeft="@drawable/ic_location"
+            android:drawablePadding="10dp"/>
+        <TextView
+            android:id="@+id/intplace"
+            android:hint=""
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="25dp"/>
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textSize="18sp"
+            android:drawableLeft="@drawable/ic_date"
+            android:drawablePadding="10dp"/>
+
+        <TextView
+            android:id="@+id/intdate"
+            android:hint=""
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="25dp"/>
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:textSize="18sp"
+            android:drawableLeft="@drawable/ic_time"
+            android:drawablePadding="10dp"/>
+        <TextView
+            android:id="@+id/inttime"
+            android:hint=""
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="25dp"/>
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Message"
+            android:textSize="18sp"
+            android:drawableLeft="@drawable/ic_message"
+            android:drawablePadding="10dp"/>
+        <TextView
+            android:id="@+id/intmessage"
+            android:hint=""
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="25dp"/>
+
+
+
+    <LinearLayout
+android:layout_marginBottom="80dp"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/inthired"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Hired"
+            android:backgroundTint="#28A745"
+            android:textColor="#FFF"
+            android:textAllCaps="false"
+            android:layout_marginRight="5dp" />
+
+        <Button
+            android:id="@+id/intrejected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:backgroundTint="#f44336"
+            android:textAllCaps="false"
+            android:text="Rejected"
+            android:textColor="#FFF"/>
+    </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

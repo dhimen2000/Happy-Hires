@@ -9,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,21 +35,12 @@ public class LoginActivity extends AppCompatActivity {
     EditText password;
     String Email,Password;
     Button btnlogin;
-    Button btnsignup;
+    TextView btnsignup;
     SharedPreferences sharedpreferences;
     DatabaseReference databaseReference;
     String CompanyName,CompanyEmail,CompanyNumber,CompanyAddress,Companywebsite;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-//    private static final Pattern PASSWORD_PATTERN =
-//            Pattern.compile("^" +
-//                    //"(?=.*[0-9])" +         //at least 1 digit
-//                    //"(?=.*[a-z])" +         //at least 1 lower case letter
-//                    //"(?=.*[A-Z])" +         //at least 1 upper case letter
-//                    "(?=.*[a-zA-Z])" +      //any letter
-//                    "(?=.*[@#$%^&+=])" +    //at least 1 special character
-//                    "(?=\\S+$)" +           //no white spaces
-//                    ".{4,}" +               //at least 4 characters
-//                    "$");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,10 +49,11 @@ public class LoginActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.activity_login);
+
         email =findViewById(R.id.Login_email);
         password=findViewById(R.id.Login_password);
          btnlogin=findViewById(R.id.Login_submit);
-         btnsignup=findViewById(R.id.Login_signup);
+         btnsignup=findViewById(R.id.register);
         SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref",MODE_PRIVATE);
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -77,11 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (!validateEmail()| !validatePassword() ) {
                     return;
                 }
-//                String input = "Email: " + email.getText().toString();
-//                input += "\n";
-//                input += "Password: " + password.getText().toString();
-//                input += "\n";
-//                Toast.makeText(getApplicationContext(), input, Toast.LENGTH_SHORT).show();
+
 
                 firebaseAuth.signInWithEmailAndPassword(Email,Password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
@@ -173,8 +162,8 @@ public class LoginActivity extends AppCompatActivity {
         btnsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
+                Intent intent1 = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent1);
             }
         });
 

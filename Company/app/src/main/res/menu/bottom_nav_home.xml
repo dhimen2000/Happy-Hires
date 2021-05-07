@@ -12,6 +12,7 @@
         android:id="@+id/apply_job"
         android:title="Job Applications"/>
     <item
+        android:icon="@drawable/ic_accepted"
         android:id="@+id/accepted_list"
         android:title="Accepted application"/>
 

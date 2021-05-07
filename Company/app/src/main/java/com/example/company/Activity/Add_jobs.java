@@ -3,17 +3,20 @@ package com.example.company.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -34,6 +37,10 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 public class Add_jobs extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     DatabaseReference firebaseDatabase;
@@ -46,7 +53,6 @@ public class Add_jobs extends AppCompatActivity {
     Uri PdfFilepathUri;
     Uri PdfDownloadUri;
     ProgressDialog progressDialog;
-
 
     Button save,clear;
 String new_companyemail;
@@ -64,6 +70,8 @@ String jobattachmenturl;
 String jobid;
 EditText Companyemail,Companyname,Jobtitle,Requirements,Percentagecriteria,Salaryrange,Joblastdate;
 Button Jobattachmenturl;
+    private Calendar calendar;
+    final Calendar myCalendar = Calendar.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,14 +96,45 @@ Button Jobattachmenturl;
         Salaryrange=findViewById(R.id.salaryrange);
         Joblastdate=findViewById(R.id.joblastdate);
         Jobattachmenturl=findViewById(R.id.jobattachmenturl);
-
+        calendar = Calendar.getInstance();
 
         save=findViewById(R.id.save_job);
         clear=findViewById(R.id.clear_job);
 
+        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
+            }
+            private void updateLabel() {
+                String myFormat = "dd/MM/yyyy"; //In which you need put here
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+                Joblastdate.setText(sdf.format(myCalendar.getTime()));
+            }
+
+        };
+
+        Joblastdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Log.d("Helllo","Hello");
+                new DatePickerDialog(Add_jobs.this, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+
         firebaseDatabase = FirebaseDatabase.getInstance().getReference();
 
         storageReference = FirebaseStorage.getInstance().getReference();
+
 
 
         Query query = firebaseDatabase.child("Company").orderByChild("email").equalTo(company_email);

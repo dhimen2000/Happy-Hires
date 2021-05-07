@@ -38,14 +38,8 @@ public class Job_Adapter extends RecyclerView.Adapter<Job_Adapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Job_Model ld = joblist.get(position);
-//        holder.companyemail.setText(ld.getCompanyemail());
         holder.companyname.setText(ld.getCompanyname());
         holder.jobtitle.setText(ld.getJobtitle());
-//        holder.requirements.setText(ld.getRequirements());
-//        holder.percentagecriteria.setText(ld.getPercentagecriteria());
-//        holder.salaryrange.setText(ld.getSalaryrange());
-//        holder.joblastdate.setText(ld.getJoblastdate());
-//        holder.jobattachmenturl.setText(ld.getJobattachmenturl());
 
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,28 +60,17 @@ public class Job_Adapter extends RecyclerView.Adapter<Job_Adapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView companyname;
-//        private TextView companyemail;
         private TextView jobtitle;
         private LinearLayout linearLayout;
 
-//        private TextView requirements;
-//        private TextView percentagecriteria;
-//        private TextView salaryrange;
-//        private TextView joblastdate;
-//        private Button jobattachmenturl;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-//            this.companyemail=(TextView) itemView.findViewById(R.id.job_company_name);
+
             this.companyname =(TextView) itemView.findViewById(R.id.job_company_name);
             this.jobtitle =(TextView) itemView.findViewById(R.id.job_title);
-//            this.requirements=(TextView) itemView.findViewById(R.id.requirements);
-//            this.percentagecriteria =(TextView) itemView.findViewById(R.id.percentagecriteria);
-//            this. salaryrange=(TextView) itemView.findViewById(R.id.salaryrange);
-//            this.joblastdate =(TextView) itemView.findViewById(R.id.joblastdate);
-//            this. jobattachmenturl=(Button) itemView.findViewById(R.id.jobattachmenturl);
             this.linearLayout=(LinearLayout)itemView.findViewById(R.id.showjobdata);
 
 

@@ -29,11 +29,11 @@ public class Register_Adapter extends RecyclerView.Adapter<Register_Adapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Register_Model ld=register_modelList.get(position);
-        holder.textView1.setText(ld.getName());
-        holder.textView2.setText(ld.getEmail());
-        holder.textView3.setText(ld.getAddress());
-        holder.textView4.setText(ld.getWebsite());
-        holder.textView5.setText(ld.getNumber());
+//        holder.textView1.setText(ld.getName());
+//        holder.textView2.setText(ld.getEmail());
+//        holder.textView3.setText(ld.getAddress());
+//        holder.textView4.setText(ld.getWebsite());
+//        holder.textView5.setText(ld.getNumber());
 
     }
 
@@ -52,11 +52,11 @@ public class Register_Adapter extends RecyclerView.Adapter<Register_Adapter.View
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.textView1 =(TextView) itemView.findViewById(R.id.profile_company_name);
-            this.textView2 =(TextView) itemView.findViewById(R.id.profile_email);
-            this.textView3 =(TextView) itemView.findViewById(R.id.profile_address);
-            this.textView4 =(TextView) itemView.findViewById(R.id.profile_website);
-            this.textView5 =(TextView) itemView.findViewById(R.id.profile_number);
+//            this.textView1 =(TextView) itemView.findViewById(R.id.profile_company_name);
+//            this.textView2 =(TextView) itemView.findViewById(R.id.profile_email);
+//            this.textView3 =(TextView) itemView.findViewById(R.id.profile_address);
+//            this.textView4 =(TextView) itemView.findViewById(R.id.profile_website);
+//            this.textView5 =(TextView) itemView.findViewById(R.id.profile_number);
         }
     }
 }

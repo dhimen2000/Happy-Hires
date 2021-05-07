@@ -1,97 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="15dp">
+    android:orientation="vertical">
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#ecf0f1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/login_bg">
+    </LinearLayout>
 
     <TextView
+        android:layout_marginTop="-130dp"
+        android:layout_marginBottom="85dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Jobs"
-        android:textSize="20dp"
-        android:textAlignment="center">
+        android:text="Add Job"
+        android:gravity="center_horizontal"
+        android:textSize="40dp"
+        android:textStyle="bold|italic"
+        android:fontFamily="Poppins"
+        android:textColor="@color/white">
     </TextView>
 
-    <EditText
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Company Email"
+            android:textSize="18sp"
+            android:drawableLeft="@drawable/ic_email"
+            android:drawablePadding="10dp"/>
+        <EditText
+
         android:id="@+id/companyemail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Company Email"
-        android:textSize="20dp">
+        android:layout_height="70dp"
+        android:layout_marginLeft="25dp">
     </EditText>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Company Name"
+            android:textSize="18sp"
+            android:drawableLeft="@drawable/ic_profile"
+            android:drawablePadding="10dp"/>
     <EditText
         android:id="@+id/companyname"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Company name"
-        android:textSize="20dp">
+        android:layout_height="70dp"
+        android:layout_marginLeft="25dp">
+
     </EditText>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Job Title"
+            android:textSize="18sp"
+            android:drawableLeft="@drawable/ic_title"
+            android:drawablePadding="10dp"/>
     <EditText
         android:id="@+id/jobtitle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Job Title"
-        android:textSize="20dp">
+        android:layout_height="70dp"
+        android:layout_marginLeft="25dp">
     </EditText>
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Job Discription"
+            android:textSize="18sp"
+            android:drawableLeft="@drawable/ic_notes"
+            android:drawablePadding="10dp"/>
     <EditText
         android:id="@+id/requirements"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Job Discription"
-        android:textSize="20dp">
+        android:layout_height="70dp"
+        android:layout_marginLeft="25dp">
     </EditText>
 
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Percentage Criteria"
+            android:textSize="18sp"
+            android:drawableLeft="@drawable/ic_grades"
+            android:drawablePadding="10dp"/>
     <EditText
         android:id="@+id/percentagecriteria"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="percentagecriteria"
-        android:textSize="20dp">
+        android:layout_height="70dp"
+        android:layout_marginLeft="25dp">
     </EditText>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salary Range"
+            android:textSize="18sp"
+            android:drawableLeft="@drawable/ic_salary"
+            android:drawablePadding="10dp"/>
     <EditText
         android:id="@+id/salaryrange"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Salary Range"
-        android:textSize="20dp">
+        android:layout_height="70dp"
+        android:layout_marginLeft="25dp">
     </EditText>
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Job Last Date"
+            android:textSize="18sp"
+            android:drawableLeft="@drawable/ic_date"
+            android:drawablePadding="10dp"/>
     <EditText
 
         android:id="@+id/joblastdate"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="joblastdate"
-        android:textSize="20dp">
+        android:layout_height="70dp"
+        android:layout_marginLeft="25dp">
     </EditText>
       <Button
           android:layout_marginTop="10dp"
         android:id="@+id/jobattachmenturl"
-        android:text="Attachement"
+        android:text=" Add Attachement"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="40dp">
 
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
             android:text="SAVE"
             android:textColor="#ffffff"
             android:textSize="20dp"
@@ -102,7 +158,6 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
             android:text="Clear"
             android:textColor="#ffffff"
             android:textSize="20dp"
@@ -112,4 +167,6 @@
 
     </LinearLayout>
 
-</LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

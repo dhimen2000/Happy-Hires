@@ -15,12 +15,12 @@
         android:layout_marginRight="20sp"
         app:cardCornerRadius="15dp"
         android:layout_below="@+id/relativelogo"
-        app:cardBackgroundColor="@color/color_white">
+        app:cardBackgroundColor="@color/white">
     <RatingBar
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
+        android:layout_marginLeft="95dp"
         android:numStars="5"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,16 +37,18 @@
         android:hint="Please Write Feedback"
         android:layout_gravity="center"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
     </androidx.cardview.widget.CardView>
 
     <Button
+        android:background="@drawable/login_btn"
         android:id="@+id/send_feedback"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Send Feedback"/>
+        android:text="Send Feedback"
+        android:drawableRight="@drawable/arrow_forward24"/>
 
 
 

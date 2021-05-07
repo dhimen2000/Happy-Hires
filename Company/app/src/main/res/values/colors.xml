@@ -1,36 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_300">#364DCD</color>
-    <color name="purple_200">#A227B0</color>
-    <color name="purple_500">#3F51B5</color>
+    <color name="colorPrimary">#4CA771</color>
+    <color name="colorPrimaryDark">#009170</color>
+    <color name="colorAccent">@color/white</color>
+
+
+
+    <!-- Status bar color. -->
+    <color name="colorLogo">#723056</color>
+    <color name="grayBg">#f2f4f7</color>
+    <color name="grayDark">#cacaca</color>
+    <color name="grayLight">#f9f9f9</color>
+    <color name="white">#FFFFFF</color>
+
+
+    <color name="grayTxt">#90a4ae</color>
+    <color name="redTxt">#D32F2F</color>
+    <color name="blackTxt">#313131</color>
+    <color name="blackTransparent">#50000000</color>
+
+
+    <color name="purchase">#66bb6a</color>
+    <color name="warm">#ffc000</color>
+    <color name="hot">#ff7e00</color>
+    <color name="cold">#26c6da</color>
+
+    <color name="sep_line">#d8dde1</color>
+    <color name="light_grey">#F0F0F0</color>
+    <color name="darkTrans">#6f585858</color>
+    <color name="lightTrans">#32313131</color>
+    <color name="Green">#26b1a4</color>
+    <color name="Black">#313131</color>
+    <color name="Grey">#90a4ae</color>
+    <color name="GreyBG">#f2f4f7</color>
+    <color name="White">#FFFFFF</color>
+    <color name="black">#FF000000</color>-->
+
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="colorPrimary">#222f3f</color>
-    <color name="colorPrimaryDark">#18222E</color>
-    <color name="colorAccent">#18222E</color>
-    <color name="labelcolor">#53a175</color>
-    <color name="textcolor">#156BBF</color>
-    <color name="White">#C627B0B0</color>
-    <color name="headtextcolor">#919191</color>
-    <color name="linecolor">#131313</color>
-    <color name="Edittextcolor">#3b3b3b</color>
-    <color name="homepagetextcolor">#2f4269</color>
-    <color name="formheadtextcolor">#929497</color>
-    <color name="formedittextcolor">#57585a</color>
-    <color name="bottomsheettextcolor">#3f3f41</color>
-    <color name="bootomsheetlinecolor">#bbbdbf</color>
-    <color name="redcolor">#ed1b23</color>
-    <color name="shadowColor">#10CCCCCC</color>
-    <color name="green_400">#8092F4</color>
-    <color name="green_500">#4CAF50</color>
-    <color name="dialogblue">#028fd6</color>
-    <color name="dialoggray">#ededed</color>
-    <color name="color_white">#ffffff</color>
-    <color name="color_black">#000000</color>
-    <color name="Dark_blue">#473FB5</color>
-    <color name="light_blue">#03B0F4</color>
-    <color name="yellow">#FFEB3B</color>
+
+    <color name="Start">#C0E6BA</color>
+    <color name="End">#4CA771</color>
+
+    <color name="linecolor">#c2c1c1</color>
+    <color name="introduction">#303030</color>
+    <color name="Login_Bg">#C2E7C9</color>
+    <color name="main">#2DBB54</color>
 </resources>

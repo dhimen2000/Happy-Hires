@@ -20,17 +20,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/company_profile_image" />
+            android:src="@drawable/job" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/circular_person"-->
-<!--            android:layout_width="50dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:gravity="center"-->
-<!--            android:text="s"-->
-<!--            android:textSize="30dp"-->
-
-<!--            />-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -85,17 +76,6 @@
 
 
 
-<!--                <EditText-->
-<!--                    android:id="@+id/std_name"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:hint="Name"-->
-<!--                    android:textAlignment="center"-->
-<!--                    android:textSize="25dp"-->
-<!--                    android:layout_marginTop="30dp"-->
-<!--                    android:layout_below="@+id/Profile_profilepic">-->
-<!--                </EditText>-->
-
                 <EditText
                     android:id="@+id/std_dob"
                     android:layout_width="match_parent"
@@ -117,16 +97,7 @@
                     android:layout_below="@+id/Profile_Dob">
                 </EditText>
 
-<!--                <EditText-->
-<!--                    android:id="@+id/std_number"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:hint="Number"-->
-<!--                    android:textAlignment="center"-->
-<!--                    android:textSize="25dp"-->
-<!--                    android:inputType="number"-->
-<!--                    android:layout_below="@+id/Profile_Gender">-->
-<!--                </EditText>-->
+               
 
                 <EditText
                     android:id="@+id/std_address"

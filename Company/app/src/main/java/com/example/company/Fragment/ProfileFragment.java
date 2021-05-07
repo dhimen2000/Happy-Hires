@@ -3,6 +3,7 @@ package com.example.company.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,17 +11,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.example.company.R;
 import com.example.company.Model.Register_Model;
 import com.example.company.Activity.View_Attachment_Company;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -33,7 +37,12 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class ProfileFragment extends Fragment {
 Button Edit;
+
+    Uri EditImageFilepathUri;
+    Uri EditImageDownloaduri;
+    Uri ImageDownloadUri;
     FirebaseAuth firebaseAuth;
+
     StorageReference storageReference;
     DatabaseReference firebaseDatabase;
     SharedPreferences sharedPreferences;
@@ -54,7 +63,7 @@ String Email,key,password,imgurl,pdfurl, name,email,number,address,website;
 
         firebaseDatabase = FirebaseDatabase.getInstance().getReference();
         Edit = root.findViewById(R.id.edit_profile_company);
-        profileimage=root.findViewById(R.id.profile_image);
+        profileimage= (CircleImageView) root.findViewById(R.id.profile_image);
         Edit_profile_company_email = root.findViewById(R.id.edit_profile_company_email);
         Edit_profile_company_name = root.findViewById(R.id.edit_profile_company_name);
         Edit_profile_company_number = root.findViewById(R.id.edit_profile_company_number);
@@ -84,9 +93,10 @@ String Email,key,password,imgurl,pdfurl, name,email,number,address,website;
 
                         key = registerModel.getId();
                         password = registerModel.getPassword();
-                        imgurl = registerModel.getImgurl();
-                        //Glide.with(context).load(registerModel.getImgurl()).into(profileimage);
+
+                        Glide.with(getActivity()).load(registerModel.getImgurl()).into(profileimage);
                         pdfurl = registerModel.getPdfurl();
+
                         edit_profile_company_name=registerModel.getName();
                         Edit_profile_company_name.setText(edit_profile_company_name);
                         edit_profile_company_email=registerModel.getEmail();
@@ -122,6 +132,17 @@ String Email,key,password,imgurl,pdfurl, name,email,number,address,website;
             @Override
             public void onClick(View v) {
 
+                Uri finalimageurl;
+                if (EditImageDownloaduri != null)
+                {
+                    finalimageurl = Uri.parse(EditImageDownloaduri.toString());
+                    Log.d("URI1", EditImageDownloaduri.toString());
+                }
+                else
+                {
+                    finalimageurl = Uri.parse(ImageDownloadUri.toString());
+                }
+
                 email = Edit_profile_company_email.getText().toString();
                 name= Edit_profile_company_name.getText().toString();
                 number = Edit_profile_company_number.getText().toString();
@@ -129,7 +150,7 @@ String Email,key,password,imgurl,pdfurl, name,email,number,address,website;
                 website = Edit_profile_company_city.getText().toString();
 
 
-                Register_Model registerModel = new Register_Model(name,number,email,address,website,password,key,imgurl,pdfurl);
+                Register_Model registerModel = new Register_Model(name,number,email,address,website,password,key,finalimageurl.toString(),pdfurl);
 
                 firebaseDatabase.child("Company").child(key).setValue(registerModel);
                 Toast.makeText(getActivity(), "Update Successfully", Toast.LENGTH_SHORT).show();

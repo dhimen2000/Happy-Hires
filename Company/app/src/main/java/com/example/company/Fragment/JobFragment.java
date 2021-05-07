@@ -53,13 +53,13 @@ FloatingActionButton addjobs;
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-//
-//        //Assign activity this to progress dialog.
-//        progressDialog = new ProgressDialog(getActivity());
-//        // Setting up message in Progress dialog.
-//        progressDialog.setMessage("Loading Data....");
-//        // Showing progress dialog.
-//        progressDialog.show();
+
+        //Assign activity this to progress dialog.
+        progressDialog = new ProgressDialog(getActivity());
+        // Setting up message in Progress dialog.
+        progressDialog.setMessage("Loading Data....");
+        // Showing progress dialog.
+        progressDialog.show();
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
@@ -78,14 +78,14 @@ FloatingActionButton addjobs;
                     recyclerView.setAdapter(jobAdapter);
 
 
-                    // Hiding the progress dialog.
-                   // progressDialog.dismiss();
+                     //Hiding the progress dialog.
+                    progressDialog.dismiss();
                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Hiding the progress dialog.
-               // progressDialog.dismiss();
+                 //Hiding the progress dialog.
+                progressDialog.dismiss();
             }
         });
 

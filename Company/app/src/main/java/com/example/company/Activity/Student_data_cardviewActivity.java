@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.example.company.Model.Student_List_Model;
 import com.example.company.R;
 import com.google.firebase.database.DataSnapshot;
@@ -109,10 +110,7 @@ public class Student_data_cardviewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_data_cardview);
-        requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
-        getSupportActionBar().hide(); // hide the title bar
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
+
         //Glide.with(context).load(ld.getImageUrl()).into(holder.ImageUrl);
         profileimage=findViewById(R.id.Profile_profilepic);
         name=findViewById(R.id.std_name);
@@ -170,10 +168,9 @@ public class Student_data_cardviewActivity extends AppCompatActivity {
                        Dob=model.getDob();
                        Gender=model.getGender();
                        Address=model.getAddress();
-                       //Email=model.getEmail();
                        Number=model.getNumber();
-                       ImageUrl=model.getImageUrl();
-                        //Glide.with(context).load(getImageUrl()).into(ImageUrl);
+                       //ImageUrl=model.getImageUrl();
+                        Glide.with(getApplication()).load(model.getImageUrl()).into(profileimage);
                         S_School=model.getS_School();
                         S_Board=model.getS_Board();
                         S_Percentage=model.getS_Percentage();

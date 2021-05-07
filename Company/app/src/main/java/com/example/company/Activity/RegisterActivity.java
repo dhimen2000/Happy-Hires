@@ -16,6 +16,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,6 +28,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -40,6 +42,8 @@ import java.util.regex.Pattern;
 public class RegisterActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     DatabaseReference firebaseDatabase;
+    ImageView selectimage;
+    TextView  loginpage;
     EditText name_register, number_register, email_register, password_register, address_register, website_register, confirm_password_register;
     ImageView imageView;
     Button btnregister;
@@ -63,14 +67,14 @@ public class RegisterActivity extends AppCompatActivity {
                     "(?=\\S+$)" +           //no white spaces
                     ".{4,}" +               //at least 4 characters
                     "$");
-    // Folder path for Firebase Storage.
-    String Storage_Path = "All_Image_Uploads/";
-
-    // Root Database Name for Firebase Database.
-    String Database_Path = "All_Image_Uploads_Database";
+//    // Folder path for Firebase Storage.
+//    String Storage_Path = "All_Image_Uploads/";
+//
+//    // Root Database Name for Firebase Database.
+//    String Database_Path = "All_Image_Uploads_Database";
 
     // Creating button.
-    Button ChooseButton, UploadButton;
+    Button ChooseButton;
     Button pdf;
 
     // Creating EditText.
@@ -80,19 +84,40 @@ public class RegisterActivity extends AppCompatActivity {
     ImageView SelectImage;
 
     // Creating URI.
-    Uri FilePathUri;
-    Uri imageuri1;
-    String Storage_path = "All_Pdf_Uploads/";
-    StorageReference filepath;
-    String messagePushID;
+//    Uri FilePathUri;
+//    Uri imageuri1;
+//    String Storage_path = "All_Pdf_Uploads/";
+//    StorageReference filepath;
+//    String messagePushID;
     // Creating StorageReference and DatabaseReference object.
     StorageReference storageReference;
 
 
     // Image request code for onActivityResult() .
+//    int Image_Request_Code = 7;
+//    int pdf_code = 1;
+//    int resultCode1 = 1;
+
+    //For Image
+    // Folder path for Firebase Storage.
+    String Image_Storage_Path = "All_Image_Uploads/";
+    // Image request code for onActivityResult().
     int Image_Request_Code = 7;
-    int pdf_code = 1;
-    int resultCode1 = 1;
+    // Creating URI.
+    Uri ImageFilepathUri;
+    Uri ImageDownloadUri;
+
+    //For Resume & Pdf
+    // Folder path for Firebase Storage.
+    String Pdf_Storage_Path = "All_Pdf_Uploads/";
+    // PDF request code for onActivityResult() .
+    int Resume_Request_Code = 1;
+    int Pdf_Request_Code = 2;
+    // Creating URI.
+
+    Uri PdfFilepathUri;
+    Uri PdfDownloadUri;
+
 
 
     ProgressDialog progressDialog;
@@ -106,7 +131,9 @@ public class RegisterActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.activity_register);
+
         btnregister = findViewById(R.id.Register_submit);
+
         name_register = findViewById(R.id.Register_name);
         number_register = findViewById(R.id.Register_number);
         email_register = findViewById(R.id.Register_email);
@@ -115,377 +142,182 @@ public class RegisterActivity extends AppCompatActivity {
         password_register = findViewById(R.id.Register_password);
         confirm_password_register = findViewById(R.id.Register_confirmpassword);
         SelectImage = findViewById(R.id.imageViewpic);
-        ChooseButton = findViewById(R.id.choose_image);
-        //UploadButton = findViewById(R.id.upload_image);
+        selectimage = findViewById(R.id.choose_image);
+        loginpage=findViewById(R.id.txtloginsignup);
         pdf = findViewById(R.id.upload_pdf);
 
+
         firebaseAuth = FirebaseAuth.getInstance();
-        firebaseDatabase = FirebaseDatabase.getInstance().getReference();
         storageReference = FirebaseStorage.getInstance().getReference();
+        firebaseDatabase = FirebaseDatabase.getInstance().getReference();
+
 
         progressDialog = new ProgressDialog(RegisterActivity.this);
         // dialog =new ProgressDialog(RegisterActivity.this);
+
+
+        selectimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Selectimage();
+            }
+        });
+
         pdf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent galleryIntent = new Intent();
-                galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
-
-                // We will be redirected to choose pdf
-                galleryIntent.setType("application/pdf");
-                startActivityForResult(galleryIntent, pdf_code);
-
+                Selectpdf();
             }
         });
 
-        ChooseButton.setOnClickListener(new View.OnClickListener() {
+
+
+        loginpage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Creating intent.
-                Intent intent = new Intent();
-
-                // Setting intent type as image to select image from phone storage.
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Please Select Image"), Image_Request_Code);
-
-
+                Intent login=new Intent(RegisterActivity.this,LoginActivity.class);
+                startActivity(login);
             }
         });
-
 
         btnregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (email_register.getText().toString().isEmpty()) {
-//                    Toast.makeText(getApplicationContext(), "enter email address", Toast.LENGTH_SHORT).show();
-//                }
-
-
-
-
-
 
                 if (validateUsername()| !validateEmail()| !validatePassword()| !validateConfirmPassword()| !validateImage()| !validateNumber()| !validateAddress()) {
+                            return;
+                        }
+
+                        name = name_register.getText().toString();
+                        number = number_register.getText().toString();
+                        email =email_register.getText().toString();
+                        address=address_register.getText().toString();
+                        website=website_register.getText().toString();
+                        password=password_register.getText().toString();
+                        confirm_password=confirm_password_register.getText().toString();
+
+                        id = firebaseDatabase.push().getKey();
+                        Register_Model registerModel= new Register_Model(name,number,email,address,website,password,id,ImageDownloadUri.toString(),PdfDownloadUri.toString());
+                        firebaseDatabase.child("Company").child(id).setValue(registerModel);
+                        Toast.makeText(RegisterActivity.this, "success", Toast.LENGTH_SHORT).show();
 
 
-//                    String input = "Name :" + name_register.getText().toString();
-//                    input += "\n";
-//                    input += "Email: " + email_register.getText().toString();
-//                    input += "\n";
-//                    input += "Image " + SelectImage.toString();
-//                    input += "\n";
-//                    input += "Number: " + number_register.getText().toString();
-//                    input += "\n";
-//                    input += "Address: " + address_register.getText().toString();
-//                    input += "\n";
-//                    input += "Password: " + password_register.getText().toString();
-//                    input += "\n";
-//                    input += "Password: " + confirm_password_register.getText().toString();
-//                    Toast.makeText(getApplicationContext(), input, Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                else {
-//                    if (email_register.getText().toString().trim().matches(emailPattern)) {
-//                        Toast.makeText(getApplicationContext(), "valid email address", Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        Toast.makeText(getApplicationContext(), "Invalid email address", Toast.LENGTH_SHORT).show();
-//                    }
-                    UploadImageFileToFirebaseStorage();
-                }
-            }
-            private boolean validateImage() {
-                if (imageuri1 == null) {
-                    Toast.makeText(RegisterActivity.this, "Please Select Image", Toast.LENGTH_SHORT).show();
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-            private boolean validateUsername() {
-                name = name_register.getText().toString().trim();
-                if (name.isEmpty()) {
-                    name_register.setError("Field can't be empty");
-                    return false;
-                } else if (name.length() > 15) {
-                    name_register.setError("Username too long");
-                    return false;
-                } else {
-                    name_register.setError(null);
-                    return true;
-                }
+                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                        startActivity(intent);
             }
 
-            private boolean validateEmail() {
-                email = email_register.getText().toString().trim();
-                if (email.isEmpty()) {
-                    email_register.setError("Field can't be empty");
-                    return false;
-                } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                    email_register.setError("Please enter a valid email address");
-                    return false;
-                } else {
-                    email_register.setError(null);
-                    return true;
-                }
-            }
-            private boolean validatePassword() {
-                password = password_register.getText().toString().trim();
-                if (password.isEmpty()) {
-                    password_register.setError("Field can't be empty");
-                    return false;
-                } else if (!PASSWORD_PATTERN.matcher(password).matches()) {
-                    password_register.setError("Password too weak");
-                    return false;
-                } else {
-                    password_register.setError(null);
-                    return true;
-                }
-            }
-            private boolean validateConfirmPassword() {
-                password = password_register.getText().toString().trim();
-                confirm_password= confirm_password_register.getText().toString().trim();
-                if(!password.equals(confirm_password)) {
-                    Toast.makeText(RegisterActivity.this, "Password Not matching", Toast.LENGTH_SHORT).show();
-                    return false;
-                }
-                else {
-                    password_register.setError(null);
-                    return true;
-                }
-            }
-            private boolean validateNumber() {
-                number = number_register.getText().toString().trim();
-                if (number.isEmpty()) {
-                    number_register.setError("Field can't be empty");
-                    return false;
-                } else if (number.length() > 10) {
-                    number_register.setError("Number too long");
-                    return false;
-                } else if (number.length() < 10) {
-                    number_register.setError("Number too Short");
-                    return false;
-                } else {
-                    number_register.setError(null);
-                    return true;
-                }
-            }
-
-            private boolean validateAddress() {
-                address = address_register.getText().toString().trim();
-                if (address.isEmpty()) {
-                    address_register.setError("Field can't be empty");
-                    return false;
-                } else if (address.length() > 50) {
-                    address_register.setError("Address too long");
-                    return false;
-                } else {
-                    address_register.setError(null);
-                    return true;
-                }
-            }
-//            private boolean validateAddress() {
-//            }
-//
-//            private boolean validateNumber() {
-//            }
-//
-//            private boolean validateImage() {
-//            }
-//
-//            private boolean validateConfirmPassword() {
-//            }
-//
-//            private boolean validatePassword() {
-//            }
-//
-//            private boolean validateEmail() {
-//            }
-//
-//            private boolean validateUsername() {
-//            }
         });
 
     }
 
 
-    ProgressDialog dialog;
+    //For UploadImage
+    private void Selectimage() {
+        // Creating intent.
+        Intent intent = new Intent();
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+        // Setting intent type as image to select image from phone storage.
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Please Select Image"), Image_Request_Code);
+    }
 
+    private void Selectpdf() {
+        // Creating intent.
+        Intent intent = new Intent();
 
-        if (requestCode == Image_Request_Code && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            FilePathUri = data.getData();
+        // Setting intent type as image to select image from phone storage.
+        intent.setType("application/pdf");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Please Select Pdf"), Pdf_Request_Code);
+    }
 
-            try {
-
-                // Getting selected image into Bitmap.
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), FilePathUri);
-
-                // Setting up bitmap selected image into ImageView.
-                SelectImage.setImageBitmap(bitmap);
-
-                // After selecting image change choose button above text.
-                ChooseButton.setText("Image Selected");
-
-            }
-            catch (IOException e) {
-
-                e.printStackTrace();
-            }
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    //chooseimage
+    if (requestCode == Image_Request_Code && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        ImageFilepathUri = data.getData();
+        try {
+            // Getting selected image into Bitmap.
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), ImageFilepathUri);
+            // Setting up bitmap selected image into ImageView.
+            SelectImage.setImageBitmap(bitmap);
+            // After selecting image print Toast.
+            Toast.makeText(this, "Image Selected", Toast.LENGTH_SHORT).show();
+            // After selecting image change choose button above text.
+            //ChooseImage.setText("Image Selected");
+            UploadImage();
+        } catch (IOException e) {
+            Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
         }
+    }
 
-        else
+    else if (requestCode == Pdf_Request_Code && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        PdfFilepathUri = data.getData();
+        if (data.getData() != null) {
+            //uploading the file
+            Toast.makeText(this, "File 2 Selected", Toast.LENGTH_SHORT).show();
+            PdfUpload();
+        } else {
+            Toast.makeText(this, "No file chosen", Toast.LENGTH_SHORT).show();
+        }
+    }
+    else {
+        try {
+            Toast.makeText(this, "Please Select File", Toast.LENGTH_SHORT).show();
+        }catch(Exception e)
         {
-            imageuri1 = data.getData();
-
-            try {
-
-                // Getting selected image into Bitmap.
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageuri1);
-
-                // Setting up bitmap selected image into ImageView.
-                SelectImage.setImageBitmap(bitmap);
-
-                // After selecting image change choose button above text.
-                ChooseButton.setText("Image Selected");
-
-            }
-            catch (IOException e) {
-
-                e.printStackTrace();
-            }
+            Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-
     }
+}
 
-    // Creating Method to get the selected image file Extension from File Path URI.
-    public String GetFileExtension(Uri uri) {
-
+    private String GetFileExtension(Uri uri) {
         ContentResolver contentResolver = getContentResolver();
-
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
-
         // Returning the file Extension.
-        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri)) ;
-
+        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
     }
 
-    // Creating UploadImageFileToFirebaseStorage method to upload image on storage.
-    public void UploadImageFileToFirebaseStorage() {
-
-        // Checking whether FilePathUri Is empty or not.
-        if (FilePathUri != null) {
+    public void UploadImage()
+    {
+        if (ImageFilepathUri != null) {
 
             // Setting progressDialog Title.
             progressDialog.setTitle("Image is Uploading...");
 
             // Showing progressDialog.
             progressDialog.show();
+            progressDialog.setCanceledOnTouchOutside(false);
 
             // Creating second StorageReference.
-            StorageReference storageReference2nd = storageReference.child(Storage_Path + System.currentTimeMillis() + "." + GetFileExtension(FilePathUri));
-            final String timestamp = "" + System.currentTimeMillis();
-            StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-            messagePushID = timestamp;
-            filepath = storageReference.child(Storage_path + messagePushID + "." + "pdf");
-            filepath.putFile(imageuri1).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(getApplicationContext(), "PDF Uploaded Successfully ", Toast.LENGTH_LONG).show();
-
-                    filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            pdfurl = uri.toString();
-
-
-                        }
-                    });
-
-
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-
-                }
-            });
+            StorageReference storageReference1 = storageReference.child(Image_Storage_Path + System.currentTimeMillis() + "." + GetFileExtension(ImageFilepathUri));
 
             // Adding addOnSuccessListener to second StorageReference.
-            storageReference2nd.putFile(FilePathUri)
+            storageReference1.putFile(ImageFilepathUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                            storageReference2nd.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            storageReference1.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
 
+
+                                    ImageDownloadUri = uri;
+
                                     progressDialog.dismiss();
 
-
+                                    // Showing toast message after done uploading.
                                     Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
 
-                                    imgurl = uri.toString();
-                                    Log.d("img",imgurl);
+//                                    @SuppressWarnings("VisibleForTests")
+//                                    RegisterModel model = new RegisterModel(Name, Dob, Gender, Number, Address, ImageDownloadUri.toString());
+                                    // Adding image upload id s child element into databaseReference.
+//                                    firebaseDatabase.child("User").push().setValue(model);
 
                                 }
                             });
-
-
-
-                            name = name_register.getText().toString();
-                            number = number_register.getText().toString();
-                            email =email_register.getText().toString();
-                            address=address_register.getText().toString();
-                            website=website_register.getText().toString();
-                            password=password_register.getText().toString();
-                            confirm_password=confirm_password_register.getText().toString();
-
-//                            if (validateUsername()| !validateEmail()| !validatePassword()| !validateConfirmPassword()| !validateImage()| !validateNumber()| !validateAddress()) {
-//                                return;
-//                            }
-//                            String input = "Name :" + name_register.getText().toString();
-//                            input += "\n";
-//                            input += "Email: " + email_register.getText().toString();
-//                            input += "\n";
-//                            input += "Image " + SelectImage.toString();
-//                            input += "\n";
-//                            input += "Number: " + number_register.getText().toString();
-//                            input += "\n";
-//                            input += "Address: " + address_register.getText().toString();
-//                            input += "\n";
-//                            input += "Password: " + password_register.getText().toString();
-//                            input += "\n";
-//                            input += "Password: " + confirm_password_register.getText().toString();
-//                            Toast.makeText(getApplicationContext(), input, Toast.LENGTH_SHORT).show();
-
-                            firebaseAuth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                                @Override
-                                public void onSuccess(AuthResult authResult) {
-
-
-                                    id = firebaseDatabase.push().getKey();
-                                    Register_Model registerModel= new Register_Model(name,number,email,address,website,password,id,imgurl,pdfurl);
-                                    firebaseDatabase.child("Company").child(id).setValue(registerModel);
-                                    Toast.makeText(RegisterActivity.this, "success", Toast.LENGTH_SHORT).show();
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(RegisterActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-                            });
-
-
-                            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                            startActivity(intent);
                         }
-
-
                     })
                     // If something goes wrong .
                     .addOnFailureListener(new OnFailureListener() {
@@ -499,26 +331,162 @@ public class RegisterActivity extends AppCompatActivity {
                             Toast.makeText(RegisterActivity.this, exception.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     })
-
                     // On progress change upload time.
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            //calculating progress percentage
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
 
-                            // Setting progressDialog Title.
-                            progressDialog.setTitle("Image is Uploading...");
-
+                            //displaying percentage in progress dialog
+                            progressDialog.setTitle("Uploading Image " + ((int) progress) + "%...");
                         }
                     });
+        } else {
+            Toast.makeText(RegisterActivity.this, "Please Select Image...", Toast.LENGTH_LONG).show();
         }
-        else {
-
-            Toast.makeText(RegisterActivity.this, "Please Select Image or Add Image Name", Toast.LENGTH_LONG).show();
-
-        }
-
     }
 
+    private void PdfUpload()
+    {
+        if ( PdfFilepathUri != null ) {
+            // Setting progressDialog Title.
+            progressDialog.setTitle("Pdf Uploading...");
 
+            // Showing progressDialog.
+            progressDialog.show();
+            progressDialog.setCanceledOnTouchOutside(false);
 
+            // Creating second StorageReference.
+            StorageReference storageReference1 = storageReference.child(Pdf_Storage_Path + System.currentTimeMillis() + "." + GetFileExtension(PdfFilepathUri));
+
+            // Adding addOnSuccessListener to second StorageReference.
+            storageReference1.putFile(PdfFilepathUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                            storageReference1.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    PdfDownloadUri = uri;
+                                    progressDialog.dismiss();
+                                    Toast.makeText(getApplicationContext(), "Pdf Uploaded Successfully ", Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    })
+                    // If something goes wrong .
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            Toast.makeText(RegisterActivity.this, exception.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    // On progress change upload time.
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            //calculating progress percentage
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+
+                            //displaying percentage in progress dialog
+                            progressDialog.setTitle("Uploading Pdf... " + ((int) progress) + "%...");
+                        }
+                    });
+        } else
+        {
+            Toast.makeText(RegisterActivity.this, "Please Select Resume...", Toast.LENGTH_LONG).show();
+        }
+    }
+    private boolean validateImage() {
+        if (ImageFilepathUri == null) {
+            Toast.makeText(RegisterActivity.this, "Please Select Image", Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            return true;
+        }
+    }
+    private boolean validateUsername() {
+        name = name_register.getText().toString().trim();
+        if (name.isEmpty()) {
+            name_register.setError("Field can't be empty");
+            return false;
+        } else if (name.length() > 50) {
+            name_register.setError("Username too long");
+            return false;
+        } else {
+            name_register.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateEmail() {
+        email = email_register.getText().toString().trim();
+        if (email.isEmpty()) {
+            email_register.setError("Field can't be empty");
+            return false;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            email_register.setError("Please enter a valid email address");
+            return false;
+        } else {
+            email_register.setError(null);
+            return true;
+        }
+    }
+    private boolean validatePassword() {
+        password = password_register.getText().toString().trim();
+        if (password.isEmpty()) {
+            password_register.setError("Field can't be empty");
+            return false;
+        } else if (!PASSWORD_PATTERN.matcher(password).matches()) {
+            password_register.setError("Password too weak");
+            return false;
+        } else {
+            password_register.setError(null);
+            return true;
+        }
+    }
+    private boolean validateConfirmPassword() {
+        password = password_register.getText().toString().trim();
+        confirm_password= confirm_password_register.getText().toString().trim();
+        if(!password.equals(confirm_password)) {
+            Toast.makeText(RegisterActivity.this, "Password Not matching", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else {
+            password_register.setError(null);
+            return true;
+        }
+    }
+    private boolean validateNumber() {
+        number = number_register.getText().toString().trim();
+        if (number.isEmpty()) {
+            number_register.setError("Field can't be empty");
+            return false;
+        } else if (number.length() > 10) {
+            number_register.setError("Number too long");
+            return false;
+        } else if (number.length() < 10) {
+            number_register.setError("Number too Short");
+            return false;
+        } else {
+            number_register.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateAddress() {
+        address = address_register.getText().toString().trim();
+        if (address.isEmpty()) {
+            address_register.setError("Field can't be empty");
+            return false;
+        } else if (address.length() > 200) {
+            address_register.setError("Address too long");
+            return false;
+        } else {
+            address_register.setError(null);
+            return true;
+        }
+    }
 }

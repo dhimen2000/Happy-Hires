@@ -36,11 +36,9 @@ public class Job_Applications_Adapter extends RecyclerView.Adapter<Job_Applicati
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Job_Applications_Model ld =jobApplicationsModels.get(position);
-        //holder.jusername.setText(ld.getStudentName());
         holder.email.setText(ld.getStudentEmail());
         holder.jobtitle.setText(ld.getJobTitle());
-        //holder.status.setText(ld.getStatus());
-        //Glide.with(context).load(ld.getImageurl1()).into(holder.ImageUrl);
+
 
 
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
@@ -67,19 +65,15 @@ public class Job_Applications_Adapter extends RecyclerView.Adapter<Job_Applicati
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        //TextView jusername;
         TextView email;
         TextView jobtitle;
-       // public ImageView ImageUrl;
         TextView status;
         LinearLayout linearLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            //jusername = itemView.findViewById(R.id.jusername);
             email=itemView.findViewById(R.id.reqemail);
             jobtitle=itemView.findViewById(R.id.reqjobtitle);
-            //this.ImageUrl=itemView.findViewById(R.id.std_imageurl1);
             linearLayout=itemView.findViewById(R.id.reqlinearlayout);
 
         }

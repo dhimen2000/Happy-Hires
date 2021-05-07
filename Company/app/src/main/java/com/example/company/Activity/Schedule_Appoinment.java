@@ -28,38 +28,36 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class Schedule_Appoinment extends AppCompatActivity {
+
+    SharedPreferences sharedPreferences;
+    DatabaseReference databaseReference;
 String companyname,companyemail,studentname,studentemail,jobtitle,place,time,date1,key,message;
 EditText Companyname,Companyemail,Studentname,Studentemail,Jobtitle,Place,Date,Time,Message;
 Button sechudleappoinment;
-    private Calendar calendar;
-    SharedPreferences sharedPreferences;
-    DatabaseReference databaseReference;
-
-    final Calendar myCalendar = Calendar.getInstance();
+private Calendar calendar;
+final Calendar myCalendar = Calendar.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
-        getSupportActionBar().hide(); // hide the title bar
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
+//        requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
+//        getSupportActionBar().hide(); // hide the title bar
+//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
+
         setContentView(R.layout.activity_schedule__appoinment);
-Companyname=findViewById(R.id.appcompanyname);
-Companyemail=findViewById(R.id.appcompanyemail);
-Studentname=findViewById(R.id.appstudentname);
-Studentemail=findViewById(R.id.appstudentemail);
-Jobtitle=findViewById(R.id.appjobtitle);
-Place=findViewById(R.id.appplace);
-Time=findViewById(R.id.apptime);
-Date=findViewById(R.id.appdate);
-Message=findViewById(R.id.appmessage);
 
-sechudleappoinment=findViewById(R.id.scheduleappo);
+        Companyname=findViewById(R.id.appcompanyname);
+        Companyemail=findViewById(R.id.appcompanyemail);
+        Studentname=findViewById(R.id.appstudentname);
+        Studentemail=findViewById(R.id.appstudentemail);
+        Jobtitle=findViewById(R.id.appjobtitle);
+        Place=findViewById(R.id.appplace);
+        Time=findViewById(R.id.apptime);
+        Date=findViewById(R.id.appdate);
+        Message=findViewById(R.id.appmessage);
+        sechudleappoinment=findViewById(R.id.scheduleappo);
 
- calendar = Calendar.getInstance();
-
-
-
+        calendar = Calendar.getInstance();
 
 
         sharedPreferences  = this.getApplicationContext().getSharedPreferences("MySharedPref",MODE_PRIVATE);
@@ -74,7 +72,7 @@ sechudleappoinment=findViewById(R.id.scheduleappo);
 
 
         Companyname.setText(companyname);
-       Companyemail.setText(companyemail);
+        Companyemail.setText(companyemail);
         Studentname.setText(studentname);
         Studentemail.setText(studentemail);
         Jobtitle.setText(jobtitle);
@@ -92,7 +90,7 @@ Time.setOnClickListener(new View.OnClickListener() {
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                 Time.setText( selectedHour + ":" + selectedMinute);
             }
-        }, hour, minute, true);//Yes 24 hour time
+        }, hour, minute, false);//Yes 24 hour time
         mTimePicker.setTitle("Select Time");
         mTimePicker.show();
 
@@ -148,14 +146,14 @@ Time.setOnClickListener(new View.OnClickListener() {
 
 
 
-
+               String onhold = "On-Hold";
                key = databaseReference.push().getKey();
-               Schedule_Appoinment_Model model = new Schedule_Appoinment_Model(companyname,companyemail,jobtitle,studentname,studentemail,place,time,date1,key,message);
+               Schedule_Appoinment_Model model = new Schedule_Appoinment_Model(companyname,companyemail,jobtitle,studentname,studentemail,place,time,date1,key,message,onhold);
                databaseReference.child("ScheduleAppoinment").child(key).setValue(model);
                Toast.makeText(getApplication(), "Update Successfully", Toast.LENGTH_SHORT).show();
 
-               //Intent intent= new Intent(Schedule_Appoinment.this, Accepted_reqFragment.class);
-               //startActivity(intent);
+//             Intent intent= new Intent(getApplication(), Accepted_reqFragment.class);
+//               startActivity(intent);
            }
        });
 
