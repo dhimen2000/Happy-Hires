@@ -130,6 +130,18 @@
             android:layout_below="@+id/Register_uploadpdf">
         </Button>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You Need To Verify Your Email First, \nTeam Happy Hires"
+            android:textColor="#007aff"
+            android:textStyle="bold|italic"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:fontFamily="Poppins"
+            android:layout_marginTop="100dp">
+        </TextView>
+
     </LinearLayout>
 
 

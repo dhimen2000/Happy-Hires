@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.example.admin.Model.Student_Model;
 import com.example.admin.R;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,43 +33,43 @@ public class StudentdataActivity extends AppCompatActivity {
     @BindView(R.id.Studentdata_profilepic)
     CircleImageView profileimage;
     @BindView(R.id.Studentdata_name)
-    EditText name;
+    TextInputLayout name;
     @BindView(R.id.Studentdata_Dob)
-    EditText dob;
+    TextInputLayout dob;
     @BindView(R.id.Studentdata_Gender)
-    EditText gender;
+    TextInputLayout gender;
     @BindView(R.id.Studentdata_number)
-    EditText number;
+    TextInputLayout number;
     @BindView(R.id.Studentdata_Address)
-    EditText address;
+    TextInputLayout address;
     @BindView(R.id.Studentdata_Email)
-    EditText email;
+    TextInputLayout email;
 
 
     @BindView(R.id.Studentdata_Secondary_School)
-    EditText secondary_school;
+    TextInputLayout secondary_school;
     @BindView(R.id.Studentdata_Secondary_Board)
-    EditText secondary_board;
+    TextInputLayout secondary_board;
     @BindView(R.id.Studentdata_Secondary_Percentage)
-    EditText secondary_percentage;
+    TextInputLayout secondary_percentage;
     @BindView(R.id.Studentdata_Secondary_Year)
-    EditText secondary_year;
+    TextInputLayout secondary_year;
 
     @BindView(R.id.Studentdata_HigherSecondary_School)
-    EditText highersecondary_school;
+    TextInputLayout highersecondary_school;
     @BindView(R.id.Studentdata_HigherSecondary_Board)
-    EditText highersecondary_board;
+    TextInputLayout highersecondary_board;
     @BindView(R.id.Studentdata_HigherSecondary_Percentage)
-    EditText highersecondary_percentage;
+    TextInputLayout highersecondary_percentage;
     @BindView(R.id.Studentdata_HigherSecondary_Year)
-    EditText highersecondary_year;
+    TextInputLayout highersecondary_year;
 
     @BindView(R.id.Studentdata_Graduation_College)
-    EditText graduation_college;
+    TextInputLayout graduation_college;
     @BindView(R.id.Studentdata_Graduation_Branch)
-    EditText graduation_branch;
+    TextInputLayout graduation_branch;
     @BindView(R.id.Studentdata_Graduation_Enrollmentno)
-    EditText graduation_enrollmentno;
+    TextInputLayout graduation_enrollmentno;
     @BindView(R.id.Studentdata_Graduation_Sem1)
     EditText graduation_sem1;
     @BindView(R.id.Studentdata_Graduation_Year1)
@@ -182,26 +183,26 @@ public class StudentdataActivity extends AppCompatActivity {
                         checkResume = model.getResumeUrl();
                         checkPdf = model.getPdfUrl();
                     }
-                    name.setText(Name);
-                    dob.setText(Dob);
-                    gender.setText(Gender);
-                    number.setText(Number);
-                    address.setText(Address);
-                    email.setText(Email);
+                    name.getEditText().setText(Name);
+                    dob.getEditText().setText(Dob);
+                    gender.getEditText().setText(Gender);
+                    number.getEditText().setText(Number);
+                    address.getEditText().setText(Address);
+                    email.getEditText().setText(Email);
 
-                    secondary_school.setText(Secondary_School);
-                    secondary_board.setText(Secondary_Board);
-                    secondary_percentage.setText(Secondary_Percentage);
-                    secondary_year.setText(Secondary_Year);
+                    secondary_school.getEditText().setText(Secondary_School);
+                    secondary_board.getEditText().setText(Secondary_Board);
+                    secondary_percentage.getEditText().setText(Secondary_Percentage);
+                    secondary_year.getEditText().setText(Secondary_Year);
 
-                    highersecondary_school.setText(HigherSecondary_School);
-                    highersecondary_board.setText(HigherSecondary_Board);
-                    highersecondary_percentage.setText(HigherSecondary_Percentage);
-                    highersecondary_year.setText(HigherSecondary_Year);
+                    highersecondary_school.getEditText().setText(HigherSecondary_School);
+                    highersecondary_board.getEditText().setText(HigherSecondary_Board);
+                    highersecondary_percentage.getEditText().setText(HigherSecondary_Percentage);
+                    highersecondary_year.getEditText().setText(HigherSecondary_Year);
 
-                    graduation_college.setText(Graduation_College);
-                    graduation_branch.setText(Graduation_Branch);
-                    graduation_enrollmentno.setText(Graduation_Enrollmentno);
+                    graduation_college.getEditText().setText(Graduation_College);
+                    graduation_branch.getEditText().setText(Graduation_Branch);
+                    graduation_enrollmentno.getEditText().setText(Graduation_Enrollmentno);
                     graduation_sem1.setText(Graduation_Sem1);
                     graduation_sem2.setText(Graduation_Sem2);
                     graduation_sem3.setText(Graduation_Sem3);

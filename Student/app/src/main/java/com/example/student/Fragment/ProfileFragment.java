@@ -30,6 +30,7 @@ import com.example.student.Model.RegisterModel;
 import com.example.student.Activity.ResumecheckActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -57,43 +58,43 @@ public class ProfileFragment extends Fragment {
     @BindView(R.id.Profile_profilebutton)
     ImageView profilebtn;
     @BindView(R.id.Profile_name)
-    EditText name;
+    TextInputLayout name;
     @BindView(R.id.Profile_Dob)
-    EditText dob;
+    TextInputLayout dob;
     @BindView(R.id.Profile_Gender)
-    EditText gender;
+    TextInputLayout gender;
     @BindView(R.id.Profile_number)
-    EditText number;
+    TextInputLayout number;
     @BindView(R.id.Profile_Address)
-    EditText address;
+    TextInputLayout address;
     @BindView(R.id.Profile_Email)
-    EditText email;
+    TextInputLayout email;
 
 
     @BindView(R.id.Profile_Secondary_School)
-    EditText secondary_school;
+    TextInputLayout secondary_school;
     @BindView(R.id.Profile_Secondary_Board)
-    EditText secondary_board;
+    TextInputLayout secondary_board;
     @BindView(R.id.Profile_Secondary_Percentage)
-    EditText secondary_percentage;
+    TextInputLayout secondary_percentage;
     @BindView(R.id.Profile_Secondary_Year)
-    EditText secondary_year;
+    TextInputLayout secondary_year;
 
     @BindView(R.id.Profile_HigherSecondary_School)
-    EditText highersecondary_school;
+    TextInputLayout highersecondary_school;
     @BindView(R.id.Profile_HigherSecondary_Board)
-    EditText highersecondary_board;
+    TextInputLayout highersecondary_board;
     @BindView(R.id.Profile_HigherSecondary_Percentage)
-    EditText highersecondary_percentage;
+    TextInputLayout highersecondary_percentage;
     @BindView(R.id.Profile_HigherSecondary_Year)
-    EditText highersecondary_year;
+    TextInputLayout highersecondary_year;
 
     @BindView(R.id.Profile_Graduation_College)
-    EditText graduation_college;
+    TextInputLayout graduation_college;
     @BindView(R.id.Profile_Graduation_Branch)
-    EditText graduation_branch;
+    TextInputLayout graduation_branch;
     @BindView(R.id.Profile_Graduation_Enrollmentno)
-    EditText graduation_enrollmentno;
+    TextInputLayout graduation_enrollmentno;
     @BindView(R.id.Profile_Graduation_Sem1)
     EditText graduation_sem1;
     @BindView(R.id.Profile_Graduation_Year1)
@@ -262,26 +263,26 @@ public class ProfileFragment extends Fragment {
 
 
                     }
-                    name.setText(Name);
-                    dob.setText(Dob);
-                    gender.setText(Gender);
-                    number.setText(Number);
-                    address.setText(Address);
-                    email.setText(Email);
+                    name.getEditText().setText(Name);
+                    dob.getEditText().setText(Dob);
+                    gender.getEditText().setText(Gender);
+                    number.getEditText().setText(Number);
+                    address.getEditText().setText(Address);
+                    email.getEditText().setText(Email);
 
-                    secondary_school.setText(Secondary_School);
-                    secondary_board.setText(Secondary_Board);
-                    secondary_percentage.setText(Secondary_Percentage);
-                    secondary_year.setText(Secondary_Year);
+                    secondary_school.getEditText().setText(Secondary_School);
+                    secondary_board.getEditText().setText(Secondary_Board);
+                    secondary_percentage.getEditText().setText(Secondary_Percentage);
+                    secondary_year.getEditText().setText(Secondary_Year);
 
-                    highersecondary_school.setText(HigherSecondary_School);
-                    highersecondary_board.setText(HigherSecondary_Board);
-                    highersecondary_percentage.setText(HigherSecondary_Percentage);
-                    highersecondary_year.setText(HigherSecondary_Year);
+                    highersecondary_school.getEditText().setText(HigherSecondary_School);
+                    highersecondary_board.getEditText().setText(HigherSecondary_Board);
+                    highersecondary_percentage.getEditText().setText(HigherSecondary_Percentage);
+                    highersecondary_year.getEditText().setText(HigherSecondary_Year);
 
-                    graduation_college.setText(Graduation_College);
-                    graduation_branch.setText(Graduation_Branch);
-                    graduation_enrollmentno.setText(Graduation_Enrollmentno);
+                    graduation_college.getEditText().setText(Graduation_College);
+                    graduation_branch.getEditText().setText(Graduation_Branch);
+                    graduation_enrollmentno.getEditText().setText(Graduation_Enrollmentno);
                     graduation_sem1.setText(Graduation_Sem1);
                     graduation_sem2.setText(Graduation_Sem2);
                     graduation_sem3.setText(Graduation_Sem3);
@@ -350,26 +351,26 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Edit_Name = name.getText().toString();
-                Edit_Dob = dob.getText().toString();
-                Edit_Gender = gender.getText().toString();
-                Edit_Number = number.getText().toString();
-                Edit_Address = address.getText().toString();
-                Edit_Email = email.getText().toString();
+                Edit_Name = name.getEditText().getText().toString();
+                Edit_Dob = dob.getEditText().getText().toString();
+                Edit_Gender = gender.getEditText().getText().toString();
+                Edit_Number = number.getEditText().getText().toString();
+                Edit_Address = address.getEditText().getText().toString();
+                Edit_Email = email.getEditText().getText().toString();
 
-                Edit_Secondary_School = secondary_school.getText().toString();
-                Edit_Secondary_Board = secondary_board.getText().toString();
-                Edit_Secondary_Percentage = secondary_percentage.getText().toString();
-                Edit_Secondary_Year = secondary_year.getText().toString();
+                Edit_Secondary_School = secondary_school.getEditText().getText().toString();
+                Edit_Secondary_Board = secondary_board.getEditText().getText().toString();
+                Edit_Secondary_Percentage = secondary_percentage.getEditText().getText().toString();
+                Edit_Secondary_Year = secondary_year.getEditText().getText().toString();
 
-                Edit_HigherSecondary_School = highersecondary_school.getText().toString();
-                Edit_HigherSecondary_Board = highersecondary_board.getText().toString();
-                Edit_HigherSecondary_Percentage = highersecondary_percentage.getText().toString();
-                Edit_HigherSecondary_Year = highersecondary_year.getText().toString();
+                Edit_HigherSecondary_School = highersecondary_school.getEditText().getText().toString();
+                Edit_HigherSecondary_Board = highersecondary_board.getEditText().getText().toString();
+                Edit_HigherSecondary_Percentage = highersecondary_percentage.getEditText().getText().toString();
+                Edit_HigherSecondary_Year = highersecondary_year.getEditText().getText().toString();
 
-                Edit_Graduation_College = graduation_college.getText().toString();
-                Edit_Graduation_Branch = graduation_branch.getText().toString();
-                Edit_Graduation_Enrollmentno = graduation_enrollmentno.getText().toString();
+                Edit_Graduation_College = graduation_college.getEditText().getText().toString();
+                Edit_Graduation_Branch = graduation_branch.getEditText().getText().toString();
+                Edit_Graduation_Enrollmentno = graduation_enrollmentno.getEditText().getText().toString();
                 Edit_Graduation_Sem1 = graduation_sem1.getText().toString();
                 Edit_Graduation_Sem2 = graduation_sem2.getText().toString();
                 Edit_Graduation_Sem3 = graduation_sem3.getText().toString();

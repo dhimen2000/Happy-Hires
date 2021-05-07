@@ -120,6 +120,19 @@ public class Student_Adapter extends RecyclerView.Adapter<Student_Adapter.ViewHo
             }
         });
 
+        holder.studentbtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    Toast.makeText(context, "Activate", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(context, "Deactivate", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
 //        holder.studentbtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 //            @Override
 //            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

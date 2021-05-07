@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -51,10 +53,22 @@ public class Company_Adapter extends RecyclerView.Adapter<Company_Adapter.ViewHo
         holder.ComapnyName.setText(model.getName());
         holder.CompanyWebsite.setText(model.getWebsite());
 
+        holder.companybtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    Toast.makeText(context, "Activate", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(context, "Deactivate", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         holder.CompanycardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Click" + position, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(v.getContext(), CompanydataActivity.class);
                 intent.putExtra("Image",model.getImgurl());
                 intent.putExtra("Name",model.getName());
@@ -117,6 +131,7 @@ public class Company_Adapter extends RecyclerView.Adapter<Company_Adapter.ViewHo
         TextView CompanyWebsite;
         TextView CompanyAddress;
         TextView CompanyPdf;
+        ToggleButton companybtn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -128,6 +143,7 @@ public class Company_Adapter extends RecyclerView.Adapter<Company_Adapter.ViewHo
             this.CompanyWebsite = (TextView) itemView.findViewById(R.id.company_website);
             this.CompanyAddress = (TextView) itemView.findViewById(R.id.company_address);
             this.CompanyPdf = (TextView) itemView.findViewById(R.id.company_pdf);
+            this.companybtn =(ToggleButton) itemView.findViewById(R.id.Company_toggle);
         }
     }
 }

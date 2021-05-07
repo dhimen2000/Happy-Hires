@@ -10,6 +10,7 @@
 
     <color name="Start">#C0E6BA</color>
     <color name="End">#4CA771</color>
+    <color name="linecolor1">#007aff</color>
 
     <color name="linecolor">#c2c1c1</color>
     <color name="introduction">#303030</color>

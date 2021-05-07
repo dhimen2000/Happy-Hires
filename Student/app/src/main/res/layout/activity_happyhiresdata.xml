@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.HappyhiresdataActivity"
+    android:background="#ecf0f1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HAPPY HIRES"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:textSize="40dp"
+        android:textStyle="bold|italic"
+        android:fontFamily="Poppins"
+        android:textColor="@color/introduction"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
+    </TextView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"
+        app:cardCornerRadius="20dp"
+        app:contentPadding="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="User Agreement"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:textSize="25dp"
+                android:textStyle="bold|italic"
+                android:fontFamily="Poppins"
+                android:textColor="@color/introduction"
+                android:layout_marginBottom="5dp">
+            </TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:background="#00b489"
+                android:layout_height="1.2sp"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="You are welcome to register an Happy Hires account, access our services !! Before you access our services, please carefully read and understand this User Agreement (the “Agreement”). Once you check the box which indicates that you have agreed to the contents of this Agreement, and click the “Register” button, or continue to access our services, you will be deemed to have read and accepted this Agreement, and this Agreement will be legally binding and constitute a legal document which regulates the rights and obligations between you and Happy Hires Co., Ltd."
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:fontFamily="Poppins"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/introduction">
+            </TextView>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="20dp"
+            app:contentPadding="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Privacy Policy"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"
+                    android:textSize="25dp"
+                    android:textStyle="bold|italic"
+                    android:fontFamily="Poppins"
+                    android:textColor="@color/introduction"
+                    android:layout_marginBottom="5dp">
+                </TextView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:background="#00b489"
+                    android:layout_height="1.2sp"
+                    android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="This Privacy Policy explains how Happy Hires Co., Ltd., along with its affiliates (referred to as we, us or HappyHires), collects, uses, discloses, transfers, stores and protects your personal information and what corresponding rights you have in relation to the processing of personal information. Personal information refers to any information related to an identified or identifiable natural person or household."
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"
+                    android:fontFamily="Poppins"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/introduction">
+                </TextView>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</RelativeLayout>

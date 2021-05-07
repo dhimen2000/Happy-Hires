@@ -3,17 +3,19 @@
     package="com.example.student">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_logo_new"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Student">
-        <activity android:name=".Activity.ForgetActivity"></activity>
+        <activity android:name=".Activity.HappyhiresdataActivity"></activity>
+        <activity android:name=".Activity.ForgetActivity" />
         <activity android:name=".Activity.PlacementattachmentActivity" />
         <activity android:name=".Activity.InterviewdataActivity" />
         <activity android:name=".Activity.JobattachmentcheckActivity" />
@@ -22,9 +24,8 @@
         <activity android:name=".Activity.CompanydataActivity" />
         <activity android:name=".Activity.ResumecheckActivity" />
         <activity android:name=".Activity.EmailVerification" />
-        <activity android:name=".Activity.RegisterActivity2"></activity>
-        <activity android:name=".Activity.RegisterActivity">
-        </activity>
+        <activity android:name=".Activity.RegisterActivity2" />
+        <activity android:name=".Activity.RegisterActivity"></activity>
         <activity android:name=".Activity.PdfcheckActivity" />
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.SplashActivity">
